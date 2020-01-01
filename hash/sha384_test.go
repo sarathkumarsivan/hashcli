@@ -10,7 +10,7 @@ import (
 )
 
 func TestSHA384Hash(t *testing.T) {
-	hash, err := SHA384Hex("foo")
+	hash, err := Sha384Hex("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA384Hash)
 	assert.Equal(t, "98c11ffdfdd540676b1a137cb1a22b2a70350c9a44171d6b1180c6be5cbb2ee3f79d532c8a1dd9ef2e8e08e752a3babb", hash)
 
