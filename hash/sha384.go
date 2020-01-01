@@ -16,7 +16,7 @@ func Sha384Hex(text string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
-func SHA384Base64StdEnc(text string) (string, error) {
+func Sha384Base64StdEnc(text string) (string, error) {
 	hash, err := Sha384(text)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
