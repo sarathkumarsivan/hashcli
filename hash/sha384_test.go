@@ -18,7 +18,7 @@ func TestSHA384Hash(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
 	assert.Equal(t, "mMEf/f3VQGdrGhN8saIrKnA1DJpEFx1rEYDGvly7LuP3nVMsih3Z7y6OCOdSo7q7", hash)
 
-	hash, err = SHA384Base64RawStdEnc("foo")
+	hash, err = Sha384Base64RawStdEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
 	assert.Equal(t, "mMEf/f3VQGdrGhN8saIrKnA1DJpEFx1rEYDGvly7LuP3nVMsih3Z7y6OCOdSo7q7", hash)
 
