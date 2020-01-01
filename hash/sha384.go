@@ -36,33 +36,33 @@ func Sha384Base64RawStdEnc(text string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
-func SHA384File(path string) ([]byte, error) {
+func Sha384File(path string) ([]byte, error) {
 	hash := sha512.New384()
 	return hashFile(hash, path)
 }
 
 func SHA384FileHex(path string) (string, error) {
-	hash, err := SHA384File(path)
+	hash, err := Sha384File(path)
 	return hex.EncodeToString(hash), err
 }
 
 func SHA384FileBase64StdEnc(path string) (string, error) {
-	hash, err := SHA384File(path)
+	hash, err := Sha384File(path)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
 func SHA384FileBase64URLEnc(path string) (string, error) {
-	hash, err := SHA384File(path)
+	hash, err := Sha384File(path)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
 func SHA384FileBase64RawURLEnc(path string) (string, error) {
-	hash, err := SHA384File(path)
+	hash, err := Sha384File(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
 func SHA384FileBase64RawStdEnc(path string) (string, error) {
-	hash, err := SHA384File(path)
+	hash, err := Sha384File(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
