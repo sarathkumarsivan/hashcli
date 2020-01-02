@@ -48,7 +48,7 @@ func TestSHA384HashFile(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA384Hash)
 	assert.Equal(t, "OLBgp1GsljhM2TJ-sbHjaiH9txEUvgdDTAzHv2P24donTt6_529l-9Ua0vFImLlb", hash)
 
-	hash, err = SHA384FileBase64RawURLEnc(foo.Name())
+	hash, err = Sha384FileBase64RawURLEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA384Hash)
 	assert.Equal(t, "OLBgp1GsljhM2TJ-sbHjaiH9txEUvgdDTAzHv2P24donTt6_529l-9Ua0vFImLlb", hash)
 
