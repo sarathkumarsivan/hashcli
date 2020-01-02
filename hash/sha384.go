@@ -76,7 +76,7 @@ func Sha384DirHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
-func SHA384DirBase64StdEnc(path string) (string, error) {
+func Sha384DirBase64StdEnc(path string) (string, error) {
 	hash, err := Sha384Dir(path)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
