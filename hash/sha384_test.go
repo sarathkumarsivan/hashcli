@@ -106,11 +106,11 @@ func TestSHA384HashPath(t *testing.T) {
 	require.NoError(t, err, "Error writing to temporary file")
 	defer os.Remove(foo.Name())
 
-	hash, err := SHA384PathHex(dir)
+	hash, err := Sha384PathHex(dir)
 	require.NoError(t, err, "Error hashing text to using %s", SHA384Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = SHA384PathHex(foo.Name())
+	hash, err = Sha384PathHex(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA384Hash)
 	assert.NotEmpty(t, hash)
 
