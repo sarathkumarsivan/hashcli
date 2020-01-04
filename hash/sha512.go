@@ -31,7 +31,7 @@ func SHA512Base64RawURLEnc(text string) (string, error) {
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
-func SHA512Base64RawStdEnc(text string) (string, error) {
+func Sha512Base64RawStdEnc(text string) (string, error) {
 	hash, err := Sha512(text)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
