@@ -113,7 +113,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 		return Sha384Base64StdEnc(text)
 	}
 	if m.algorithm == SHA512Hash && m.encoding == Base64 {
-		return SHA512Base64StdEnc(text)
+		return Sha512Base64StdEnc(text)
 	}
 
 	return "", ErrUnsupportedAlgorithm
