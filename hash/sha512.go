@@ -66,33 +66,33 @@ func Sha512FileBase64RawStdEnc(path string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
-func SHA512Dir(path string) ([]byte, error) {
+func Sha512Dir(path string) ([]byte, error) {
 	hash := sha512.New()
 	return hashDir(hash, path)
 }
 
 func SHA512DirHex(path string) (string, error) {
-	hash, err := SHA512Dir(path)
+	hash, err := Sha512Dir(path)
 	return hex.EncodeToString(hash), err
 }
 
 func SHA512DirBase64StdEnc(path string) (string, error) {
-	hash, err := SHA512Dir(path)
+	hash, err := Sha512Dir(path)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
 func SHA512DirBase64URLEnc(path string) (string, error) {
-	hash, err := SHA512Dir(path)
+	hash, err := Sha512Dir(path)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
 func SHA512DirBase64RawURLEnc(path string) (string, error) {
-	hash, err := SHA512Dir(path)
+	hash, err := Sha512Dir(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
 func SHA512DirBase64RawStdEnc(path string) (string, error) {
-	hash, err := SHA512Dir(path)
+	hash, err := Sha512Dir(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
