@@ -101,7 +101,7 @@ func Sha512Path(path string) ([]byte, error) {
 	return hashPath(hash, path)
 }
 
-func SHA512PathHex(path string) (string, error) {
+func Sha512PathHex(path string) (string, error) {
 	hash, err := Sha512Path(path)
 	return hex.EncodeToString(hash), err
 }
