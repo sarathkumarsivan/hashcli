@@ -15,7 +15,7 @@ const (
 	Fnv32Hash            = "fnv32"
 	Fnv32aHash           = "fnv32a"
 	Fnv64Hash            = "fnv64"
-	FNV64aHash           = "fnv64a"
+	Fnv64aHash           = "fnv64a"
 	SHA1Hash             = "sha1"
 	SHA256Hash           = "sha256"
 	SHA224Hash           = "sha224"
