@@ -14,7 +14,7 @@ const (
 	MD5Hash    Algorithm = "md5"
 	Fnv32Hash            = "fnv32"
 	Fnv32aHash           = "fnv32a"
-	FNV64Hash            = "fnv64"
+	Fnv64Hash            = "fnv64"
 	FNV64aHash           = "fnv64a"
 	SHA1Hash             = "sha1"
 	SHA256Hash           = "sha256"
