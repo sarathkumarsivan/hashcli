@@ -11,7 +11,7 @@ var ErrUnsupportedAlgorithm = errors.New("hashutils: unsupported hashing algorit
 type Algorithm string
 
 const (
-	MD5Hash    Algorithm = "md5"
+	Md5Hash    Algorithm = "md5"
 	Fnv32Hash            = "fnv32"
 	Fnv32aHash           = "fnv32a"
 	Fnv64Hash            = "fnv64"
@@ -78,7 +78,7 @@ type hashMaker struct {
 }
 
 func (m *hashMaker) HashText(text string) (string, error) {
-	if m.algorithm == MD5Hash && m.encoding == Hex {
+	if m.algorithm == Md5Hash && m.encoding == Hex {
 		return Md5Hex(text)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Hex {
@@ -97,7 +97,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 		return Sha512Hex(text)
 	}
 
-	if m.algorithm == MD5Hash && m.encoding == Base64 {
+	if m.algorithm == Md5Hash && m.encoding == Base64 {
 		return Md5Base64StdEnc(text)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Base64 {
@@ -120,7 +120,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 }
 
 func (m *hashMaker) HashFile(path string) (string, error) {
-	if m.algorithm == MD5Hash && m.encoding == Hex {
+	if m.algorithm == Md5Hash && m.encoding == Hex {
 		return Md5FileHex(path)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Hex {
@@ -139,7 +139,7 @@ func (m *hashMaker) HashFile(path string) (string, error) {
 		return Sha512FileHex(path)
 	}
 
-	if m.algorithm == MD5Hash && m.encoding == Base64 {
+	if m.algorithm == Md5Hash && m.encoding == Base64 {
 		return Md5FileBase64StdEnc(path)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Base64 {
@@ -164,7 +164,7 @@ func (m *hashMaker) HashFile(path string) (string, error) {
 func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 	pathHashes := make(map[string]string, len(paths))
 	for _, path := range paths {
-		if m.algorithm == MD5Hash && m.encoding == Hex {
+		if m.algorithm == Md5Hash && m.encoding == Hex {
 			hash, err := Md5FileHex(path)
 			if err != nil {
 				return pathHashes, err
@@ -207,7 +207,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			pathHashes[path] = hash
 		}
 
-		if m.algorithm == MD5Hash && m.encoding == Base64 {
+		if m.algorithm == Md5Hash && m.encoding == Base64 {
 			hash, err := Md5FileBase64StdEnc(path)
 			if err != nil {
 				return pathHashes, err
@@ -254,7 +254,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 }
 
 func (m *hashMaker) HashDir(path string) (string, error) {
-	if m.algorithm == MD5Hash && m.encoding == Hex {
+	if m.algorithm == Md5Hash && m.encoding == Hex {
 		return Md5DirHex(path)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Hex {
