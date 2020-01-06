@@ -122,11 +122,11 @@ func TestSHA512HashPath(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = SHA512PathBase64URLEnc(dir)
+	hash, err = Sha512PathBase64URLEnc(dir)
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = SHA512PathBase64URLEnc(foo.Name())
+	hash, err = Sha512PathBase64URLEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
 	assert.NotEmpty(t, hash)
 
