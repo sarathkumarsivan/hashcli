@@ -11,23 +11,23 @@ import (
 
 func TestSHA1Hash(t *testing.T) {
 	hash, err := Sha1Hex("foo")
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33", hash)
 
 	hash, err = Sha1Base64StdEnc("foo")
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "C+7Hteo/D9vJXQ3UfzxbwnXaijM=", hash)
 
 	hash, err = Sha1Base64RawStdEnc("foo")
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "C+7Hteo/D9vJXQ3UfzxbwnXaijM", hash)
 
 	hash, err = Sha1Base64RawURLEnc("foo")
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "C-7Hteo_D9vJXQ3UfzxbwnXaijM", hash)
 
 	hash, err = Sha1Base64URLEnc("foo")
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "C-7Hteo_D9vJXQ3UfzxbwnXaijM=", hash)
 }
 
@@ -37,23 +37,23 @@ func TestSHA1HashFile(t *testing.T) {
 	defer func() { _ = os.Remove(foo.Name()) }()
 
 	hash, err := Sha1FileHex(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "da39a3ee5e6b4b0d3255bfef95601890afd80709", hash)
 
 	hash, err = Sha1FileBase64StdEnc(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "2jmj7l5rSw0yVb/vlWAYkK/YBwk=", hash)
 
 	hash, err = Sha1FileBase64URLEnc(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "2jmj7l5rSw0yVb_vlWAYkK_YBwk=", hash)
 
 	hash, err = Sha1FileBase64RawURLEnc(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "2jmj7l5rSw0yVb_vlWAYkK_YBwk", hash)
 
 	hash, err = Sha1FileBase64RawStdEnc(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.Equal(t, "2jmj7l5rSw0yVb/vlWAYkK/YBwk", hash)
 }
 
@@ -75,23 +75,23 @@ func TestSHA1HashDir(t *testing.T) {
 	defer os.Remove(bar.Name())
 
 	hash, err := Sha1DirHex(dir)
-	require.NoError(t, err, "Error hashing dir to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing dir to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1DirBase64StdEnc(dir)
-	require.NoError(t, err, "Error hashing dir to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing dir to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1DirBase64URLEnc(dir)
-	require.NoError(t, err, "Error hashing dir to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing dir to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1DirBase64RawURLEnc(dir)
-	require.NoError(t, err, "Error hashing dir to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing dir to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1DirBase64RawStdEnc(dir)
-	require.NoError(t, err, "Error hashing dir to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing dir to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 }
 
@@ -107,42 +107,42 @@ func TestSHA1HashPath(t *testing.T) {
 	defer os.Remove(foo.Name())
 
 	hash, err := Sha1PathHex(dir)
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1PathHex(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1PathBase64StdEnc(dir)
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1PathBase64StdEnc(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1PathBase64URLEnc(dir)
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1PathBase64URLEnc(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1PathBase64RawURLEnc(dir)
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1PathBase64RawURLEnc(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1PathBase64RawStdEnc(dir)
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 
 	hash, err = Sha1PathBase64RawStdEnc(foo.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", Sha1Hash)
 	assert.NotEmpty(t, hash)
 }
