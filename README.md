@@ -18,217 +18,217 @@ go get -u github.com/sarathkumarsivan/hashutils
 ### MD5 Hash
 ```scala
 // MD5 Hash with hexadecimal encoding.
-hash, _ := MD5Hex("foo")
+hash, _ := Md5Hex("foo")
 
 // MD5 Hash with standard base64 encoding.
-hash, _ := MD5Base64StdEnc("foo")
+hash, _ := Md5Base64StdEnc("foo")
 
 // MD5 Hash with alternate base64 encoding.
-hash, _ := MD5Base64URLEnc("foo")
+hash, _ := Md5Base64URLEnc("foo")
 
 // MD5 Hash with standard raw, unpadded base64 encoding.
-hash, _ := MD5Base64RawURLEnc("foo")
+hash, _ := Md5Base64RawURLEnc("foo")
 
 // MD5 Hash with unpadded alternate base64 encoding.
-hash, _ := MD5Base64RawStdEnc("foo")
+hash, _ := Md5Base64RawStdEnc("foo")
 
 // MD5 Hash of file with hexadecimal encoding.
-hash, _ := MD5FileHex("foo.txt")
+hash, _ := Md5FileHex("foo.txt")
 
 // MD5 Hash of file with standard base64 encoding.
-hash, _ := MD5FileBase64StdEnc("foo.txt")
+hash, _ := Md5FileBase64StdEnc("foo.txt")
 
 // MD5 Hash of file with alternate base64 encoding.
-hash, _ := MD5FileBase64URLEnc("foo.txt")
+hash, _ := Md5FileBase64URLEnc("foo.txt")
 
 // MD5 Hash of file with standard raw, unpadded base64 encoding.
-hash, _ := MD5FileBase64RawURLEnc("foo.txt")
+hash, _ := Md5FileBase64RawURLEnc("foo.txt")
 
 // MD5 Hash of file with unpadded alternate base64 encoding.
-hash, _ := MD5FileBase64RawStdEnc("foo.txt")
+hash, _ := Md5FileBase64RawStdEnc("foo.txt")
 ```
 
 ### SHA1 Hash
 ```scala
 // SHA1 Hash with hexadecimal encoding.
-hash, _ := SHA1Hex("foo")
+hash, _ := Sha1Hex("foo")
 
 // SHA1 Hash with standard base64 encoding.
-hash, _ := SHA1Base64StdEnc("foo")
+hash, _ := Sha1Base64StdEnc("foo")
 
 // SHA1 Hash with alternate base64 encoding.
-hash, _ := SHA1Base64URLEnc("foo")
+hash, _ := Sha1Base64URLEnc("foo")
 
 // SHA1 Hash with standard raw, unpadded base64 encoding.
-hash, _ := SHA1Base64RawURLEnc("foo")
+hash, _ := Sha1Base64RawURLEnc("foo")
 
 // SHA1 Hash with unpadded alternate base64 encoding.
-hash, _ := SHA1Base64RawStdEnc("foo")
+hash, _ := Sha1Base64RawStdEnc("foo")
 
 // SHA1 Hash of file with hexadecimal encoding.
-hash, _ := SHA1FileHex("foo.txt")
+hash, _ := Sha1FileHex("foo.txt")
 
 // SHA1 Hash of file with standard base64 encoding.
-hash, _ := SHA1FileBase64StdEnc("foo.txt")
+hash, _ := Sha1FileBase64StdEnc("foo.txt")
 
 // SHA1 Hash of file with alternate base64 encoding.
-hash, _ := SHA1FileBase64URLEnc("foo.txt")
+hash, _ := Sha1FileBase64URLEnc("foo.txt")
 
 // SHA1 Hash of file with standard raw, unpadded base64 encoding.
-hash, _ := SHA1FileBase64RawURLEnc("foo.txt")
+hash, _ := Sha1FileBase64RawURLEnc("foo.txt")
 
 // SHA1 Hash of file with unpadded alternate base64 encoding.
-hash, _ := SHA1FileBase64RawStdEnc("foo.txt")
+hash, _ := Sha1FileBase64RawStdEnc("foo.txt")
 ```
 
 ### SHA224 Hash
 ```scala
 // SHA224 Hash with hexadecimal encoding.
-hash, _ := SHA224Hex("foo")
+hash, _ := Sha224Hex("foo")
 
 // SHA224 Hash with standard base64 encoding.
-hash, _ := SHA224Base64StdEnc("foo")
+hash, _ := Sha224Base64StdEnc("foo")
 
 // SHA224 Hash with alternate base64 encoding.
-hash, _ := SHA224Base64URLEnc("foo")
+hash, _ := Sha224Base64URLEnc("foo")
 
 // SHA224 Hash with standard raw, unpadded base64 encoding.
-hash, _ := SHA224Base64RawURLEnc("foo")
+hash, _ := Sha224Base64RawURLEnc("foo")
 
 // SHA224 Hash with unpadded alternate base64 encoding.
-hash, _ := SHA224Base64RawStdEnc("foo")
+hash, _ := Sha224Base64RawStdEnc("foo")
 
 // SHA224 Hash of file with hexadecimal encoding.
-hash, _ := SHA224FileHex("foo.txt")
+hash, _ := Sha224FileHex("foo.txt")
 
 // SHA224 Hash of file with standard base64 encoding.
-hash, _ := SHA224FileBase64StdEnc("foo.txt")
+hash, _ := Sha224FileBase64StdEnc("foo.txt")
 
 // SHA224 Hash of file with alternate base64 encoding.
-hash, _ := SHA224FileBase64URLEnc("foo.txt")
+hash, _ := Sha224FileBase64URLEnc("foo.txt")
 
 // SHA224 Hash of file with standard raw, unpadded base64 encoding.
-hash, _ := SHA224FileBase64RawURLEnc("foo.txt")
+hash, _ := Sha224FileBase64RawURLEnc("foo.txt")
 
 // SHA224 Hash of file with unpadded alternate base64 encoding.
-hash, _ := SHA224BFilease64RawStdEnc("foo.txt")
+hash, _ := Sha224BFilease64RawStdEnc("foo.txt")
 ```
 
 ### SHA256 Hash
 ```scala
 // SHA256 Hash with hexadecimal encoding.
-hash, _ := SHA256Hex("foo")
+hash, _ := Sha256Hex("foo")
 
 // SHA256 Hash with standard base64 encoding.
-hash, _ := SHA256Base64StdEnc("foo")
+hash, _ := Sha256Base64StdEnc("foo")
 
 // SHA256 Hash with alternate base64 encoding.
-hash, _ := SHA256Base64URLEnc("foo")
+hash, _ := Sha256Base64URLEnc("foo")
 
 // SHA256 Hash with standard raw, unpadded base64 encoding.
-hash, _ := SHA256Base64RawURLEnc("foo")
+hash, _ := Sha256Base64RawURLEnc("foo")
 
 // SHA256 Hash with unpadded alternate base64 encoding.
-hash, _ := SHA256Base64RawStdEnc("foo")
+hash, _ := Sha256Base64RawStdEnc("foo")
 
 // SHA256 Hash with hexadecimal encoding.
-hash, _ := SHA256FileHex("foo.txt")
+hash, _ := Sha256FileHex("foo.txt")
 
 // SHA256 Hash of file with standard base64 encoding.
-hash, _ := SHA256FileBase64StdEnc("foo.txt")
+hash, _ := Sha256FileBase64StdEnc("foo.txt")
 
 // SHA256 Hash of file with alternate base64 encoding.
-hash, _ := SHA256FileBase64URLEnc("foo.txt")
+hash, _ := Sha256FileBase64URLEnc("foo.txt")
 
 // SHA256 Hash of file with standard raw, unpadded base64 encoding.
-hash, _ := SHA256FileBase64RawURLEnc("foo.txt")
+hash, _ := Sha256FileBase64RawURLEnc("foo.txt")
 
 // SHA256 Hash of file with unpadded alternate base64 encoding.
-hash, _ := SHA256FileBase64RawStdEnc("foo.txt")
+hash, _ := Sha256FileBase64RawStdEnc("foo.txt")
 ```
 
 ### SHA384 Hash
 ```scala
 // SHA384 Hash with hexadecimal encoding.
-hash, _ := SHA384Hex("foo")
+hash, _ := Sha384Hex("foo")
 
 // SHA384 Hash with standard base64 encoding.
-hash, _ := SHA384Base64StdEnc("foo")
+hash, _ := Sha384Base64StdEnc("foo")
 
 // SHA384 Hash with alternate base64 encoding.
-hash, _ := SHA384Base64URLEnc("foo")
+hash, _ := Sha384Base64URLEnc("foo")
 
 // SHA384 Hash with standard raw, unpadded base64 encoding.
-hash, _ := SHA384Base64RawURLEnc("foo")
+hash, _ := Sha384Base64RawURLEnc("foo")
 
 // SHA384 Hash with unpadded alternate base64 encoding.
-hash, _ := SHA384Base64RawStdEnc("foo")
+hash, _ := Sha384Base64RawStdEnc("foo")
 
 // SHA384 Hash with hexadecimal encoding.
-hash, _ := SHA384FileHex("foo.txt")
+hash, _ := Sha384FileHex("foo.txt")
 
 // SHA384 Hash of file with standard base64 encoding.
-hash, _ := SHA384FileBase64StdEnc("foo.txt")
+hash, _ := Sha384FileBase64StdEnc("foo.txt")
 
 // SHA384 Hash of file with alternate base64 encoding.
-hash, _ := SHA384FileBase64URLEnc("foo.txt")
+hash, _ := Sha384FileBase64URLEnc("foo.txt")
 
 // SHA384 Hash of file with standard raw, unpadded base64 encoding.
-hash, _ := SHA384FileBase64RawURLEnc("foo.txt")
+hash, _ := Sha384FileBase64RawURLEnc("foo.txt")
 
 // SHA384 Hash of file with unpadded alternate base64 encoding.
-hash, _ := SHA384FileBase64RawStdEnc("foo.txt")
+hash, _ := Sha384FileBase64RawStdEnc("foo.txt")
 ```
 
 ### SHA512 Hash
 ```scala
 // SHA512 Hash with hexadecimal encoding.
-hash, _ := SHA512Hex("foo")
+hash, _ := Sha512Hex("foo")
 
 // SHA512 Hash with standard base64 encoding.
-hash, _ := SHA512Base64StdEnc("foo")
+hash, _ := Sha512Base64StdEnc("foo")
 
 // SHA512 Hash with alternate base64 encoding.
-hash, _ := SHA512Base64URLEnc("foo")
+hash, _ := Sha512Base64URLEnc("foo")
 
 // SHA512 Hash with standard raw, unpadded base64 encoding.
-hash, _ := SHA512Base64RawURLEnc("foo")
+hash, _ := Sha512Base64RawURLEnc("foo")
 
 // SHA512 Hash with unpadded alternate base64 encoding.
-hash, _ := SHA512Base64RawStdEnc("foo")
+hash, _ := Sha512Base64RawStdEnc("foo")
 
 // SHA512 Hash with hexadecimal encoding.
-hash, _ := SHA512FileHex("foo.txt")
+hash, _ := Sha512FileHex("foo.txt")
 
 // SHA512 Hash of file with standard base64 encoding.
-hash, _ := SHA512FileBase64StdEnc("foo.txt")
+hash, _ := Sha512FileBase64StdEnc("foo.txt")
 
 // SHA512 Hash of file with alternate base64 encoding.
-hash, _ := SHA512FileBase64URLEnc("foo.txt")
+hash, _ := Sha512FileBase64URLEnc("foo.txt")
 
 // SHA512 Hash of file with standard raw, unpadded base64 encoding.
-hash, _ := SHA512FileBase64RawURLEnc("foo.txt")
+hash, _ := Sha512FileBase64RawURLEnc("foo.txt")
 
 // SHA512 Hash of file with unpadded alternate base64 encoding.
-hash, _ := SHA512FileBase64RawStdEnc("foo.txt")
+hash, _ := Sha512FileBase64RawStdEnc("foo.txt")
 
 // SHA512 Hash of directory path with hexadecimal encoding
-hash, _ := SHA512PathHex("/home/foo")
+hash, _ := Sha512PathHex("/home/foo")
 
 // SHA512 Hash of file path with hexadecimal encoding
-hash, _ := SHA512PathHex("/home/foo.txt")
+hash, _ := Sha512PathHex("/home/foo.txt")
 
 // SHA512 Hash of directory path with standard base64 encoding.
-hash, _ := SHA512PathBase64StdEnc("/home/foo")
+hash, _ := Sha512PathBase64StdEnc("/home/foo")
 
 // SHA512 Hash of file path with standard base64 encoding.
-hash, _ := SHA512PathBase64StdEnc("/home/foo.txt")
+hash, _ := Sha512PathBase64StdEnc("/home/foo.txt")
 
 // SHA512 Hash of directory path with alternate base64 encoding.
-hash, _ := SHA512PathBase64URLEnc("/home/foo")
+hash, _ := Sha512PathBase64URLEnc("/home/foo")
 
 // SHA512 Hash of file path with alternate base64 encoding.
-hash, _ := SHA512PathBase64URLEnc("/home/foo.txt")
+hash, _ := Sha512PathBase64URLEnc("/home/foo.txt")
 ```
 
 ### Install from source and run through commandline
