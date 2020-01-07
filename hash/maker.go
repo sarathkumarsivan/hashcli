@@ -18,7 +18,7 @@ const (
 	Fnv64aHash           = "fnv64a"
 	Sha1Hash             = "sha1"
 	Sha256Hash           = "sha256"
-	SHA224Hash           = "sha224"
+	Sha224Hash           = "sha224"
 	SHA512Hash           = "sha512"
 	SHA384Hash           = "sha384"
 )
@@ -84,7 +84,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 	if m.algorithm == Sha1Hash && m.encoding == Hex {
 		return Sha1Hex(text)
 	}
-	if m.algorithm == SHA224Hash && m.encoding == Hex {
+	if m.algorithm == Sha224Hash && m.encoding == Hex {
 		return Sha224Hex(text)
 	}
 	if m.algorithm == Sha256Hash && m.encoding == Hex {
@@ -103,7 +103,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 	if m.algorithm == Sha1Hash && m.encoding == Base64 {
 		return Sha1Base64StdEnc(text)
 	}
-	if m.algorithm == SHA224Hash && m.encoding == Base64 {
+	if m.algorithm == Sha224Hash && m.encoding == Base64 {
 		return Sha224Base64StdEnc(text)
 	}
 	if m.algorithm == Sha256Hash && m.encoding == Base64 {
@@ -126,7 +126,7 @@ func (m *hashMaker) HashFile(path string) (string, error) {
 	if m.algorithm == Sha1Hash && m.encoding == Hex {
 		return Sha1FileHex(path)
 	}
-	if m.algorithm == SHA224Hash && m.encoding == Hex {
+	if m.algorithm == Sha224Hash && m.encoding == Hex {
 		return Sha224FileHex(path)
 	}
 	if m.algorithm == Sha256Hash && m.encoding == Hex {
@@ -145,7 +145,7 @@ func (m *hashMaker) HashFile(path string) (string, error) {
 	if m.algorithm == Sha1Hash && m.encoding == Base64 {
 		return Sha1FileBase64StdEnc(path)
 	}
-	if m.algorithm == SHA224Hash && m.encoding == Base64 {
+	if m.algorithm == Sha224Hash && m.encoding == Base64 {
 		return Sha224FileBase64StdEnc(path)
 	}
 	if m.algorithm == Sha256Hash && m.encoding == Base64 {
@@ -178,7 +178,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			}
 			pathHashes[path] = hash
 		}
-		if m.algorithm == SHA224Hash && m.encoding == Hex {
+		if m.algorithm == Sha224Hash && m.encoding == Hex {
 			hash, err := Sha224FileHex(path)
 			if err != nil {
 				return pathHashes, err
@@ -221,7 +221,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			}
 			pathHashes[path] = hash
 		}
-		if m.algorithm == SHA224Hash && m.encoding == Base64 {
+		if m.algorithm == Sha224Hash && m.encoding == Base64 {
 			hash, err := Sha224FileBase64StdEnc(path)
 			if err != nil {
 				return pathHashes, err
