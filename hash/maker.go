@@ -19,7 +19,7 @@ const (
 	Sha1Hash             = "sha1"
 	Sha256Hash           = "sha256"
 	Sha224Hash           = "sha224"
-	SHA512Hash           = "sha512"
+	Sha512Hash           = "sha512"
 	SHA384Hash           = "sha384"
 )
 
@@ -93,7 +93,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 	if m.algorithm == SHA384Hash && m.encoding == Hex {
 		return Sha384Hex(text)
 	}
-	if m.algorithm == SHA512Hash && m.encoding == Hex {
+	if m.algorithm == Sha512Hash && m.encoding == Hex {
 		return Sha512Hex(text)
 	}
 
@@ -112,7 +112,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 	if m.algorithm == SHA384Hash && m.encoding == Base64 {
 		return Sha384Base64StdEnc(text)
 	}
-	if m.algorithm == SHA512Hash && m.encoding == Base64 {
+	if m.algorithm == Sha512Hash && m.encoding == Base64 {
 		return Sha512Base64StdEnc(text)
 	}
 
@@ -135,7 +135,7 @@ func (m *hashMaker) HashFile(path string) (string, error) {
 	if m.algorithm == SHA384Hash && m.encoding == Hex {
 		return Sha384FileHex(path)
 	}
-	if m.algorithm == SHA512Hash && m.encoding == Hex {
+	if m.algorithm == Sha512Hash && m.encoding == Hex {
 		return Sha512FileHex(path)
 	}
 
@@ -154,7 +154,7 @@ func (m *hashMaker) HashFile(path string) (string, error) {
 	if m.algorithm == SHA384Hash && m.encoding == Base64 {
 		return Sha384FileBase64StdEnc(path)
 	}
-	if m.algorithm == SHA512Hash && m.encoding == Base64 {
+	if m.algorithm == Sha512Hash && m.encoding == Base64 {
 		return Sha512FileBase64StdEnc(path)
 	}
 
@@ -199,7 +199,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			}
 			pathHashes[path] = hash
 		}
-		if m.algorithm == SHA512Hash && m.encoding == Hex {
+		if m.algorithm == Sha512Hash && m.encoding == Hex {
 			hash, err := Sha512FileHex(path)
 			if err != nil {
 				return pathHashes, err
@@ -242,7 +242,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			}
 			pathHashes[path] = hash
 		}
-		if m.algorithm == SHA512Hash && m.encoding == Base64 {
+		if m.algorithm == Sha512Hash && m.encoding == Base64 {
 			hash, err := Sha512FileBase64StdEnc(path)
 			if err != nil {
 				return pathHashes, err
