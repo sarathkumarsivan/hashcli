@@ -94,6 +94,8 @@ func Md5Dir(path string) ([]byte, error) {
 	return hashDir(hash, path)
 }
 
+// Md5DirHex returns the MD5 checksum of a directory in
+// hexadecimal encoding format.
 func Md5DirHex(path string) (string, error) {
 	hash, err := Md5Dir(path)
 	return hex.EncodeToString(hash), err
