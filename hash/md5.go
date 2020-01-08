@@ -81,6 +81,8 @@ func Md5FileBase64RawURLEnc(path string) (string, error) {
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
+// Md5FileBase64RawStdEnc returns the MD5 checksum of given file in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func Md5FileBase64RawStdEnc(path string) (string, error) {
 	hash, err := Md5File(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
