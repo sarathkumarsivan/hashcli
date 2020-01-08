@@ -60,6 +60,8 @@ func Md5FileHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Md5FileBase64StdEnc returns the MD5 checksum of given file in
+// standard base64 encoding, as defined in RFC 4648.
 func Md5FileBase64StdEnc(path string) (string, error) {
 	hash, err := Md5File(path)
 	return base64.StdEncoding.EncodeToString(hash), err
