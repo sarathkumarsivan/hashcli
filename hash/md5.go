@@ -53,6 +53,8 @@ func Md5File(path string) ([]byte, error) {
 	return hashFile(hash, path)
 }
 
+// Md5FileHex returns the MD5 checksum of given file in
+// hexadecimal encoding format.
 func Md5FileHex(path string) (string, error) {
 	hash, err := Md5File(path)
 	return hex.EncodeToString(hash), err
