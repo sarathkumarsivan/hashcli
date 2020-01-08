@@ -6,36 +6,48 @@ import (
 	"encoding/hex"
 )
 
+// Md5 returns MD5 checksum of given text as bytes
 func Md5(text string) ([]byte, error) {
 	hash := md5.New()
 	return hashText(hash, text)
 }
 
+// Md5Hex returns the MD5 checksum of given text in
+// hexadecimal encoding format.
 func Md5Hex(text string) (string, error) {
 	hash, err := Md5(text)
 	return hex.EncodeToString(hash), err
 }
 
+// Md5Base64StdEnc returns the MD5 checksum of given text in
+// standard base64 encoding, as defined in RFC 4648.
 func Md5Base64StdEnc(text string) (string, error) {
 	hash, err := Md5(text)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
+// Md5Base64URLEnc returns the MD5 checksum of given text in
+// an alternate base64 encoding defined in RFC 4648.
 func Md5Base64URLEnc(text string) (string, error) {
 	hash, err := Md5(text)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
+// Md5Base64RawURLEnc returns the MD5 checksum of given text in
+// a padded alternate base64 encoding defined in RFC 4648.
 func Md5Base64RawURLEnc(text string) (string, error) {
 	hash, err := Md5(text)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
+// Md5Base64RawStdEnc returns the MD5 checksum of given text in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func Md5Base64RawStdEnc(text string) (string, error) {
 	hash, err := Md5(text)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Md5File returns MD5 checksum of given file as bytes
 func Md5File(path string) ([]byte, error) {
 	hash := md5.New()
 	return hashFile(hash, path)
