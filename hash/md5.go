@@ -115,11 +115,15 @@ func Md5DirBase64URLEnc(path string) (string, error) {
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
+// Md5DirBase64RawURLEnc returns the MD5 checksum of a directory in
+// a padded alternate base64 encoding defined in RFC 4648.
 func Md5DirBase64RawURLEnc(path string) (string, error) {
 	hash, err := Md5Dir(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
+// Md5DirBase64RawStdEnc returns the MD5 checksum of a directory in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func Md5DirBase64RawStdEnc(path string) (string, error) {
 	hash, err := Md5Dir(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
