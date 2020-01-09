@@ -101,6 +101,8 @@ func Md5DirHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Md5DirBase64StdEnc returns the MD5 checksum of a directory in
+// standard base64 encoding, as defined in RFC 4648.
 func Md5DirBase64StdEnc(path string) (string, error) {
 	hash, err := Md5Dir(path)
 	return base64.StdEncoding.EncodeToString(hash), err
