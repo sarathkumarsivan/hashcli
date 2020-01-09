@@ -129,11 +129,14 @@ func Md5DirBase64RawStdEnc(path string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Md5Path returns MD5 checksum of a path as bytes.
 func Md5Path(path string) ([]byte, error) {
 	hash := md5.New()
 	return hashPath(hash, path)
 }
 
+// Md5PathHex returns the MD5 checksum of a path in
+// hexadecimal encoding format.
 func Md5PathHex(path string) (string, error) {
 	hash, err := Md5Path(path)
 	return hex.EncodeToString(hash), err
