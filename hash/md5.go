@@ -142,6 +142,8 @@ func Md5PathHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Md5PathBase64StdEnc returns the MD5 checksum of a path in
+// standard base64 encoding, as defined in RFC 4648.
 func Md5PathBase64StdEnc(path string) (string, error) {
 	hash, err := Md5Path(path)
 	return hex.EncodeToString(hash), err
