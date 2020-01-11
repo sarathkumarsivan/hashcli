@@ -60,6 +60,8 @@ func Sha1FileHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Sha1FileBase64StdEnc returns the SHA-1 checksum of a file in
+// standard base64 encoding, as defined in RFC 4648.
 func Sha1FileBase64StdEnc(path string) (string, error) {
 	hash, err := Sha1File(path)
 	return base64.StdEncoding.EncodeToString(hash), err
