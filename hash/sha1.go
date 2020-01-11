@@ -40,7 +40,7 @@ func Sha1Base64RawURLEnc(text string) (string, error) {
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
-// Sha1Base64RawStdEnc returns the  SHA-1 checksum of a text in
+// Sha1Base64RawStdEnc returns the SHA-1 checksum of a text in
 // a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func Sha1Base64RawStdEnc(text string) (string, error) {
 	hash, err := Sha1(text)
@@ -53,6 +53,8 @@ func Sha1File(path string) ([]byte, error) {
 	return hashFile(hash, path)
 }
 
+// Sha1FileHex returns the SHA-1 checksum of a file in
+// hexadecimal encoding format.
 func Sha1FileHex(path string) (string, error) {
 	hash, err := Sha1File(path)
 	return hex.EncodeToString(hash), err
