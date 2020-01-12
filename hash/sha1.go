@@ -88,6 +88,7 @@ func Sha1FileBase64RawStdEnc(path string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Sha1Dir returns SHA-1 checksum of a directory as bytes.
 func Sha1Dir(path string) ([]byte, error) {
 	hash := sha1.New()
 	return hashDir(hash, path)
