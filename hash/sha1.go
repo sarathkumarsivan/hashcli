@@ -101,6 +101,8 @@ func Sha1DirHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Sha1DirBase64StdEnc returns the SHA-1 checksum of a directory in
+// standard base64 encoding, as defined in RFC 4648.
 func Sha1DirBase64StdEnc(path string) (string, error) {
 	hash, err := Sha1Dir(path)
 	return base64.StdEncoding.EncodeToString(hash), err
