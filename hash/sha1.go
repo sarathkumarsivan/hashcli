@@ -135,6 +135,8 @@ func Sha1Path(path string) ([]byte, error) {
 	return hashPath(hash, path)
 }
 
+// Sha1PathHex returns the SHA-1 checksum of a path in
+// hexadecimal encoding format.
 func Sha1PathHex(path string) (string, error) {
 	hash, err := Sha1Path(path)
 	return hex.EncodeToString(hash), err
