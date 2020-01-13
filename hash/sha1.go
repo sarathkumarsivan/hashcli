@@ -142,6 +142,8 @@ func Sha1PathHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Sha1PathBase64StdEnc returns the SHA-1 checksum of a path in
+// standard base64 encoding, as defined in RFC 4648.
 func Sha1PathBase64StdEnc(path string) (string, error) {
 	hash, err := Sha1Path(path)
 	return hex.EncodeToString(hash), err
