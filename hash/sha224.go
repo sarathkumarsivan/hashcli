@@ -47,6 +47,7 @@ func Sha224Base64RawStdEnc(text string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Sha1File returns SHA-224 checksum of a file as bytes.
 func Sha224File(path string) ([]byte, error) {
 	hash := sha256.New224()
 	return hashFile(hash, path)
