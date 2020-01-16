@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 )
 
+// Sha1 returns SHA-224 checksum of a text as bytes.
 func Sha224(text string) ([]byte, error) {
 	hash := sha256.New224()
 	return hashText(hash, text)
