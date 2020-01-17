@@ -53,6 +53,8 @@ func Sha224File(path string) ([]byte, error) {
 	return hashFile(hash, path)
 }
 
+// Sha224FileHex returns the SHA-224 checksum of a file in
+// hexadecimal encoding format.
 func Sha224FileHex(path string) (string, error) {
 	hash, err := Sha224File(path)
 	return hex.EncodeToString(hash), err
