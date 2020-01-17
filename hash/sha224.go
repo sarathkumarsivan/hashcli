@@ -88,6 +88,7 @@ func Sha224FileBase64RawStdEnc(path string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Sha224Dir returns SHA-224 checksum of a directory as bytes.
 func Sha224Dir(path string) ([]byte, error) {
 	hash := sha256.New224()
 	return hashDir(hash, path)
