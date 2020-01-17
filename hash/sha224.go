@@ -67,6 +67,8 @@ func Sha224FileBase64StdEnc(path string) (string, error) {
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
+// Sha224FileBase64URLEnc returns the SHA-224 checksum of a file in
+// an alternate base64 encoding defined in RFC 4648.
 func Sha224FileBase64URLEnc(path string) (string, error) {
 	hash, err := Sha224File(path)
 	return base64.URLEncoding.EncodeToString(hash), err
