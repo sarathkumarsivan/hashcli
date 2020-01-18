@@ -115,16 +115,21 @@ func Sha224DirBase64URLEnc(path string) (string, error) {
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
+// Sha224DirBase64RawURLEnc returns the SHA-224 checksum of a directory in
+// a padded alternate base64 encoding defined in RFC 4648.
 func Sha224DirBase64RawURLEnc(path string) (string, error) {
 	hash, err := Sha224Dir(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
+// Sha224DirBase64RawStdEnc returns the SHA-224 checksum of a directory in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func Sha224DirBase64RawStdEnc(path string) (string, error) {
 	hash, err := Sha224Dir(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Sha224Path returns SHA-224 checksum of a path as bytes.
 func Sha224Path(path string) ([]byte, error) {
 	hash := sha256.New224()
 	return hashPath(hash, path)
