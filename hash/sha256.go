@@ -40,6 +40,8 @@ func SHA256Base64RawURLEnc(text string) (string, error) {
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
+// Sha256Base64RawStdEnc returns the SHA-256 checksum of a text in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func Sha256Base64RawStdEnc(text string) (string, error) {
 	hash, err := Sha256(text)
 	return base64.RawStdEncoding.EncodeToString(hash), err
