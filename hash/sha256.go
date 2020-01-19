@@ -12,6 +12,8 @@ func Sha256(text string) ([]byte, error) {
 	return hashText(hash, text)
 }
 
+// Sha256Hex returns the SHA-256 checksum of a text in
+// hexadecimal encoding format.
 func Sha256Hex(text string) (string, error) {
 	hash, err := Sha256(text)
 	return hex.EncodeToString(hash), err
