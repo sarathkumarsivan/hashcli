@@ -26,6 +26,8 @@ func Sha256Base64StdEnc(text string) (string, error) {
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
+// Sha256Base64URLEnc returns the SHA-256 checksum of a text in
+// an alternate base64 encoding defined in RFC 4648.
 func Sha256Base64URLEnc(text string) (string, error) {
 	hash, err := Sha256(text)
 	return base64.URLEncoding.EncodeToString(hash), err
