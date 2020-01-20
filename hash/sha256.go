@@ -101,6 +101,8 @@ func Sha256DirHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Sha256DirBase64StdEnc returns the SHA-256 checksum of a directory in
+// standard base64 encoding, as defined in RFC 4648.
 func Sha256DirBase64StdEnc(path string) (string, error) {
 	hash, err := Sha256Dir(path)
 	return base64.StdEncoding.EncodeToString(hash), err
