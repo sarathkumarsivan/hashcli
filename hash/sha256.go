@@ -94,6 +94,8 @@ func Sha256Dir(path string) ([]byte, error) {
 	return hashDir(hash, path)
 }
 
+// Sha256DirHex returns the SHA-256 checksum of a directory in
+// hexadecimal encoding format.
 func Sha256DirHex(path string) (string, error) {
 	hash, err := Sha256Dir(path)
 	return hex.EncodeToString(hash), err
