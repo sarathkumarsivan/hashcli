@@ -135,6 +135,8 @@ func Sha256Path(path string) ([]byte, error) {
 	return hashPath(hash, path)
 }
 
+// Sha256PathHex returns the SHA-256 checksum of a path in
+// hexadecimal encoding format.
 func Sha256PathHex(path string) (string, error) {
 	hash, err := Sha256Path(path)
 	return hex.EncodeToString(hash), err
