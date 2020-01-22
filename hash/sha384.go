@@ -19,6 +19,8 @@ func Sha384Hex(text string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Sha384Base64StdEnc returns the SHA-384 checksum of a text in
+// standard base64 encoding, as defined in RFC 4648.
 func Sha384Base64StdEnc(text string) (string, error) {
 	hash, err := Sha384(text)
 	return base64.StdEncoding.EncodeToString(hash), err
