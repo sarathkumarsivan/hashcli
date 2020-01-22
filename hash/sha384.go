@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 )
 
+// Sha384 returns SHA-384 checksum of a text as bytes.
 func Sha384(text string) ([]byte, error) {
 	hash := sha512.New384()
 	return hashText(hash, text)
