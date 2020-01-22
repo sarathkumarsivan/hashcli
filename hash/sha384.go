@@ -12,6 +12,8 @@ func Sha384(text string) ([]byte, error) {
 	return hashText(hash, text)
 }
 
+// Sha384Hex returns the SHA-384 checksum of a text in
+// hexadecimal encoding format.
 func Sha384Hex(text string) (string, error) {
 	hash, err := Sha384(text)
 	return hex.EncodeToString(hash), err
