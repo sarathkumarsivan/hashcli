@@ -47,6 +47,7 @@ func Sha384Base64RawStdEnc(text string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Sha384File returns SHA-384 checksum of a file as bytes.
 func Sha384File(path string) ([]byte, error) {
 	hash := sha512.New384()
 	return hashFile(hash, path)
