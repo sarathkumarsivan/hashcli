@@ -53,6 +53,8 @@ func Sha384File(path string) ([]byte, error) {
 	return hashFile(hash, path)
 }
 
+// Sha384FileHex returns the SHA-384 checksum of a file in
+// hexadecimal encoding format.
 func Sha384FileHex(path string) (string, error) {
 	hash, err := Sha384File(path)
 	return hex.EncodeToString(hash), err
