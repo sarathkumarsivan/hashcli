@@ -129,6 +129,7 @@ func SHA384DirBase64RawStdEnc(path string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Sha384Path returns SHA-384 checksum of a path as bytes.
 func Sha384Path(path string) ([]byte, error) {
 	hash := sha512.New384()
 	return hashPath(hash, path)
