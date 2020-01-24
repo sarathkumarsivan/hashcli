@@ -149,6 +149,8 @@ func Sha384PathBase64StdEnc(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Sha384PathBase64URLEnc returns the SHA-384 checksum of a path in
+// an alternate base64 encoding defined in RFC 4648.
 func Sha384PathBase64URLEnc(path string) (string, error) {
 	hash, err := Sha384Path(path)
 	return base64.URLEncoding.EncodeToString(hash), err
