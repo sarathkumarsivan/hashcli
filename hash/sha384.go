@@ -122,6 +122,8 @@ func Sha384DirBase64RawURLEnc(path string) (string, error) {
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
+// SHA384DirBase64RawStdEnc returns the SHA-384 checksum of a directory in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func SHA384DirBase64RawStdEnc(path string) (string, error) {
 	hash, err := Sha384Dir(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
