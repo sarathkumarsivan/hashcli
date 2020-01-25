@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 )
 
+// Sha512 returns SHA-512 checksum of a text as bytes.
 func Sha512(text string) ([]byte, error) {
 	hash := sha512.New()
 	return hashText(hash, text)
