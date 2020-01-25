@@ -33,6 +33,8 @@ func Sha512Base64URLEnc(text string) (string, error) {
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
+// SHA512Base64RawURLEnc returns the SHA-512 checksum of a text in
+// a padded alternate base64 encoding defined in RFC 4648.
 func SHA512Base64RawURLEnc(text string) (string, error) {
 	hash, err := Sha512(text)
 	return base64.RawURLEncoding.EncodeToString(hash), err
