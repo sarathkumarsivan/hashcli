@@ -12,6 +12,8 @@ func Sha512(text string) ([]byte, error) {
 	return hashText(hash, text)
 }
 
+// Sha512Hex returns the SHA-512 checksum of a text in
+// hexadecimal encoding format.
 func Sha512Hex(text string) (string, error) {
 	hash, err := Sha512(text)
 	return hex.EncodeToString(hash), err
