@@ -19,6 +19,8 @@ func Sha512Hex(text string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Sha512Base64StdEnc returns the SHA-512 checksum of a text in
+// standard base64 encoding, as defined in RFC 4648.
 func Sha512Base64StdEnc(text string) (string, error) {
 	hash, err := Sha512(text)
 	return base64.StdEncoding.EncodeToString(hash), err
