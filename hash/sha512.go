@@ -81,6 +81,8 @@ func Sha512FileBase64RawURLEnc(path string) (string, error) {
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
+// Sha512FileBase64RawStdEnc returns the SHA-512 checksum of a file in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func Sha512FileBase64RawStdEnc(path string) (string, error) {
 	hash, err := Sha512File(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
