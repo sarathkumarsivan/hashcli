@@ -60,6 +60,8 @@ func Sha512FileHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Sha512FileBase64StdEnc returns the SHA-512 checksum of a file in
+// standard base64 encoding, as defined in RFC 4648.
 func Sha512FileBase64StdEnc(path string) (string, error) {
 	hash, err := Sha512File(path)
 	return base64.StdEncoding.EncodeToString(hash), err
