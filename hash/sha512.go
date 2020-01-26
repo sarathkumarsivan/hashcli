@@ -53,6 +53,8 @@ func Sha512File(path string) ([]byte, error) {
 	return hashFile(hash, path)
 }
 
+// Sha512FileHex returns the SHA-512 checksum of a file in
+// hexadecimal encoding format.
 func Sha512FileHex(path string) (string, error) {
 	hash, err := Sha512File(path)
 	return hex.EncodeToString(hash), err
