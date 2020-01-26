@@ -47,6 +47,7 @@ func Sha512Base64RawStdEnc(text string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Sha512File returns SHA-512 checksum of a file as bytes.
 func Sha512File(path string) ([]byte, error) {
 	hash := sha512.New()
 	return hashFile(hash, path)
