@@ -142,6 +142,8 @@ func Sha512PathHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
+// Sha512PathBase64StdEnc returns the SHA-512 checksum of a path in
+// standard base64 encoding, as defined in RFC 4648.
 func Sha512PathBase64StdEnc(path string) (string, error) {
 	hash, err := Sha512Path(path)
 	return hex.EncodeToString(hash), err
