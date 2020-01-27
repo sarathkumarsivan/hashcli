@@ -129,6 +129,7 @@ func Sha512DirBase64RawStdEnc(path string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
+// Sha512Path returns SHA-512 checksum of a path as bytes.
 func Sha512Path(path string) ([]byte, error) {
 	hash := sha512.New()
 	return hashPath(hash, path)
