@@ -122,6 +122,8 @@ func Sha512DirBase64RawURLEnc(path string) (string, error) {
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
+// Sha512DirBase64RawStdEnc returns the SHA-512 checksum of a directory in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func Sha512DirBase64RawStdEnc(path string) (string, error) {
 	hash, err := Sha512Dir(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
