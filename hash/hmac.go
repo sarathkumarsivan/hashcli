@@ -62,7 +62,7 @@ func HmacSha1Hex(message string, secret string) string {
 	return hex.EncodeToString(bytes)
 }
 
-func Hmac1Base64StdEnc(message string, secret string) string {
+func HmacSha1Base64StdEnc(message string, secret string) string {
 	bytes := HmacSha1(message, secret)
 	return base64.StdEncoding.EncodeToString(bytes)
 }
