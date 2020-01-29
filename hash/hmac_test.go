@@ -13,7 +13,7 @@ func TestHMAC(t *testing.T) {
 	assert.Equal(t, "Mbbbnl60rdtC8abKBzZ63A==", HmacMd5Base64URLEnc("foo", "bar"))
 	assert.Equal(t, "Mbbbnl60rdtC8abKBzZ63A", HmacMd5Base64RawURLEnc("foo", "bar"))
 
-	assert.Equal(t, "85d155c55ed286a300bd1cf124de08d87e914f3a", Hmac1Hex("foo", "bar"))
+	assert.Equal(t, "85d155c55ed286a300bd1cf124de08d87e914f3a", HmacSha1Hex("foo", "bar"))
 	assert.Equal(t, "hdFVxV7ShqMAvRzxJN4I2H6RTzo=", Hmac1Base64StdEnc("foo", "bar"))
 	assert.Equal(t, "hdFVxV7ShqMAvRzxJN4I2H6RTzo", Hmac1Base64RawStdEnc("foo", "bar"))
 	assert.Equal(t, "hdFVxV7ShqMAvRzxJN4I2H6RTzo=", Hmac1Base64URLEnc("foo", "bar"))
