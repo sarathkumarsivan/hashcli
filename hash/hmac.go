@@ -141,7 +141,7 @@ func HmacSha224Base64URLEnc(message string, secret string) string {
 	return base64.URLEncoding.EncodeToString(bytes)
 }
 
-func Hmac224Base64RawURLEnc(message string, secret string) string {
+func HmacSha224Base64RawURLEnc(message string, secret string) string {
 	bytes := HmacSha224(message, secret)
 	return base64.RawURLEncoding.EncodeToString(bytes)
 }
