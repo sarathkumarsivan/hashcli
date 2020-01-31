@@ -158,7 +158,7 @@ func HmacSha512Hex(message string, secret string) string {
 	return hex.EncodeToString(bytes)
 }
 
-func Hmac512Base64StdEnc(message string, secret string) string {
+func HmacSha512Base64StdEnc(message string, secret string) string {
 	bytes := HmacSha512(message, secret)
 	return base64.StdEncoding.EncodeToString(bytes)
 }
