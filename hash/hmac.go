@@ -146,7 +146,7 @@ func HmacSha224Base64RawURLEnc(message string, secret string) string {
 	return base64.RawURLEncoding.EncodeToString(bytes)
 }
 
-func Hmac512(message string, secret string) []byte {
+func HmacSha512(message string, secret string) []byte {
 	key := []byte(secret)
 	hash := hmac.New(sha512.New, key)
 	hash.Write([]byte(message))
@@ -154,27 +154,27 @@ func Hmac512(message string, secret string) []byte {
 }
 
 func Hmac512Hex(message string, secret string) string {
-	bytes := Hmac512(message, secret)
+	bytes := HmacSha512(message, secret)
 	return hex.EncodeToString(bytes)
 }
 
 func Hmac512Base64StdEnc(message string, secret string) string {
-	bytes := Hmac512(message, secret)
+	bytes := HmacSha512(message, secret)
 	return base64.StdEncoding.EncodeToString(bytes)
 }
 
 func Hmac512Base64RawStdEnc(message string, secret string) string {
-	bytes := Hmac512(message, secret)
+	bytes := HmacSha512(message, secret)
 	return base64.RawStdEncoding.EncodeToString(bytes)
 }
 
 func Hmac512Base64URLEnc(message string, secret string) string {
-	bytes := Hmac512(message, secret)
+	bytes := HmacSha512(message, secret)
 	return base64.URLEncoding.EncodeToString(bytes)
 }
 
 func Hmac512Base64RawURLEnc(message string, secret string) string {
-	bytes := Hmac512(message, secret)
+	bytes := HmacSha512(message, secret)
 	return base64.RawURLEncoding.EncodeToString(bytes)
 }
 
