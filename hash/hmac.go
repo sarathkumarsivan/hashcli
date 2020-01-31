@@ -131,7 +131,7 @@ func HmacSha224Base64StdEnc(message string, secret string) string {
 	return base64.StdEncoding.EncodeToString(bytes)
 }
 
-func Hmac224Base64RawStdEnc(message string, secret string) string {
+func HmacSha224Base64RawStdEnc(message string, secret string) string {
 	bytes := HmacSha224(message, secret)
 	return base64.RawStdEncoding.EncodeToString(bytes)
 }
