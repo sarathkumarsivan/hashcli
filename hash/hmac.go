@@ -190,7 +190,7 @@ func HmacSha384Hex(message string, secret string) string {
 	return hex.EncodeToString(bytes)
 }
 
-func Hmac384Base64StdEnc(message string, secret string) string {
+func HmacSha384Base64StdEnc(message string, secret string) string {
 	bytes := HmacSha384(message, secret)
 	return base64.StdEncoding.EncodeToString(bytes)
 }
