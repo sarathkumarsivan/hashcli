@@ -185,7 +185,7 @@ func HmacSha384(message string, secret string) []byte {
 	return hash.Sum(nil)
 }
 
-func Hmac384Hex(message string, secret string) string {
+func HmacSha384Hex(message string, secret string) string {
 	bytes := HmacSha384(message, secret)
 	return hex.EncodeToString(bytes)
 }
