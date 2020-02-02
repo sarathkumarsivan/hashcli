@@ -41,5 +41,5 @@ func TestHMAC(t *testing.T) {
 	assert.Equal(t, "HZBw0Hy3dG4GZMzMbOwfqZbcf0Y2iYKs+iCV7o1z/iW1tuMieZAM2w/TcqNlTkHF", HmacSha384Base64StdEnc("foo", "bar"))
 	assert.Equal(t, "HZBw0Hy3dG4GZMzMbOwfqZbcf0Y2iYKs+iCV7o1z/iW1tuMieZAM2w/TcqNlTkHF", HmacSha384Base64RawStdEnc("foo", "bar"))
 	assert.Equal(t, "HZBw0Hy3dG4GZMzMbOwfqZbcf0Y2iYKs-iCV7o1z_iW1tuMieZAM2w_TcqNlTkHF", HmacSha384Base64URLEnc("foo", "bar"))
-	assert.Equal(t, "HZBw0Hy3dG4GZMzMbOwfqZbcf0Y2iYKs-iCV7o1z_iW1tuMieZAM2w_TcqNlTkHF", Hmac384Base64RawURLEnc("foo", "bar"))
+	assert.Equal(t, "HZBw0Hy3dG4GZMzMbOwfqZbcf0Y2iYKs-iCV7o1z_iW1tuMieZAM2w_TcqNlTkHF", HmacSha384Base64RawURLEnc("foo", "bar"))
 }
