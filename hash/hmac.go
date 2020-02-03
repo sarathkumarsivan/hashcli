@@ -154,6 +154,10 @@ func HmacSha224Base64RawURLEnc(message string, secret string) string {
 	return base64.RawURLEncoding.EncodeToString(bytes)
 }
 
+// HmacSha512 computes a Hash-based Message Authentication Code (HMAC) by using
+// the SHA-512 hash function. The HMAC process mixes a secret key with the message
+// data, hashes the result with the hash function, mixes that hash value with
+// the secret key again, and then applies the hash function a second time.
 func HmacSha512(message string, secret string) []byte {
 	key := []byte(secret)
 	hash := hmac.New(sha512.New, key)
