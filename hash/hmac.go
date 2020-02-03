@@ -21,14 +21,17 @@ func HmacMd5(message string, secret string) []byte {
 	return hash.Sum(nil)
 }
 
-// HmacMd5Hex mixes a secret key with the message data, hashes the result with
-// the MD5 hash function, mixes that hash value with the secret key again, then
-// applies the hash function a second time, and encodes the result in hexadecimal.
+// HmacMd5Hex mixes a secret key with the message data, hashes the result with the
+// MD5 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using hexadecimal encoding.
 func HmacMd5Hex(message string, secret string) string {
 	bytes := HmacMd5(message, secret)
 	return hex.EncodeToString(bytes)
 }
 
+// HmacMd5Base64StdEnc mixes a secret key with the message data, hashes the result with
+// the MD5 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using standard base64 encoding.
 func HmacMd5Base64StdEnc(message string, secret string) string {
 	bytes := HmacMd5(message, secret)
 	return base64.StdEncoding.EncodeToString(bytes)
