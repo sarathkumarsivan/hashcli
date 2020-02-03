@@ -82,6 +82,10 @@ func HmacSha1Base64RawURLEnc(message string, secret string) string {
 	return base64.RawURLEncoding.EncodeToString(bytes)
 }
 
+// HmacSha256 computes a Hash-based Message Authentication Code (HMAC) by using
+// the SHA-256 hash function. The HMAC process mixes a secret key with the message
+// data, hashes the result with the hash function, mixes that hash value with
+// the secret key again, and then applies the hash function a second time.
 func HmacSha256(message string, secret string) []byte {
 	key := []byte(secret)
 	hash := hmac.New(sha256.New, key)
