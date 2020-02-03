@@ -31,7 +31,7 @@ func HmacMd5Hex(message string, secret string) string {
 
 // HmacMd5Base64StdEnc mixes a secret key with the message data, hashes the result with
 // the MD5 hash function, mixes that hash value with the secret key again, then applies
-// the hash function a second time, and encodes the result using standard base64 encoding.
+// the hash function a second time, and encodes the result using base64 standard encoding.
 func HmacMd5Base64StdEnc(message string, secret string) string {
 	bytes := HmacMd5(message, secret)
 	return base64.StdEncoding.EncodeToString(bytes)
@@ -45,6 +45,9 @@ func HmacMd5Base64RawStdEnc(message string, secret string) string {
 	return base64.RawStdEncoding.EncodeToString(bytes)
 }
 
+// HmacMd5Base64URLEnc mixes a secret key with the message data, hashes the result with
+// the MD5 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using base64 URL encoding.
 func HmacMd5Base64URLEnc(message string, secret string) string {
 	bytes := HmacMd5(message, secret)
 	return base64.URLEncoding.EncodeToString(bytes)
