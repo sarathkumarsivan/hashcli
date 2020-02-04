@@ -72,6 +72,9 @@ func HmacSha1(message string, secret string) []byte {
 	return hash.Sum(nil)
 }
 
+// HmacSha1Hex mixes a secret key with the message data, hashes the result with the
+// SHA1 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using hexadecimal encoding.
 func HmacSha1Hex(message string, secret string) string {
 	bytes := HmacSha1(message, secret)
 	return hex.EncodeToString(bytes)
