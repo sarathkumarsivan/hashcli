@@ -123,6 +123,9 @@ func HmacSha256(message string, secret string) []byte {
 	return hash.Sum(nil)
 }
 
+// HmacSha256Hex mixes a secret key with the message data, hashes the result with the
+// SHA-256 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using hexadecimal encoding.
 func HmacSha256Hex(message string, secret string) string {
 	bytes := HmacSha256(message, secret)
 	return hex.EncodeToString(bytes)
