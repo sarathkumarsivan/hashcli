@@ -174,6 +174,9 @@ func HmacSha224(message string, secret string) []byte {
 	return hash.Sum(nil)
 }
 
+// HmacSha224Hex mixes a secret key with the message data, hashes the result with the
+// SHA-224 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using hexadecimal encoding.
 func HmacSha224Hex(message string, secret string) string {
 	bytes := HmacSha224(message, secret)
 	return hex.EncodeToString(bytes)
