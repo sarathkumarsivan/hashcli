@@ -206,6 +206,9 @@ func HmacSha224Base64URLEnc(message string, secret string) string {
 	return base64.URLEncoding.EncodeToString(bytes)
 }
 
+// HmacSha224Base64RawURLEnc mixes a secret key with the message data, hashes the result with
+// the SHA-224 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using base64 raw URL encoding.
 func HmacSha224Base64RawURLEnc(message string, secret string) string {
 	bytes := HmacSha224(message, secret)
 	return base64.RawURLEncoding.EncodeToString(bytes)
