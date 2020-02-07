@@ -249,11 +249,17 @@ func HmacSha512Base64RawStdEnc(message string, secret string) string {
 	return base64.RawStdEncoding.EncodeToString(bytes)
 }
 
+// HmacSha512Base64URLEnc mixes a secret key with the message data, hashes the result with
+// the SHA-512 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using base64 standard encoding.
 func HmacSha512Base64URLEnc(message string, secret string) string {
 	bytes := HmacSha512(message, secret)
 	return base64.URLEncoding.EncodeToString(bytes)
 }
 
+// HmacSha512Base64RawURLEnc mixes a secret key with the message data, hashes the result with
+// the SHA-512 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using base64 raw URL encoding.
 func HmacSha512Base64RawURLEnc(message string, secret string) string {
 	bytes := HmacSha512(message, secret)
 	return base64.RawURLEncoding.EncodeToString(bytes)
