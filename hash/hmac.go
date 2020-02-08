@@ -300,6 +300,9 @@ func HmacSha384Base64RawStdEnc(message string, secret string) string {
 	return base64.RawStdEncoding.EncodeToString(bytes)
 }
 
+// HmacSha384Base64URLEnc mixes a secret key with the message data, hashes the result with
+// the SHA-384 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using base64 standard encoding.
 func HmacSha384Base64URLEnc(message string, secret string) string {
 	bytes := HmacSha384(message, secret)
 	return base64.URLEncoding.EncodeToString(bytes)
