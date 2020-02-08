@@ -284,6 +284,9 @@ func HmacSha384Hex(message string, secret string) string {
 	return hex.EncodeToString(bytes)
 }
 
+// HmacSha384Base64StdEnc mixes a secret key with the message data, hashes the result with
+// the SHA-384 hash function, mixes that hash value with the secret key again, then applies
+// the hash function a second time, and encodes the result using base64 standard encoding.
 func HmacSha384Base64StdEnc(message string, secret string) string {
 	bytes := HmacSha384(message, secret)
 	return base64.StdEncoding.EncodeToString(bytes)
