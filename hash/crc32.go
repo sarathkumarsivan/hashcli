@@ -31,3 +31,15 @@ func Crc32Base64StdEnc(text string) string {
 func Crc32Base64URLEnc(text string) string {
 	return base64.URLEncoding.EncodeToString(Crc32(text))
 }
+
+// Crc32Base64RawURLEnc returns the CRC32 checksum of a text in
+// a padded alternate base64 encoding defined in RFC 4648.
+func Crc32Base64RawURLEnc(text string) string {
+	return base64.RawURLEncoding.EncodeToString(Crc32(text))
+}
+
+// Crc32Base64RawStdEnc returns the CRC32 checksum of a text in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
+func Crc32Base64RawStdEnc(text string) string {
+	return base64.RawStdEncoding.EncodeToString(Crc32(text))
+}
