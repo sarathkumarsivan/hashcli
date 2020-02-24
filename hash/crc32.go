@@ -43,3 +43,10 @@ func Crc32Base64RawURLEnc(text string) string {
 func Crc32Base64RawStdEnc(text string) string {
 	return base64.RawStdEncoding.EncodeToString(Crc32(text))
 }
+
+// Crc32File returns CRC32 checksum of a file as bytes.
+func Crc32File(path string) ([]byte, error) {
+	table := crc32.MakeTable(crc32.Castagnoli)
+	hash := crc32.New(table)
+	return hashFile(hash, path)
+}
