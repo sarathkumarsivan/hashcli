@@ -6,6 +6,7 @@ import (
 	"hash/crc32"
 )
 
+// Crc32 returns CRC32 checksum of a text as bytes.
 func Crc32(text string) []byte {
 	table := crc32.MakeTable(crc32.Castagnoli)
 	hash := crc32.New(table)
