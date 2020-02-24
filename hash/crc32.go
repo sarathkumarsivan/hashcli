@@ -50,3 +50,10 @@ func Crc32File(path string) ([]byte, error) {
 	hash := crc32.New(table)
 	return hashFile(hash, path)
 }
+
+// Crc32FileHex returns the CRC32 checksum of a file in
+// hexadecimal encoding format.
+func Crc32FileHex(path string) (string, error) {
+	hash, err := Crc32File(path)
+	return hex.EncodeToString(hash), err
+}
