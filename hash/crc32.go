@@ -85,3 +85,10 @@ func Crc32FileBase64RawStdEnc(path string) (string, error) {
 	hash, err := Crc32File(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
+
+// Crc32Dir returns CRC32 checksum of a directory as bytes.
+func Crc32Dir(path string) ([]byte, error) {
+	table := crc32.MakeTable(crc32.Castagnoli)
+	hash := crc32.New(table)
+	return hashDir(hash, path)
+}
