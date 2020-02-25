@@ -92,3 +92,10 @@ func Crc32Dir(path string) ([]byte, error) {
 	hash := crc32.New(table)
 	return hashDir(hash, path)
 }
+
+// Crc32DirHex returns the CRC32 checksum of a directory in
+// hexadecimal encoding format.
+func Crc32DirHex(path string) (string, error) {
+	hash, err := Crc32Dir(path)
+	return hex.EncodeToString(hash), err
+}
