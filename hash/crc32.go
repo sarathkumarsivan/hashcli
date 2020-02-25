@@ -64,3 +64,10 @@ func Crc32FileBase64StdEnc(path string) (string, error) {
 	hash, err := Crc32File(path)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
+
+// Crc32FileBase64URLEnc returns the CRC32 checksum of a file in
+// an alternate base64 encoding defined in RFC 4648.
+func Crc32FileBase64URLEnc(path string) (string, error) {
+	hash, err := Crc32File(path)
+	return base64.URLEncoding.EncodeToString(hash), err
+}
