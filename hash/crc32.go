@@ -99,3 +99,10 @@ func Crc32DirHex(path string) (string, error) {
 	hash, err := Crc32Dir(path)
 	return hex.EncodeToString(hash), err
 }
+
+// Crc32DirBase64StdEnc returns the CRC32 checksum of a directory in
+// standard base64 encoding, as defined in RFC 4648.
+func Crc32DirBase64StdEnc(path string) (string, error) {
+	hash, err := Crc32Dir(path)
+	return base64.StdEncoding.EncodeToString(hash), err
+}
