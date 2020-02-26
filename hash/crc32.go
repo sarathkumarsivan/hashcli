@@ -62,13 +62,19 @@ func Crc32FileHex(path string) (string, error) {
 // standard base64 encoding, as defined in RFC 4648.
 func Crc32FileBase64StdEnc(path string) (string, error) {
 	hash, err := Crc32File(path)
-	return base64.StdEncoding.EncodeToString(hash), err
+	if err != nil {
+		return "", err
+	}
+	return base64.StdEncoding.EncodeToString(hash), nil
 }
 
 // Crc32FileBase64URLEnc returns the CRC32 checksum of a file in
 // an alternate base64 encoding defined in RFC 4648.
 func Crc32FileBase64URLEnc(path string) (string, error) {
 	hash, err := Crc32File(path)
+	if err != nil {
+		return "", err
+	}
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
@@ -76,6 +82,9 @@ func Crc32FileBase64URLEnc(path string) (string, error) {
 // a padded alternate base64 encoding defined in RFC 4648.
 func Crc32FileBase64RawURLEnc(path string) (string, error) {
 	hash, err := Crc32File(path)
+	if err != nil {
+		return "", err
+	}
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
@@ -83,6 +92,9 @@ func Crc32FileBase64RawURLEnc(path string) (string, error) {
 // a standard raw, un-padded base64 encoding, as defined in RFC 4648.
 func Crc32FileBase64RawStdEnc(path string) (string, error) {
 	hash, err := Crc32File(path)
+	if err != nil {
+		return "", err
+	}
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
@@ -97,6 +109,9 @@ func Crc32Dir(path string) ([]byte, error) {
 // hexadecimal encoding format.
 func Crc32DirHex(path string) (string, error) {
 	hash, err := Crc32Dir(path)
+	if err != nil {
+		return "", err
+	}
 	return hex.EncodeToString(hash), err
 }
 
@@ -104,6 +119,9 @@ func Crc32DirHex(path string) (string, error) {
 // standard base64 encoding, as defined in RFC 4648.
 func Crc32DirBase64StdEnc(path string) (string, error) {
 	hash, err := Crc32Dir(path)
+	if err != nil {
+		return "", err
+	}
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
@@ -111,6 +129,9 @@ func Crc32DirBase64StdEnc(path string) (string, error) {
 // an alternate base64 encoding defined in RFC 4648.
 func Crc32DirBase64URLEnc(path string) (string, error) {
 	hash, err := Crc32Dir(path)
+	if err != nil {
+		return "", err
+	}
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
@@ -118,5 +139,18 @@ func Crc32DirBase64URLEnc(path string) (string, error) {
 // a padded alternate base64 encoding defined in RFC 4648.
 func Crc32DirBase64RawURLEnc(path string) (string, error) {
 	hash, err := Crc32Dir(path)
+	if err != nil {
+		return "", err
+	}
 	return base64.RawURLEncoding.EncodeToString(hash), err
+}
+
+// Crc32DirBase64RawStdEnc returns the CRC32 checksum of a directory in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
+func Crc32DirBase64RawStdEnc(path string) (string, error) {
+	hash, err := Crc32Dir(path)
+	if err != nil {
+		return "", err
+	}
+	return base64.RawStdEncoding.EncodeToString(hash), err
 }
