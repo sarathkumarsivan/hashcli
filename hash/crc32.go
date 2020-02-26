@@ -171,3 +171,10 @@ func Crc32PathHex(path string) (string, error) {
 	}
 	return hex.EncodeToString(hash), err
 }
+
+// Crc32PathBase64StdEnc returns the CRC32 checksum of a path in
+// standard base64 encoding, as defined in RFC 4648.
+func Crc32PathBase64StdEnc(path string) (string, error) {
+	hash, err := Crc32Path(path)
+	return hex.EncodeToString(hash), err
+}
