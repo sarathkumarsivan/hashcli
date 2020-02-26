@@ -161,3 +161,10 @@ func Crc32Path(path string) ([]byte, error) {
 	hash := crc32.New(table)
 	return hashPath(hash, path)
 }
+
+// Crc32PathHex returns the CRC32 checksum of a path in
+// hexadecimal encoding format.
+func Crc32PathHex(path string) (string, error) {
+	hash, err := Crc32Path(path)
+	return hex.EncodeToString(hash), err
+}
