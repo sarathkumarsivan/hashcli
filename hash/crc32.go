@@ -154,3 +154,10 @@ func Crc32DirBase64RawStdEnc(path string) (string, error) {
 	}
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
+
+// Crc32Path returns CRC32 checksum of a path as bytes.
+func Crc32Path(path string) ([]byte, error) {
+	table := crc32.MakeTable(crc32.Castagnoli)
+	hash := crc32.New(table)
+	return hashPath(hash, path)
+}
