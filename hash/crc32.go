@@ -178,3 +178,10 @@ func Crc32PathBase64StdEnc(path string) (string, error) {
 	hash, err := Crc32Path(path)
 	return hex.EncodeToString(hash), err
 }
+
+// Crc32PathBase64URLEnc returns the CRC32 checksum of a path in
+// an alternate base64 encoding defined in RFC 4648.
+func Crc32PathBase64URLEnc(path string) (string, error) {
+	hash, err := Crc32Path(path)
+	return base64.URLEncoding.EncodeToString(hash), err
+}
