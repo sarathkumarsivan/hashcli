@@ -196,5 +196,8 @@ func Crc32PathBase64URLEnc(path string) (string, error) {
 // a padded alternate base64 encoding defined in RFC 4648.
 func Crc32PathBase64RawURLEnc(path string) (string, error) {
 	hash, err := Crc32Path(path)
+	if err != nil {
+		return "", err
+	}
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
