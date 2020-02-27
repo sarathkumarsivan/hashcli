@@ -201,3 +201,10 @@ func Crc32PathBase64RawURLEnc(path string) (string, error) {
 	}
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
+
+// Crc32PathBase64RawStdEnc returns the CRC32 checksum of a path in
+// a standard raw, un-padded base64 encoding, as defined in RFC 4648.
+func Crc32PathBase64RawStdEnc(path string) (string, error) {
+	hash, err := Md5Path(path)
+	return base64.RawStdEncoding.EncodeToString(hash), err
+}
