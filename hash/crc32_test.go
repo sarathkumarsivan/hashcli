@@ -11,4 +11,5 @@ func TestCrc32cHashHex(t *testing.T) {
 	assert.Equal(t, "z8SuHQ==", Crc32Base64StdEnc("foo"))
 	assert.Equal(t, "z8SuHQ==", Crc32Base64URLEnc("foo"))
 	assert.Equal(t, "z8SuHQ", Crc32Base64RawURLEnc("foo"))
+	assert.Equal(t, "z8SuHQ", Crc32Base64RawStdEnc("foo"))
 }
