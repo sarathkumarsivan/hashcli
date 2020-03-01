@@ -29,4 +29,8 @@ func TestCrc32HashFile(t *testing.T) {
 	hash, err = Crc32FileBase64StdEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", Crc32Hash)
 	assert.Equal(t, "AAAAAA==", hash)
+
+	hash, err = Crc32FileBase64URLEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", Crc32Hash)
+	assert.Equal(t, "AAAAAA==", hash)
 }
