@@ -114,11 +114,11 @@ func TestSHA256HashPath(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = SHA256PathBase64StdEnc(dir)
+	hash, err = Sha256PathBase64StdEnc(dir)
 	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = SHA256PathBase64StdEnc(foo.Name())
+	hash, err = Sha256PathBase64StdEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
 	assert.NotEmpty(t, hash)
 
