@@ -82,7 +82,7 @@ func TestSHA256HashDir(t *testing.T) {
 	require.NoError(t, err, "Error hashing dir to using %s", SHA256Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = SHA256DirBase64URLEnc(dir)
+	hash, err = Sha256DirBase64URLEnc(dir)
 	require.NoError(t, err, "Error hashing dir to using %s", SHA256Hash)
 	assert.NotEmpty(t, hash)
 

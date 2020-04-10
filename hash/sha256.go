@@ -81,7 +81,7 @@ func Sha256DirBase64StdEnc(path string) (string, error) {
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
-func SHA256DirBase64URLEnc(path string) (string, error) {
+func Sha256DirBase64URLEnc(path string) (string, error) {
 	hash, err := Sha256Dir(path)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
