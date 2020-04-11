@@ -40,7 +40,7 @@ func TestSHA256HashFile(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
 	assert.Equal(t, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", hash)
 
-	hash, err = SHA256FileBase64StdEnc(foo.Name())
+	hash, err = Sha256FileBase64StdEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
 	assert.Equal(t, "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=", hash)
 
