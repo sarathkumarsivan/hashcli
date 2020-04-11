@@ -36,7 +36,7 @@ func TestSHA256HashFile(t *testing.T) {
 	require.NoError(t, err, "Error creating temporary file")
 	defer func() { _ = os.Remove(foo.Name()) }()
 
-	hash, err := SHA256FileHex(foo.Name())
+	hash, err := Sha256FileHex(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
 	assert.Equal(t, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", hash)
 
