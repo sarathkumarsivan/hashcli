@@ -107,7 +107,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 		return Sha224Base64StdEnc(text)
 	}
 	if m.algorithm == SHA256Hash && m.encoding == Base64 {
-		return SHA256Base64StdEnc(text)
+		return Sha256Base64StdEnc(text)
 	}
 	if m.algorithm == SHA384Hash && m.encoding == Base64 {
 		return SHA384Base64StdEnc(text)
