@@ -106,11 +106,11 @@ func TestSHA22HashPath(t *testing.T) {
 	require.NoError(t, err, "Error writing to temporary file")
 	defer os.Remove(foo.Name())
 
-	hash, err := SHA224PathHex(dir)
+	hash, err := Sha224PathHex(dir)
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = SHA224PathHex(foo.Name())
+	hash, err = Sha224PathHex(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.NotEmpty(t, hash)
 
