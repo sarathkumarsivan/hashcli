@@ -106,7 +106,7 @@ func Sha224PathHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
-func SHA224PathBase64StdEnc(path string) (string, error) {
+func Sha224PathBase64StdEnc(path string) (string, error) {
 	hash, err := Sha224Path(path)
 	return hex.EncodeToString(hash), err
 }
