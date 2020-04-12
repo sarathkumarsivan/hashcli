@@ -11,7 +11,7 @@ func Sha256(text string) ([]byte, error) {
 	return hashText(hash, text)
 }
 
-func SHA256Hex(text string) (string, error) {
+func Sha256Hex(text string) (string, error) {
 	hash, err := Sha256(text)
 	return hex.EncodeToString(hash), err
 }
