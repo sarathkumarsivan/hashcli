@@ -74,7 +74,7 @@ func TestSHA224HashDir(t *testing.T) {
 	require.NoError(t, err, "Error writing to temporary file")
 	defer os.Remove(bar.Name())
 
-	hash, err := SHA224DirHex(dir)
+	hash, err := Sha224DirHex(dir)
 	require.NoError(t, err, "Error hashing dir to using %s", SHA224Hash)
 	assert.NotEmpty(t, hash)
 

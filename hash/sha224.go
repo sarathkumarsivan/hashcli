@@ -71,7 +71,7 @@ func Sha224Dir(path string) ([]byte, error) {
 	return hashDir(hash, path)
 }
 
-func SHA224DirHex(path string) (string, error) {
+func Sha224DirHex(path string) (string, error) {
 	hash, err := Sha224Dir(path)
 	return hex.EncodeToString(hash), err
 }
