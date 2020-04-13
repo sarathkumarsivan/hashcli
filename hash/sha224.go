@@ -66,33 +66,33 @@ func Sha224FileBase64RawStdEnc(path string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
-func SHA224Dir(path string) ([]byte, error) {
+func Sha224Dir(path string) ([]byte, error) {
 	hash := sha256.New224()
 	return hashDir(hash, path)
 }
 
 func SHA224DirHex(path string) (string, error) {
-	hash, err := SHA224Dir(path)
+	hash, err := Sha224Dir(path)
 	return hex.EncodeToString(hash), err
 }
 
 func SHA224DirBase64StdEnc(path string) (string, error) {
-	hash, err := SHA224Dir(path)
+	hash, err := Sha224Dir(path)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
 func SHA224DirBase64URLEnc(path string) (string, error) {
-	hash, err := SHA224Dir(path)
+	hash, err := Sha224Dir(path)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
 func SHA224DirBase64RawURLEnc(path string) (string, error) {
-	hash, err := SHA224Dir(path)
+	hash, err := Sha224Dir(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
 func SHA224DirBase64RawStdEnc(path string) (string, error) {
-	hash, err := SHA224Dir(path)
+	hash, err := Sha224Dir(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
