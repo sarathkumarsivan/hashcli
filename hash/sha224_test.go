@@ -44,7 +44,7 @@ func TestSHA224HashFile(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.Equal(t, "0UoCjCo6K8lHYQK7KII0xBWisB+CjqYqxbPkLw==", hash)
 
-	hash, err = SHA224FileBase64URLEnc(foo.Name())
+	hash, err = Sha224FileBase64URLEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.Equal(t, "0UoCjCo6K8lHYQK7KII0xBWisB-CjqYqxbPkLw==", hash)
 
