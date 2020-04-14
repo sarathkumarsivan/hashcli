@@ -22,7 +22,7 @@ func TestSHA224Hash(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.Equal(t, "CAj2TmDViXn8tnbJbsk4Jw3qQkRa7vzTpOb42w", hash)
 
-	hash, err = SHA224Base64RawURLEnc("foo")
+	hash, err = Sha224Base64RawURLEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.Equal(t, "CAj2TmDViXn8tnbJbsk4Jw3qQkRa7vzTpOb42w", hash)
 
