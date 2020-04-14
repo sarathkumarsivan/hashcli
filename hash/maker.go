@@ -127,7 +127,7 @@ func (m *hashMaker) HashFile(path string) (string, error) {
 		return Sha1FileHex(path)
 	}
 	if m.algorithm == SHA224Hash && m.encoding == Hex {
-		return SHA224FileHex(path)
+		return Sha224FileHex(path)
 	}
 	if m.algorithm == SHA256Hash && m.encoding == Hex {
 		return SHA256FileHex(path)
@@ -179,7 +179,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			pathHashes[path] = hash
 		}
 		if m.algorithm == SHA224Hash && m.encoding == Hex {
-			hash, err := SHA224FileHex(path)
+			hash, err := Sha224FileHex(path)
 			if err != nil {
 				return pathHashes, err
 			}
