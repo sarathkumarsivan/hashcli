@@ -85,7 +85,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 		return Sha1Hex(text)
 	}
 	if m.algorithm == SHA224Hash && m.encoding == Hex {
-		return SHA224Hex(text)
+		return Sha224Hex(text)
 	}
 	if m.algorithm == SHA256Hash && m.encoding == Hex {
 		return SHA256Hex(text)

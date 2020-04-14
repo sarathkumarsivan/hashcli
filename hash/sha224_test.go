@@ -10,7 +10,7 @@ import (
 )
 
 func TestSHA224Hash(t *testing.T) {
-	hash, err := SHA224Hex("foo")
+	hash, err := Sha224Hex("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.Equal(t, "0808f64e60d58979fcb676c96ec938270dea42445aeefcd3a4e6f8db", hash)
 
