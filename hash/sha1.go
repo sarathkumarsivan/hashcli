@@ -46,7 +46,7 @@ func Sha1FileHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
-func SHA1FileBase64StdEnc(path string) (string, error) {
+func Sha1FileBase64StdEnc(path string) (string, error) {
 	hash, err := Sha1File(path)
 	return base64.StdEncoding.EncodeToString(hash), err
 }

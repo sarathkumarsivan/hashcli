@@ -143,7 +143,7 @@ func (m *hashMaker) HashFile(path string) (string, error) {
 		return Md5FileBase64StdEnc(path)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Base64 {
-		return SHA1FileBase64StdEnc(path)
+		return Sha1FileBase64StdEnc(path)
 	}
 	if m.algorithm == SHA224Hash && m.encoding == Base64 {
 		return SHA224FileBase64StdEnc(path)
@@ -215,7 +215,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			pathHashes[path] = hash
 		}
 		if m.algorithm == SHA1Hash && m.encoding == Base64 {
-			hash, err := SHA1FileBase64StdEnc(path)
+			hash, err := Sha1FileBase64StdEnc(path)
 			if err != nil {
 				return pathHashes, err
 			}
