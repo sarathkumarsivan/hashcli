@@ -61,7 +61,7 @@ func Sha1FileBase64RawURLEnc(path string) (string, error) {
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
-func SHA1FileBase64RawStdEnc(path string) (string, error) {
+func Sha1FileBase64RawStdEnc(path string) (string, error) {
 	hash, err := Sha1File(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
