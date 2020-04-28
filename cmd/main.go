@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/sarathkumarsivan/hash"
+	"github.com/sarathkumarsivan/hashcli"
 )
 
 func parseCommandLine() map[string]string {
@@ -39,10 +39,10 @@ func parseCommandLine() map[string]string {
 }
 
 func main() {
-	var hasher Hasher
+	var hasher hashcli.Hasher
 	options := parseCommandLine()
 	if options["algorithm"] == "sha1" {
-		hasher = SHA1Hash{text: options["text"]}
+		hasher = hashcli.SHA1Hash{text: options["text"]}
 		fmt.Printf("%v", hasher.Hash())
 	}
 }
