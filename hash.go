@@ -1,4 +1,4 @@
-package main
+package hashcli
 
 import (
 	"crypto/sha1"
