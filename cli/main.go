@@ -37,3 +37,12 @@ func parseCommandLine() map[string]string {
 
 	return options
 }
+
+func main() {
+
+	options := parseCommandLine()
+	if options["algorithm"] == "sha1" {
+		hasher := hash.SHA1Hash{}
+		fmt.Printf("%v", hasher.Hash())
+	}
+}
