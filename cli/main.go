@@ -42,6 +42,6 @@ func main() {
 	options := parseCommandLine()
 	if options["algorithm"] == "sha1" {
 		hash := hashcli.GetSHA1Hash(options["text"])
-		fmt.Printf("sha-1 (%s): %s\n", options["text"], hash)
+		fmt.Printf("sha-1 (%s): %x\n", options["text"], hash)
 	}
 }
