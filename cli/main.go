@@ -4,8 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-
-	"github.com/sarathkumarsivan/hashcli"
 )
 
 func parseCommandLine() map[string]string {
@@ -42,7 +40,6 @@ func main() {
 
 	options := parseCommandLine()
 	if options["algorithm"] == "sha1" {
-		hasher := hash.SHA1Hash{}
-		fmt.Printf("%v", hasher.Hash())
+		// TODO
 	}
 }
