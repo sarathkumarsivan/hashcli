@@ -5,16 +5,8 @@ import (
 	"io"
 )
 
-type Hasher interface {
-	Hash() string
-}
-
-type SHA1Hash struct {
-	text string
-}
-
-func (s SHA1Hash) Hash() string {
+func GetSHA1Hash(text string) string {
 	h := sha1.New()
-	io.WriteString(h, s.text)
+	io.WriteString(h, text)
 	return string(h.Sum(nil))
 }

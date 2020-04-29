@@ -37,7 +37,6 @@ func parseCommandLine() map[string]string {
 }
 
 func main() {
-
 	options := parseCommandLine()
 	if options["algorithm"] == "sha1" {
 		// TODO
