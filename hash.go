@@ -5,8 +5,8 @@ import (
 	"io"
 )
 
-func GetSHA1Hash(text string) string {
+func GetSHA1Hash(txt string) string {
 	h := sha1.New()
-	io.WriteString(h, text)
+	io.WriteString(h, txt)
 	return string(h.Sum(nil))
 }
