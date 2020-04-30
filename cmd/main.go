@@ -43,5 +43,11 @@ func main() {
 	if options["algorithm"] == "sha1" {
 		hash := hashcli.GetSHA1Hash(options["text"])
 		fmt.Printf("sha-1 (%s): %x\n", options["text"], hash)
+		return
+	}
+	if options["algorithm"] == "md5" {
+		hash := hashcli.GetMD5Hash(options["text"])
+		fmt.Printf("md5 (%s): %x\n", options["text"], hash)
+		return
 	}
 }
