@@ -11,6 +11,7 @@ import (
 const (
 	HashingAlgorithm = "algorithm"
 	AlgorithmSHA1    = "sha1"
+	AlgorithmSHA256  = "sha256"
 	AlgorithmMD5     = "md5"
 	FlagText         = "text"
 )
@@ -54,7 +55,12 @@ func main() {
 		fmt.Printf("sha-1 (%s): %x\n", options[FlagText], hash)
 		return
 	}
-	if options[HashingAlgorithm] == AlgorithmSHA1 {
+	if options[HashingAlgorithm] == AlgorithmSHA256 {
+		hash := hashcli.GetSHA256Hash(options[FlagText])
+		fmt.Printf("sha-256 (%s): %x\n", options[FlagText], hash)
+		return
+	}
+	if options[HashingAlgorithm] == AlgorithmMD5 {
 		hash := hashcli.GetMD5Hash(options[FlagText])
 		fmt.Printf("md5 (%s): %x\n", options[FlagText], hash)
 		return
