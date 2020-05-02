@@ -9,6 +9,7 @@ import (
 	"hash"
 	"io"
 	"os"
+	"path/filepath"
 )
 
 const (
@@ -42,29 +43,58 @@ func getHash(h hash.Hash, text string) (string, error) {
 	return hex.EncodeToString(h.Sum(nil)), nil
 }
 
-func GetFileHash(filename, algorithm string) (string, error) {
+func GetFileHash(path, algorithm string) (string, error) {
 	switch algorithm {
 	case AlgorithmMD5:
-		return getFileHash(md5.New(), filename)
+		return makeHash(md5.New(), path)
 	case AlgorithmSHA1:
-		return getFileHash(sha1.New(), filename)
+		return makeHash(sha1.New(), path)
 	case AlgorithmSHA256:
-		return getFileHash(sha256.New(), filename)
+		return makeHash(sha256.New(), path)
 	case AlgorithmSHA512:
-		return getFileHash(sha512.New(), filename)
+		return makeHash(sha512.New(), path)
 	default:
 		return "", nil
 	}
 }
 
-func getFileHash(h hash.Hash, filename string) (string, error) {
-	f, err := os.Open(filename)
+func makeHash(hash hash.Hash, path string) (string, error) {
+	info, err := os.Stat(path)
 	if err != nil {
 		return "", err
 	}
-	defer f.Close()
-	if _, err := io.Copy(h, f); err != nil {
+	switch mode := info.Mode(); {
+	case mode.IsDir():
+		return makeDirHash(hash, path)
+	case mode.IsRegular():
+		return makeFileHash(hash, path)
+	}
+	return "", nil
+}
+
+func makeFileHash(hash hash.Hash, path string) (string, error) {
+	file, err := os.Open(path)
+	if err != nil {
 		return "", err
+	}
+	defer file.Close()
+	if _, err := io.Copy(hash, file); err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(hash.Sum(nil)), nil
+}
+
+func makeDirHash(h hash.Hash, path string) (string, error) {
+	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return nil
+		}
+		io.WriteString(h, path)
+		return nil
+	})
+
+	if err != nil {
+		return "", nil
 	}
 	return hex.EncodeToString(h.Sum(nil)), nil
 }
