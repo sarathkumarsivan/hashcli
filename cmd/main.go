@@ -53,7 +53,7 @@ func parseCommandLine() map[string]string {
 			options[flagText] = *md5HashText
 		} else if *md5HashFile != flagEmpty {
 			options[hashcli.Algorithm] = hashcli.AlgorithmMD5
-			options[flagFile] = *md5HashText
+			options[flagFile] = *md5HashFile
 		} else {
 			md5Hash.PrintDefaults()
 			os.Exit(1)
