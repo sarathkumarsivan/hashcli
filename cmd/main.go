@@ -17,12 +17,15 @@ const (
 
 func parseCommandLine() map[string]string {
 	options := make(map[string]string)
+
 	md5Hash := flag.NewFlagSet(hashcli.AlgorithmMD5, flag.ExitOnError)
 	md5HashText := md5Hash.String(flagText, flagEmpty, "--text <your text here>")
 	md5HashFile := md5Hash.String(flagFile, flagEmpty, "--file <your file here>")
 
 	sha1Hash := flag.NewFlagSet(hashcli.AlgorithmSHA1, flag.ExitOnError)
-	sha1HashText := sha1Hash.String(flagText, flagEmpty, flagTextDesc)
+	sha1HashText := sha1Hash.String(flagText, flagEmpty, "--text <your text here>")
+	sha1HashFile := sha1Hash.String(flagFile, flagEmpty, "--file <your file here>")
+
 	sha256Hash := flag.NewFlagSet(hashcli.AlgorithmSHA256, flag.ExitOnError)
 	sha256HashText := sha256Hash.String(flagText, flagEmpty, flagTextDesc)
 	sha512Hash := flag.NewFlagSet(hashcli.AlgorithmSHA512, flag.ExitOnError)
@@ -61,12 +64,16 @@ func parseCommandLine() map[string]string {
 	}
 
 	if sha1Hash.Parsed() {
-		if *sha1HashText == flagEmpty {
+		if *sha1HashText != flagEmpty {
+			options[hashcli.Algorithm] = hashcli.AlgorithmSHA1
+			options[flagText] = *sha1HashText
+		} else if *sha1HashFile != flagEmpty {
+			options[hashcli.Algorithm] = hashcli.AlgorithmSHA1
+			options[flagFile] = *sha1HashFile
+		} else {
 			sha1Hash.PrintDefaults()
 			os.Exit(1)
 		}
-		options[hashcli.Algorithm] = hashcli.AlgorithmSHA1
-		options[flagText] = *sha1HashText
 	}
 
 	if sha256Hash.Parsed() {
