@@ -9,21 +9,24 @@ import (
 )
 
 const (
-	flagText      = "text"
-	flagTextEmpty = ""
-	flagTextDesc  = "Text or string to Hash"
+	flagText     = "text"
+	flagFile     = "file"
+	flagEmpty    = ""
+	flagTextDesc = "Text or string to Hash"
 )
 
 func parseCommandLine() map[string]string {
 	options := make(map[string]string)
 	md5Hash := flag.NewFlagSet(hashcli.AlgorithmMD5, flag.ExitOnError)
-	md5HashText := md5Hash.String(flagText, flagTextEmpty, flagTextEmpty)
+	md5HashText := md5Hash.String(flagText, flagEmpty, "--text <your text here>")
+	md5HashFile := md5Hash.String(flagFile, flagEmpty, "--file <your file here>")
+
 	sha1Hash := flag.NewFlagSet(hashcli.AlgorithmSHA1, flag.ExitOnError)
-	sha1HashText := sha1Hash.String(flagText, flagTextEmpty, flagTextDesc)
+	sha1HashText := sha1Hash.String(flagText, flagEmpty, flagTextDesc)
 	sha256Hash := flag.NewFlagSet(hashcli.AlgorithmSHA256, flag.ExitOnError)
-	sha256HashText := sha256Hash.String(flagText, flagTextEmpty, flagTextDesc)
+	sha256HashText := sha256Hash.String(flagText, flagEmpty, flagTextDesc)
 	sha512Hash := flag.NewFlagSet(hashcli.AlgorithmSHA512, flag.ExitOnError)
-	sha512HashText := sha512Hash.String(flagText, flagTextEmpty, flagTextDesc)
+	sha512HashText := sha512Hash.String(flagText, flagEmpty, flagTextDesc)
 
 	if len(os.Args) < 2 {
 		fmt.Println("unknown command")
@@ -45,16 +48,20 @@ func parseCommandLine() map[string]string {
 	}
 
 	if md5Hash.Parsed() {
-		if *md5HashText == flagTextEmpty {
+		if *md5HashText != flagEmpty {
+			options[hashcli.Algorithm] = hashcli.AlgorithmMD5
+			options[flagText] = *md5HashText
+		} else if *md5HashFile != flagEmpty {
+			options[hashcli.Algorithm] = hashcli.AlgorithmMD5
+			options[flagFile] = *md5HashText
+		} else {
 			md5Hash.PrintDefaults()
 			os.Exit(1)
 		}
-		options[hashcli.Algorithm] = hashcli.AlgorithmMD5
-		options[flagText] = *md5HashText
 	}
 
 	if sha1Hash.Parsed() {
-		if *sha1HashText == flagTextEmpty {
+		if *sha1HashText == flagEmpty {
 			sha1Hash.PrintDefaults()
 			os.Exit(1)
 		}
@@ -63,7 +70,7 @@ func parseCommandLine() map[string]string {
 	}
 
 	if sha256Hash.Parsed() {
-		if *sha256HashText == flagTextEmpty {
+		if *sha256HashText == flagEmpty {
 			sha256Hash.PrintDefaults()
 			os.Exit(1)
 		}
@@ -72,7 +79,7 @@ func parseCommandLine() map[string]string {
 	}
 
 	if sha512Hash.Parsed() {
-		if *sha512HashText == flagTextEmpty {
+		if *sha512HashText == flagEmpty {
 			sha512Hash.PrintDefaults()
 			os.Exit(1)
 		}
@@ -85,13 +92,25 @@ func parseCommandLine() map[string]string {
 
 func run() {
 	options := parseCommandLine()
-	hash, err := hashcli.GetHash(options[flagText], options[hashcli.Algorithm])
-	if err != nil {
-		fmt.Errorf("error hasing text: %s using algorithm %s, error: %s",
-			options[hashcli.Algorithm], options[flagText], err)
-		os.Exit(1)
+	if options[flagText] != flagEmpty {
+		hash, err := hashcli.GetHash(options[flagText], options[hashcli.Algorithm])
+		if err != nil {
+			fmt.Errorf("error hasing text: %s using algorithm %s, error: %s",
+				options[hashcli.Algorithm], options[flagText], err)
+			os.Exit(1)
+		}
+		fmt.Printf("%s (%s): %s\n", options[hashcli.Algorithm], options[flagText], hash)
 	}
-	fmt.Printf("%s (%s): %s\n", options[hashcli.Algorithm], options[flagText], hash)
+	if options[flagFile] != flagEmpty {
+		hash, err := hashcli.GetFileHash(options[flagFile], options[hashcli.Algorithm])
+		if err != nil {
+			fmt.Errorf("error hasing file: %s using algorithm %s, error: %s",
+				options[hashcli.Algorithm], options[flagFile], err)
+			os.Exit(1)
+		}
+		fmt.Printf("%s (%s): %s\n", options[hashcli.Algorithm], options[flagFile], hash)
+	}
+
 	return
 }
 
