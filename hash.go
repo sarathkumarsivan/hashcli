@@ -42,7 +42,22 @@ func getHash(h hash.Hash, text string) (string, error) {
 	return hex.EncodeToString(h.Sum(nil)), nil
 }
 
-func GetFileHash(h hash.Hash, filename string) (string, error) {
+func GetFileHash(filename, algorithm string) (string, error) {
+	switch algorithm {
+	case AlgorithmMD5:
+		return getFileHash(md5.New(), filename)
+	case AlgorithmSHA1:
+		return getFileHash(sha1.New(), filename)
+	case AlgorithmSHA256:
+		return getFileHash(sha256.New(), filename)
+	case AlgorithmSHA512:
+		return getFileHash(sha512.New(), filename)
+	default:
+		return "", nil
+	}
+}
+
+func getFileHash(h hash.Hash, filename string) (string, error) {
 	f, err := os.Open(filename)
 	if err != nil {
 		return "", err
