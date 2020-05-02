@@ -9,10 +9,9 @@ import (
 )
 
 const (
-	flagText     = "text"
-	flagFile     = "file"
-	flagEmpty    = ""
-	flagTextDesc = "Text or string to Hash"
+	flagText  = "text"
+	flagFile  = "file"
+	flagEmpty = ""
 )
 
 func parseCommandLine() map[string]string {
@@ -27,9 +26,12 @@ func parseCommandLine() map[string]string {
 	sha1HashFile := sha1Hash.String(flagFile, flagEmpty, "--file <your file here>")
 
 	sha256Hash := flag.NewFlagSet(hashcli.AlgorithmSHA256, flag.ExitOnError)
-	sha256HashText := sha256Hash.String(flagText, flagEmpty, flagTextDesc)
+	sha256HashText := sha256Hash.String(flagText, flagEmpty, "--text <your text here>")
+	sha256HashFile := sha256Hash.String(flagFile, flagEmpty, "--file <your file here>")
+
 	sha512Hash := flag.NewFlagSet(hashcli.AlgorithmSHA512, flag.ExitOnError)
-	sha512HashText := sha512Hash.String(flagText, flagEmpty, flagTextDesc)
+	sha512HashText := sha512Hash.String(flagText, flagEmpty, "--text <your text here>")
+	sha512HashFile := sha512Hash.String(flagFile, flagEmpty, "--file <your file here>")
 
 	if len(os.Args) < 2 {
 		fmt.Println("unknown command")
@@ -77,21 +79,29 @@ func parseCommandLine() map[string]string {
 	}
 
 	if sha256Hash.Parsed() {
-		if *sha256HashText == flagEmpty {
+		if *sha256HashText != flagEmpty {
+			options[hashcli.Algorithm] = hashcli.AlgorithmSHA256
+			options[flagText] = *sha256HashText
+		} else if *sha256HashFile != flagEmpty {
+			options[hashcli.Algorithm] = hashcli.AlgorithmSHA256
+			options[flagFile] = *sha256HashFile
+		} else {
 			sha256Hash.PrintDefaults()
 			os.Exit(1)
 		}
-		options[hashcli.Algorithm] = hashcli.AlgorithmSHA256
-		options[flagText] = *sha256HashText
 	}
 
 	if sha512Hash.Parsed() {
-		if *sha512HashText == flagEmpty {
+		if *sha512HashText != flagEmpty {
+			options[hashcli.Algorithm] = hashcli.AlgorithmSHA512
+			options[flagText] = *sha512HashText
+		} else if *sha512HashFile != flagEmpty {
+			options[hashcli.Algorithm] = hashcli.AlgorithmSHA512
+			options[flagFile] = *sha512HashFile
+		} else {
 			sha512Hash.PrintDefaults()
 			os.Exit(1)
 		}
-		options[hashcli.Algorithm] = hashcli.AlgorithmSHA512
-		options[flagText] = *sha512HashText
 	}
 
 	return options
