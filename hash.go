@@ -6,6 +6,7 @@ import (
 	"crypto/sha256"
 	"crypto/sha512"
 	"encoding/hex"
+	"errors"
 	"hash"
 	"io"
 	"os"
@@ -20,6 +21,10 @@ const (
 	SHA512Hash = "sha512"
 )
 
+var (
+	ErrUnsupportedHash = errors.New("unsupported hashing algorithm")
+)
+
 func GetHash(text, hash string) (string, error) {
 	switch hash {
 	case MD5Hash:
@@ -31,7 +36,7 @@ func GetHash(text, hash string) (string, error) {
 	case SHA512Hash:
 		return MakeHash(sha512.New(), text)
 	default:
-		return "", nil
+		return "", ErrUnsupportedHash
 	}
 }
 
