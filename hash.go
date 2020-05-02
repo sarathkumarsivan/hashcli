@@ -13,29 +13,29 @@ import (
 )
 
 const (
-	Algorithm       = "algorithm"
-	AlgorithmMD5    = "md5"
-	AlgorithmSHA1   = "sha1"
-	AlgorithmSHA256 = "sha256"
-	AlgorithmSHA512 = "sha512"
+	Algorithm  = "algorithm"
+	MD5Hash    = "md5"
+	SHA1Hash   = "sha1"
+	SHA256Hash = "sha256"
+	SHA512Hash = "sha512"
 )
 
-func GetHash(text, algorithm string) (string, error) {
+func MakeHash(text, algorithm string) (string, error) {
 	switch algorithm {
-	case AlgorithmMD5:
-		return getHash(md5.New(), text)
-	case AlgorithmSHA1:
-		return getHash(sha1.New(), text)
-	case AlgorithmSHA256:
-		return getHash(sha256.New(), text)
-	case AlgorithmSHA512:
-		return getHash(sha512.New(), text)
+	case MD5Hash:
+		return makeTextHash(md5.New(), text)
+	case SHA1Hash:
+		return makeTextHash(sha1.New(), text)
+	case SHA256Hash:
+		return makeTextHash(sha256.New(), text)
+	case SHA512Hash:
+		return makeTextHash(sha512.New(), text)
 	default:
 		return "", nil
 	}
 }
 
-func getHash(h hash.Hash, text string) (string, error) {
+func makeTextHash(h hash.Hash, text string) (string, error) {
 	_, err := h.Write([]byte(text))
 	if err != nil {
 		return "", err
@@ -43,15 +43,15 @@ func getHash(h hash.Hash, text string) (string, error) {
 	return hex.EncodeToString(h.Sum(nil)), nil
 }
 
-func GetFileHash(path, algorithm string) (string, error) {
+func MakeFileHash(path, algorithm string) (string, error) {
 	switch algorithm {
-	case AlgorithmMD5:
+	case MD5Hash:
 		return makeHash(md5.New(), path)
-	case AlgorithmSHA1:
+	case SHA1Hash:
 		return makeHash(sha1.New(), path)
-	case AlgorithmSHA256:
+	case SHA256Hash:
 		return makeHash(sha256.New(), path)
-	case AlgorithmSHA512:
+	case SHA512Hash:
 		return makeHash(sha512.New(), path)
 	default:
 		return "", nil
