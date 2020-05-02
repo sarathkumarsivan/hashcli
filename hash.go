@@ -20,45 +20,45 @@ const (
 	SHA512Hash = "sha512"
 )
 
-func MakeHash(text, algorithm string) (string, error) {
-	switch algorithm {
+func GetHash(text, hash string) (string, error) {
+	switch hash {
 	case MD5Hash:
-		return makeTextHash(md5.New(), text)
+		return MakeHash(md5.New(), text)
 	case SHA1Hash:
-		return makeTextHash(sha1.New(), text)
+		return MakeHash(sha1.New(), text)
 	case SHA256Hash:
-		return makeTextHash(sha256.New(), text)
+		return MakeHash(sha256.New(), text)
 	case SHA512Hash:
-		return makeTextHash(sha512.New(), text)
+		return MakeHash(sha512.New(), text)
 	default:
 		return "", nil
 	}
 }
 
-func makeTextHash(h hash.Hash, text string) (string, error) {
-	_, err := h.Write([]byte(text))
+func MakeHash(hash hash.Hash, text string) (string, error) {
+	_, err := hash.Write([]byte(text))
 	if err != nil {
 		return "", err
 	}
-	return hex.EncodeToString(h.Sum(nil)), nil
+	return hex.EncodeToString(hash.Sum(nil)), nil
 }
 
-func MakeFileHash(path, algorithm string) (string, error) {
-	switch algorithm {
+func GetFileHash(path, hash string) (string, error) {
+	switch hash {
 	case MD5Hash:
-		return makeHash(md5.New(), path)
+		return MakeFileHash(md5.New(), path)
 	case SHA1Hash:
-		return makeHash(sha1.New(), path)
+		return MakeFileHash(sha1.New(), path)
 	case SHA256Hash:
-		return makeHash(sha256.New(), path)
+		return MakeFileHash(sha256.New(), path)
 	case SHA512Hash:
-		return makeHash(sha512.New(), path)
+		return MakeFileHash(sha512.New(), path)
 	default:
 		return "", nil
 	}
 }
 
-func makeHash(hash hash.Hash, path string) (string, error) {
+func MakeFileHash(hash hash.Hash, path string) (string, error) {
 	info, err := os.Stat(path)
 	if err != nil {
 		return "", err

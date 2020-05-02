@@ -110,7 +110,7 @@ func parseCommandLine() map[string]string {
 func run() {
 	options := parseCommandLine()
 	if options[flagText] != flagEmpty {
-		hash, err := hashcli.MakeHash(options[flagText], options[hashcli.Algorithm])
+		hash, err := hashcli.GetHash(options[flagText], options[hashcli.Algorithm])
 		if err != nil {
 			fmt.Errorf("error hasing text: %s using algorithm %s, error: %s",
 				options[hashcli.Algorithm], options[flagText], err)
@@ -119,7 +119,7 @@ func run() {
 		fmt.Printf("%s (%s): %s\n", options[hashcli.Algorithm], options[flagText], hash)
 	}
 	if options[flagFile] != flagEmpty {
-		hash, err := hashcli.MakeFileHash(options[flagFile], options[hashcli.Algorithm])
+		hash, err := hashcli.GetFileHash(options[flagFile], options[hashcli.Algorithm])
 		if err != nil {
 			fmt.Errorf("error hasing file: %s using algorithm %s, error: %s",
 				options[hashcli.Algorithm], options[flagFile], err)
