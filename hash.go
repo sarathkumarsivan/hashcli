@@ -84,17 +84,17 @@ func makeFileHash(hash hash.Hash, path string) (string, error) {
 	return hex.EncodeToString(hash.Sum(nil)), nil
 }
 
-func makeDirHash(h hash.Hash, path string) (string, error) {
+func makeDirHash(hash hash.Hash, path string) (string, error) {
 	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return nil
 		}
-		io.WriteString(h, path)
+		io.WriteString(hash, path)
 		return nil
 	})
 
 	if err != nil {
 		return "", nil
 	}
-	return hex.EncodeToString(h.Sum(nil)), nil
+	return hex.EncodeToString(hash.Sum(nil)), nil
 }
