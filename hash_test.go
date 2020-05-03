@@ -1,6 +1,8 @@
 package hashcli
 
 import (
+	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -39,4 +41,30 @@ func TestHashText(t *testing.T) {
 	hash, err = hashMaker.HashText("bar")
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
 	assert.Equal(t, "d82c4eb5261cb9c8aa9855edd67d1bd10482f41529858d925094d173fa662aa91ff39bc5b188615273484021dfb16fd8284cf684ccf0fc795be3aa2fc1e6c181", hash)
+}
+
+func TestHashFile(t *testing.T) {
+	foo, err := ioutil.TempFile("", "foo.*")
+	require.NoError(t, err, "Error creating temporary file")
+	defer os.Remove(foo.Name())
+
+	hashMaker := New().Algorithm(MD5Hash).Encoding(Hex).Build()
+	hash, err := hashMaker.HashFile(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
+	assert.Equal(t, "d41d8cd98f00b204e9800998ecf8427e", hash)
+
+	hashMaker = New().Algorithm(SHA1Hash).Encoding(Hex).Build()
+	hash, err = hashMaker.HashFile(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	assert.Equal(t, "da39a3ee5e6b4b0d3255bfef95601890afd80709", hash)
+
+	hashMaker = New().Algorithm(SHA256Hash).Encoding(Hex).Build()
+	hash, err = hashMaker.HashFile(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
+	assert.Equal(t, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", hash)
+
+	hashMaker = New().Algorithm(SHA512Hash).Encoding(Hex).Build()
+	hash, err = hashMaker.HashFile(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
+	assert.Equal(t, "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e", hash)
 }
