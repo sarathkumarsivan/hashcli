@@ -36,7 +36,7 @@ const (
 type HashMaker interface {
 	HashText(text string) (string, error)
 	HashFile(path string) (string, error)
-	HashFiles(path ...string) (string, error)
+	HashFiles(paths ...string) (map[string]string, error)
 	HashDir(path string) (string, error)
 }
 
@@ -109,8 +109,39 @@ func (maker *hashMaker) HashFile(path string) (string, error) {
 	return "", ErrUnsupportedHash
 }
 
-func (maker *hashMaker) HashFiles(path ...string) (string, error) {
-	return "TODO:implement", nil
+func (maker *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
+	pathHashes := make(map[string]string, len(paths))
+	for _, path := range paths {
+		if maker.algorithm == MD5Hash && maker.encoding == Hex {
+			hex, err := hashFileHex(md5.New(), path)
+			if err != nil {
+				return pathHashes, err
+			}
+			pathHashes[path] = hex
+		}
+		if maker.algorithm == SHA1Hash && maker.encoding == Hex {
+			hex, err := hashFileHex(sha1.New(), path)
+			if err != nil {
+				return pathHashes, err
+			}
+			pathHashes[path] = hex
+		}
+		if maker.algorithm == SHA256Hash && maker.encoding == Hex {
+			hex, err := hashFileHex(sha256.New(), path)
+			if err != nil {
+				return pathHashes, err
+			}
+			pathHashes[path] = hex
+		}
+		if maker.algorithm == SHA512Hash && maker.encoding == Hex {
+			hex, err := hashFileHex(sha512.New(), path)
+			if err != nil {
+				return pathHashes, err
+			}
+			pathHashes[path] = hex
+		}
+	}
+	return pathHashes, nil
 }
 
 func (maker *hashMaker) HashDir(path string) (string, error) {
