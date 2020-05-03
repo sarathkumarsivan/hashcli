@@ -7,7 +7,6 @@ import (
 	"crypto/sha512"
 	"encoding/hex"
 	"errors"
-	"fmt"
 	"hash"
 	"io"
 	"os"
@@ -200,10 +199,4 @@ func hashDir(hash hash.Hash, path string) ([]byte, error) {
 		return nil, nil
 	}
 	return hash.Sum(nil), nil
-}
-
-func main() {
-	hashcli := New().Algorithm(MD5Hash).Encoding(Hex).Build()
-	fmt.Println(hashcli.HashText(""))
-	fmt.Println(hashcli.HashFile(""))
 }
