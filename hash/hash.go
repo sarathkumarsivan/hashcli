@@ -1,4 +1,4 @@
-package hashcli
+package hash
 
 import (
 	"crypto/md5"
@@ -33,17 +33,17 @@ const (
 	Binary          = "binary"
 )
 
-type HashMaker interface {
+type ExtHash interface {
 	HashText(text string) (string, error)
 	HashFile(path string) (string, error)
 	HashFiles(paths ...string) (map[string]string, error)
 	HashDir(path string) (string, error)
 }
 
-type HashBuilder interface {
-	Algorithm(Algorithm) HashBuilder
-	Encoding(Encoding) HashBuilder
-	Build() HashMaker
+type ExtHashBuilder interface {
+	Algorithm(Algorithm) ExtHashBuilder
+	Encoding(Encoding) ExtHashBuilder
+	Build() ExtHash
 }
 
 type hashBuilder struct {
@@ -51,24 +51,24 @@ type hashBuilder struct {
 	encoding  Encoding
 }
 
-func (builder *hashBuilder) Algorithm(algorithm Algorithm) HashBuilder {
+func (builder *hashBuilder) Algorithm(algorithm Algorithm) ExtHashBuilder {
 	builder.algorithm = algorithm
 	return builder
 }
 
-func (builder *hashBuilder) Encoding(encoding Encoding) HashBuilder {
+func (builder *hashBuilder) Encoding(encoding Encoding) ExtHashBuilder {
 	builder.encoding = encoding
 	return builder
 }
 
-func (builder *hashBuilder) Build() HashMaker {
+func (builder *hashBuilder) Build() ExtHash {
 	return &hashMaker{
 		algorithm: builder.algorithm,
 		encoding:  builder.encoding,
 	}
 }
 
-func New() HashBuilder {
+func New() ExtHashBuilder {
 	return &hashBuilder{}
 }
 

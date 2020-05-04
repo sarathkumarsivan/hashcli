@@ -1,4 +1,4 @@
-package hashcli
+package hash
 
 import (
 	"io/ioutil"
