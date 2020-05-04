@@ -1,1 +1,1 @@
-# hashcli
+# hashutils
