@@ -5,6 +5,7 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
+	"encoding/base64"
 	"encoding/hex"
 	"errors"
 	"hash"
@@ -90,6 +91,19 @@ func (maker *hashMaker) HashText(text string) (string, error) {
 	if maker.algorithm == SHA512Hash && maker.encoding == Hex {
 		return hashTextHex(sha512.New(), text)
 	}
+	if maker.algorithm == MD5Hash && maker.encoding == Base64 {
+		return hashTextBase64(md5.New(), text)
+	}
+	if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
+		return hashTextHex(sha1.New(), text)
+	}
+	if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
+		return hashTextHex(sha256.New(), text)
+	}
+	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
+		return hashTextHex(sha512.New(), text)
+	}
+
 	return "", ErrUnsupportedAlgorithm
 }
 
@@ -166,6 +180,14 @@ func hashTextHex(hash hash.Hash, text string) (string, error) {
 		return "", err
 	}
 	return hex.EncodeToString(bytes), nil
+}
+
+func hashTextBase64(hash hash.Hash, text string) (string, error) {
+	bytes, err := hashText(hash, text)
+	if err != nil {
+		return "", err
+	}
+	return base64.StdEncoding.EncodeToString(bytes), nil
 }
 
 func hashText(hash hash.Hash, text string) ([]byte, error) {
