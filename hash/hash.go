@@ -103,7 +103,6 @@ func (maker *hashMaker) HashText(text string) (string, error) {
 	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
 		return hashTextHex(sha512.New(), text)
 	}
-
 	return "", ErrUnsupportedAlgorithm
 }
 
@@ -118,6 +117,18 @@ func (maker *hashMaker) HashFile(path string) (string, error) {
 		return hashFileHex(sha256.New(), path)
 	}
 	if maker.algorithm == SHA512Hash && maker.encoding == Hex {
+		return hashFileHex(sha512.New(), path)
+	}
+	if maker.algorithm == MD5Hash && maker.encoding == Base64 {
+		return hashFileHex(md5.New(), path)
+	}
+	if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
+		return hashFileHex(sha1.New(), path)
+	}
+	if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
+		return hashFileHex(sha256.New(), path)
+	}
+	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
 		return hashFileHex(sha512.New(), path)
 	}
 	return "", ErrUnsupportedAlgorithm
