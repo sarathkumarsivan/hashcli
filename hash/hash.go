@@ -182,6 +182,18 @@ func (maker *hashMaker) HashDir(path string) (string, error) {
 	if maker.algorithm == SHA512Hash && maker.encoding == Hex {
 		return hashDirHex(sha512.New(), path)
 	}
+	if maker.algorithm == MD5Hash && maker.encoding == Base64 {
+		return hashDirHex(md5.New(), path)
+	}
+	if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
+		return hashDirHex(sha1.New(), path)
+	}
+	if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
+		return hashDirHex(sha256.New(), path)
+	}
+	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
+		return hashDirHex(sha512.New(), path)
+	}
 	return "", ErrUnsupportedAlgorithm
 }
 
