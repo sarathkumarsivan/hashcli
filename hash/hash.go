@@ -165,6 +165,34 @@ func (maker *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			}
 			pathHashes[path] = hex
 		}
+		if maker.algorithm == MD5Hash && maker.encoding == Base64 {
+			hex, err := hashFileHex(md5.New(), path)
+			if err != nil {
+				return pathHashes, err
+			}
+			pathHashes[path] = hex
+		}
+		if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
+			hex, err := hashFileHex(sha1.New(), path)
+			if err != nil {
+				return pathHashes, err
+			}
+			pathHashes[path] = hex
+		}
+		if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
+			hex, err := hashFileHex(sha256.New(), path)
+			if err != nil {
+				return pathHashes, err
+			}
+			pathHashes[path] = hex
+		}
+		if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
+			hex, err := hashFileHex(sha512.New(), path)
+			if err != nil {
+				return pathHashes, err
+			}
+			pathHashes[path] = hex
+		}
 	}
 	return pathHashes, nil
 }
