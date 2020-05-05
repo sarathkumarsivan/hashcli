@@ -15,6 +15,7 @@ func parseCommandLine() Options {
 	file := flags.String("file", "", "--file <your text here>")
 	var options = Options{}
 	flags.Parse(os.Args[1:])
+
 	if flags.Parsed() {
 		options.algorithm = hash.Algorithm(*algorithm)
 		options.encoding = hash.Encoding(*encoding)

@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 )
 
-var ErrUnsupportedHash = errors.New("unsupported hashing algorithm")
+var ErrUnsupportedAlgorithm = errors.New("unsupported hashing algorithm")
 
 type Algorithm string
 
@@ -90,7 +90,7 @@ func (maker *hashMaker) HashText(text string) (string, error) {
 	if maker.algorithm == SHA512Hash && maker.encoding == Hex {
 		return hashTextHex(sha512.New(), text)
 	}
-	return "", ErrUnsupportedHash
+	return "", ErrUnsupportedAlgorithm
 }
 
 func (maker *hashMaker) HashFile(path string) (string, error) {
@@ -106,7 +106,7 @@ func (maker *hashMaker) HashFile(path string) (string, error) {
 	if maker.algorithm == SHA512Hash && maker.encoding == Hex {
 		return hashFileHex(sha512.New(), path)
 	}
-	return "", ErrUnsupportedHash
+	return "", ErrUnsupportedAlgorithm
 }
 
 func (maker *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
@@ -157,7 +157,7 @@ func (maker *hashMaker) HashDir(path string) (string, error) {
 	if maker.algorithm == SHA512Hash && maker.encoding == Hex {
 		return hashDirHex(sha512.New(), path)
 	}
-	return "", ErrUnsupportedHash
+	return "", ErrUnsupportedAlgorithm
 }
 
 func hashTextHex(hash hash.Hash, text string) (string, error) {
