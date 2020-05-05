@@ -95,13 +95,13 @@ func (maker *hashMaker) HashText(text string) (string, error) {
 		return hashTextBase64(md5.New(), text)
 	}
 	if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
-		return hashTextHex(sha1.New(), text)
+		return hashTextBase64(sha1.New(), text)
 	}
 	if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
-		return hashTextHex(sha256.New(), text)
+		return hashTextBase64(sha256.New(), text)
 	}
 	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
-		return hashTextHex(sha512.New(), text)
+		return hashTextBase64(sha512.New(), text)
 	}
 	return "", ErrUnsupportedAlgorithm
 }
@@ -120,16 +120,16 @@ func (maker *hashMaker) HashFile(path string) (string, error) {
 		return hashFileHex(sha512.New(), path)
 	}
 	if maker.algorithm == MD5Hash && maker.encoding == Base64 {
-		return hashFileHex(md5.New(), path)
+		return hashFileBase64(md5.New(), path)
 	}
 	if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
-		return hashFileHex(sha1.New(), path)
+		return hashFileBase64(sha1.New(), path)
 	}
 	if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
-		return hashFileHex(sha256.New(), path)
+		return hashFileBase64(sha256.New(), path)
 	}
 	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
-		return hashFileHex(sha512.New(), path)
+		return hashFileBase64(sha512.New(), path)
 	}
 	return "", ErrUnsupportedAlgorithm
 }
@@ -166,28 +166,28 @@ func (maker *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			pathHashes[path] = hex
 		}
 		if maker.algorithm == MD5Hash && maker.encoding == Base64 {
-			hex, err := hashFileHex(md5.New(), path)
+			hex, err := hashTextBase64(md5.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hex
 		}
 		if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
-			hex, err := hashFileHex(sha1.New(), path)
+			hex, err := hashTextBase64(sha1.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hex
 		}
 		if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
-			hex, err := hashFileHex(sha256.New(), path)
+			hex, err := hashTextBase64(sha256.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hex
 		}
 		if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
-			hex, err := hashFileHex(sha512.New(), path)
+			hex, err := hashTextBase64(sha512.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
@@ -257,6 +257,14 @@ func hashFileHex(hash hash.Hash, text string) (string, error) {
 	return hex.EncodeToString(bytes), nil
 }
 
+func hashFileBase64(hash hash.Hash, text string) (string, error) {
+	bytes, err := hashFile(hash, text)
+	if err != nil {
+		return "", err
+	}
+	return base64.StdEncoding.EncodeToString(bytes), nil
+}
+
 func hashFile(hash hash.Hash, path string) ([]byte, error) {
 	file, err := os.Open(path)
 	if err != nil {
@@ -284,6 +292,14 @@ func hashFileOrDir(hash hash.Hash, path string) ([]byte, error) {
 }
 
 func hashDirHex(hash hash.Hash, text string) (string, error) {
+	bytes, err := hashDir(hash, text)
+	if err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(bytes), nil
+}
+
+func hashDirBase64(hash hash.Hash, text string) (string, error) {
 	bytes, err := hashDir(hash, text)
 	if err != nil {
 		return "", err
