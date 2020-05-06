@@ -134,16 +134,4 @@ func TestHashFiles(t *testing.T) {
 	assert.Equal(t, "f7fbba6e0636f890e56fbbf3283e524c6fa3204ae298382d624741d0dc6638326e282c41be5e4254d8820772c5518a2c5a8c0c7f7eda19594a7eb539453e1ed7", hash[foo.Name()])
 	assert.Equal(t, "d82c4eb5261cb9c8aa9855edd67d1bd10482f41529858d925094d173fa662aa91ff39bc5b188615273484021dfb16fd8284cf684ccf0fc795be3aa2fc1e6c181", hash[bar.Name()])
 
-	maker = New().Algorithm(MD5Hash).Encoding(Base64).Build()
-	hash, err = maker.HashFiles(foo.Name(), bar.Name())
-	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
-	assert.Equal(t, "ZI7frTzQpyqFIqk/X1YgWw==", hash[foo.Name()])
-	assert.Equal(t, "vRm1X/gmuq3kj1/w6DLTIg==", hash[bar.Name()])
-
-	maker = New().Algorithm(SHA1Hash).Encoding(Base64).Build()
-	hash, err = maker.HashFiles(foo.Name(), bar.Name())
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
-	assert.Equal(t, "3GgDv13P2YWJRVv+yBfNuw==", hash[foo.Name()])
-	assert.Equal(t, "kkl8s8IsTCPChqOnIzmuUw==", hash[bar.Name()])
-
 }
