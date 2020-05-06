@@ -146,4 +146,15 @@ func TestHashFiles(t *testing.T) {
 	assert.Equal(t, "C+7Hteo/D9vJXQ3UfzxbwnXaijM=", hash[foo.Name()])
 	assert.Equal(t, "Ys23Ag/5IOWqZCw9QGaVDdHwH00=", hash[bar.Name()])
 
+	maker = New().Algorithm(SHA256Hash).Encoding(Base64).Build()
+	hash, err = maker.HashFiles(foo.Name(), bar.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
+	assert.Equal(t, "LCa0a2j/xo/5m0U8HTBBNBNCLXBkg7+g+YpeiGJm564=", hash[foo.Name()])
+	assert.Equal(t, "/N4rLtula/QIYB+3If6bXDONEO5CnqBPrlURto+/j7k=", hash[bar.Name()])
+
+	maker = New().Algorithm(SHA512Hash).Encoding(Base64).Build()
+	hash, err = maker.HashFiles(foo.Name(), bar.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
+	assert.Equal(t, "9/u6bgY2+JDlb7vzKD5STG+jIErimDgtYkdB0NxmODJuKCxBvl5CVNiCB3LFUYosWowMf37aGVlKfrU5RT4e1w==", hash[foo.Name()])
+	assert.Equal(t, "2CxOtSYcuciqmFXt1n0b0QSC9BUphY2SUJTRc/pmKqkf85vFsYhhUnNIQCHfsW/YKEz2hMzw/Hlb46ovwebBgQ==", hash[bar.Name()])
 }
