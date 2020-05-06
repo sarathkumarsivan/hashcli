@@ -75,6 +75,26 @@ func TestHashFile(t *testing.T) {
 	hash, err = maker.HashFile(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
 	assert.Equal(t, "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e", hash)
+
+	maker = New().Algorithm(MD5Hash).Encoding(Base64).Build()
+	hash, err = maker.HashFile(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
+	assert.Equal(t, "1B2M2Y8AsgTpgAmY7PhCfg==", hash)
+
+	maker = New().Algorithm(SHA1Hash).Encoding(Base64).Build()
+	hash, err = maker.HashFile(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	assert.Equal(t, "2jmj7l5rSw0yVb/vlWAYkK/YBwk=", hash)
+
+	maker = New().Algorithm(SHA256Hash).Encoding(Base64).Build()
+	hash, err = maker.HashFile(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
+	assert.Equal(t, "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=", hash)
+
+	maker = New().Algorithm(SHA512Hash).Encoding(Base64).Build()
+	hash, err = maker.HashFile(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
+	assert.Equal(t, "z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg==", hash)
 }
 
 func TestHashFiles(t *testing.T) {
