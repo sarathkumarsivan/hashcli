@@ -137,7 +137,13 @@ func TestHashFiles(t *testing.T) {
 	maker = New().Algorithm(MD5Hash).Encoding(Base64).Build()
 	hash, err = maker.HashFiles(foo.Name(), bar.Name())
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
-	assert.Equal(t, "hTvpLTUcZeV4kW7rgxY2Rw==", hash[foo.Name()])
-	assert.Equal(t, "5V46mF3tikcUOzbjO9ir/Q==", hash[bar.Name()])
+	assert.Equal(t, "ZI7frTzQpyqFIqk/X1YgWw==", hash[foo.Name()])
+	assert.Equal(t, "vRm1X/gmuq3kj1/w6DLTIg==", hash[bar.Name()])
+
+	maker = New().Algorithm(SHA1Hash).Encoding(Base64).Build()
+	hash, err = maker.HashFiles(foo.Name(), bar.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	assert.Equal(t, "3GgDv13P2YWJRVv+yBfNuw==", hash[foo.Name()])
+	assert.Equal(t, "kkl8s8IsTCPChqOnIzmuUw==", hash[bar.Name()])
 
 }
