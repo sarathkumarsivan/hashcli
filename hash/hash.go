@@ -304,7 +304,7 @@ func hashDirBase64(hash hash.Hash, text string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return hex.EncodeToString(bytes), nil
+	return base64.StdEncoding.EncodeToString(bytes), nil
 }
 
 func hashDir(hash hash.Hash, path string) ([]byte, error) {
