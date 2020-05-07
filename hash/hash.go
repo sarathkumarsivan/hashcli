@@ -220,7 +220,7 @@ func (maker *hashMaker) HashDir(path string) (string, error) {
 		return hashDirBase64(sha256.New(), path)
 	}
 	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
-		return hashDirHex(sha512.New(), path)
+		return hashDirBase64(sha512.New(), path)
 	}
 	return "", ErrUnsupportedAlgorithm
 }
