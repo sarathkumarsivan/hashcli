@@ -29,7 +29,7 @@ func parseCommandLine() Options {
 		}
 	}
 	if !options.valid {
-		Exit("hashcli: not enough options to perform hashing", flags)
+		Exit("hashutils: not enough options to perform hashing", flags)
 	}
 	return options
 }

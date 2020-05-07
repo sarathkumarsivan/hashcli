@@ -22,11 +22,11 @@ func Exit(message string, flags *flag.FlagSet) {
 	os.Exit(1)
 }
 
-func Run() {
+func Execute() {
 	options := parseCommandLine()
 	if options.text != "" {
-		hashcli := hash.New().Algorithm(options.algorithm).Encoding(options.encoding).Build()
-		hash, err := hashcli.HashText(options.text)
+		maker := hash.New().Algorithm(options.algorithm).Encoding(options.encoding).Build()
+		hash, err := maker.HashText(options.text)
 		if err != nil {
 			fmt.Errorf("error hasing text: %s using algorithm %s, error: %s", options.text, options.algorithm, err)
 			os.Exit(1)
@@ -34,8 +34,8 @@ func Run() {
 		fmt.Printf("%s (%s): %s\n", options.algorithm, options.text, hash)
 	}
 	if options.file != "" {
-		hashcli := hash.New().Algorithm(options.algorithm).Encoding(options.encoding).Build()
-		hash, err := hashcli.HashFile(options.file)
+		maker := hash.New().Algorithm(options.algorithm).Encoding(options.encoding).Build()
+		hash, err := maker.HashFile(options.file)
 		if err != nil {
 			fmt.Errorf("error hasing file: %s using algorithm %s, error: %s", options.text, options.algorithm, err)
 			os.Exit(1)
