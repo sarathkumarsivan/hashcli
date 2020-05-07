@@ -214,7 +214,7 @@ func (maker *hashMaker) HashDir(path string) (string, error) {
 		return hashDirBase64(md5.New(), path)
 	}
 	if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
-		return hashDirHex(sha1.New(), path)
+		return hashDirBase64(sha1.New(), path)
 	}
 	if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
 		return hashDirHex(sha256.New(), path)
