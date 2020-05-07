@@ -138,60 +138,60 @@ func (maker *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 	pathHashes := make(map[string]string, len(paths))
 	for _, path := range paths {
 		if maker.algorithm == MD5Hash && maker.encoding == Hex {
-			hex, err := hashFileHex(md5.New(), path)
+			hash, err := hashFileHex(md5.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
-			pathHashes[path] = hex
+			pathHashes[path] = hash
 		}
 		if maker.algorithm == SHA1Hash && maker.encoding == Hex {
-			hex, err := hashFileHex(sha1.New(), path)
+			hash, err := hashFileHex(sha1.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
-			pathHashes[path] = hex
+			pathHashes[path] = hash
 		}
 		if maker.algorithm == SHA256Hash && maker.encoding == Hex {
-			hex, err := hashFileHex(sha256.New(), path)
+			hash, err := hashFileHex(sha256.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
-			pathHashes[path] = hex
+			pathHashes[path] = hash
 		}
 		if maker.algorithm == SHA512Hash && maker.encoding == Hex {
-			hex, err := hashFileHex(sha512.New(), path)
+			hash, err := hashFileHex(sha512.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
-			pathHashes[path] = hex
+			pathHashes[path] = hash
 		}
 		if maker.algorithm == MD5Hash && maker.encoding == Base64 {
-			hex, err := hashFileBase64(md5.New(), path)
+			hash, err := hashFileBase64(md5.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
-			pathHashes[path] = hex
+			pathHashes[path] = hash
 		}
 		if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
-			hex, err := hashFileBase64(sha1.New(), path)
+			hash, err := hashFileBase64(sha1.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
-			pathHashes[path] = hex
+			pathHashes[path] = hash
 		}
 		if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
-			hex, err := hashFileBase64(sha256.New(), path)
+			hash, err := hashFileBase64(sha256.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
-			pathHashes[path] = hex
+			pathHashes[path] = hash
 		}
 		if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
-			hex, err := hashFileBase64(sha512.New(), path)
+			hash, err := hashFileBase64(sha512.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
-			pathHashes[path] = hex
+			pathHashes[path] = hash
 		}
 	}
 	return pathHashes, nil
