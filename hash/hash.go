@@ -56,20 +56,20 @@ type hashBuilder struct {
 	encoding  Encoding
 }
 
-func (builder *hashBuilder) Algorithm(algorithm Algorithm) ExtHashBuilder {
-	builder.algorithm = algorithm
-	return builder
+func (h *hashBuilder) Algorithm(algorithm Algorithm) ExtHashBuilder {
+	h.algorithm = algorithm
+	return h
 }
 
-func (builder *hashBuilder) Encoding(encoding Encoding) ExtHashBuilder {
-	builder.encoding = encoding
-	return builder
+func (h *hashBuilder) Encoding(encoding Encoding) ExtHashBuilder {
+	h.encoding = encoding
+	return h
 }
 
-func (builder *hashBuilder) Build() ExtHash {
+func (h *hashBuilder) Build() ExtHash {
 	return &hashMaker{
-		algorithm: builder.algorithm,
-		encoding:  builder.encoding,
+		algorithm: h.algorithm,
+		encoding:  h.encoding,
 	}
 }
 
