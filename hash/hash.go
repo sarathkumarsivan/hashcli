@@ -14,8 +14,10 @@ import (
 	"path/filepath"
 )
 
-var ErrUnsupportedAlgorithm = errors.New("unsupported hashing algorithm")
+var ErrUnsupportedAlgorithm = errors.New("hashutils: unsupported hashing algorithm")
 
+// Algorithm represents the type of hashing algorithms supported by
+// this package.
 type Algorithm string
 
 const (
@@ -25,6 +27,8 @@ const (
 	SHA512Hash           = "sha512"
 )
 
+// An Encoding is a radix 64 encoding/decoding scheme, defined by a
+// 64-character alphabet.
 type Encoding string
 
 const (
