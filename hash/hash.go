@@ -43,6 +43,7 @@ type ExtHash interface {
 	HashFile(path string) (string, error)
 	HashFiles(paths ...string) (map[string]string, error)
 	HashDir(path string) (string, error)
+	HashPath(path string) (string, error)
 }
 
 type ExtHashBuilder interface {
@@ -229,6 +230,10 @@ func (m *hashMaker) HashDir(path string) (string, error) {
 	return "", ErrUnsupportedAlgorithm
 }
 
+func (m *hashMaker) HashPath(path string) (string, error) {
+	return "", ErrUnsupportedAlgorithm
+}
+
 func hashTextHex(hash hash.Hash, text string) (string, error) {
 	bytes, err := hashText(hash, text)
 	if err != nil {
@@ -281,7 +286,7 @@ func hashFile(hash hash.Hash, path string) ([]byte, error) {
 	return hash.Sum(nil), nil
 }
 
-func hashFileOrDir(hash hash.Hash, path string) ([]byte, error) {
+func hashPath(hash hash.Hash, path string) ([]byte, error) {
 	info, err := os.Stat(path)
 	if err != nil {
 		return nil, err
