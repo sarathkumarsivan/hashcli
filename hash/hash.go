@@ -82,115 +82,115 @@ type hashMaker struct {
 	encoding  Encoding
 }
 
-func (maker *hashMaker) HashText(text string) (string, error) {
-	if maker.algorithm == MD5Hash && maker.encoding == Hex {
+func (m *hashMaker) HashText(text string) (string, error) {
+	if m.algorithm == MD5Hash && m.encoding == Hex {
 		return hashTextHex(md5.New(), text)
 	}
-	if maker.algorithm == SHA1Hash && maker.encoding == Hex {
+	if m.algorithm == SHA1Hash && m.encoding == Hex {
 		return hashTextHex(sha1.New(), text)
 	}
-	if maker.algorithm == SHA256Hash && maker.encoding == Hex {
+	if m.algorithm == SHA256Hash && m.encoding == Hex {
 		return hashTextHex(sha256.New(), text)
 	}
-	if maker.algorithm == SHA512Hash && maker.encoding == Hex {
+	if m.algorithm == SHA512Hash && m.encoding == Hex {
 		return hashTextHex(sha512.New(), text)
 	}
-	if maker.algorithm == MD5Hash && maker.encoding == Base64 {
+	if m.algorithm == MD5Hash && m.encoding == Base64 {
 		return hashTextBase64(md5.New(), text)
 	}
-	if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
+	if m.algorithm == SHA1Hash && m.encoding == Base64 {
 		return hashTextBase64(sha1.New(), text)
 	}
-	if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
+	if m.algorithm == SHA256Hash && m.encoding == Base64 {
 		return hashTextBase64(sha256.New(), text)
 	}
-	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
+	if m.algorithm == SHA512Hash && m.encoding == Base64 {
 		return hashTextBase64(sha512.New(), text)
 	}
 	return "", ErrUnsupportedAlgorithm
 }
 
-func (maker *hashMaker) HashFile(path string) (string, error) {
-	if maker.algorithm == MD5Hash && maker.encoding == Hex {
+func (m *hashMaker) HashFile(path string) (string, error) {
+	if m.algorithm == MD5Hash && m.encoding == Hex {
 		return hashFileHex(md5.New(), path)
 	}
-	if maker.algorithm == SHA1Hash && maker.encoding == Hex {
+	if m.algorithm == SHA1Hash && m.encoding == Hex {
 		return hashFileHex(sha1.New(), path)
 	}
-	if maker.algorithm == SHA256Hash && maker.encoding == Hex {
+	if m.algorithm == SHA256Hash && m.encoding == Hex {
 		return hashFileHex(sha256.New(), path)
 	}
-	if maker.algorithm == SHA512Hash && maker.encoding == Hex {
+	if m.algorithm == SHA512Hash && m.encoding == Hex {
 		return hashFileHex(sha512.New(), path)
 	}
-	if maker.algorithm == MD5Hash && maker.encoding == Base64 {
+	if m.algorithm == MD5Hash && m.encoding == Base64 {
 		return hashFileBase64(md5.New(), path)
 	}
-	if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
+	if m.algorithm == SHA1Hash && m.encoding == Base64 {
 		return hashFileBase64(sha1.New(), path)
 	}
-	if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
+	if m.algorithm == SHA256Hash && m.encoding == Base64 {
 		return hashFileBase64(sha256.New(), path)
 	}
-	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
+	if m.algorithm == SHA512Hash && m.encoding == Base64 {
 		return hashFileBase64(sha512.New(), path)
 	}
 	return "", ErrUnsupportedAlgorithm
 }
 
-func (maker *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
+func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 	pathHashes := make(map[string]string, len(paths))
 	for _, path := range paths {
-		if maker.algorithm == MD5Hash && maker.encoding == Hex {
+		if m.algorithm == MD5Hash && m.encoding == Hex {
 			hash, err := hashFileHex(md5.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hash
 		}
-		if maker.algorithm == SHA1Hash && maker.encoding == Hex {
+		if m.algorithm == SHA1Hash && m.encoding == Hex {
 			hash, err := hashFileHex(sha1.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hash
 		}
-		if maker.algorithm == SHA256Hash && maker.encoding == Hex {
+		if m.algorithm == SHA256Hash && m.encoding == Hex {
 			hash, err := hashFileHex(sha256.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hash
 		}
-		if maker.algorithm == SHA512Hash && maker.encoding == Hex {
+		if m.algorithm == SHA512Hash && m.encoding == Hex {
 			hash, err := hashFileHex(sha512.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hash
 		}
-		if maker.algorithm == MD5Hash && maker.encoding == Base64 {
+		if m.algorithm == MD5Hash && m.encoding == Base64 {
 			hash, err := hashFileBase64(md5.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hash
 		}
-		if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
+		if m.algorithm == SHA1Hash && m.encoding == Base64 {
 			hash, err := hashFileBase64(sha1.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hash
 		}
-		if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
+		if m.algorithm == SHA256Hash && m.encoding == Base64 {
 			hash, err := hashFileBase64(sha256.New(), path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hash
 		}
-		if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
+		if m.algorithm == SHA512Hash && m.encoding == Base64 {
 			hash, err := hashFileBase64(sha512.New(), path)
 			if err != nil {
 				return pathHashes, err
@@ -201,29 +201,29 @@ func (maker *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 	return pathHashes, nil
 }
 
-func (maker *hashMaker) HashDir(path string) (string, error) {
-	if maker.algorithm == MD5Hash && maker.encoding == Hex {
+func (m *hashMaker) HashDir(path string) (string, error) {
+	if m.algorithm == MD5Hash && m.encoding == Hex {
 		return hashDirHex(md5.New(), path)
 	}
-	if maker.algorithm == SHA1Hash && maker.encoding == Hex {
+	if m.algorithm == SHA1Hash && m.encoding == Hex {
 		return hashDirHex(sha1.New(), path)
 	}
-	if maker.algorithm == SHA256Hash && maker.encoding == Hex {
+	if m.algorithm == SHA256Hash && m.encoding == Hex {
 		return hashDirHex(sha256.New(), path)
 	}
-	if maker.algorithm == SHA512Hash && maker.encoding == Hex {
+	if m.algorithm == SHA512Hash && m.encoding == Hex {
 		return hashDirHex(sha512.New(), path)
 	}
-	if maker.algorithm == MD5Hash && maker.encoding == Base64 {
+	if m.algorithm == MD5Hash && m.encoding == Base64 {
 		return hashDirBase64(md5.New(), path)
 	}
-	if maker.algorithm == SHA1Hash && maker.encoding == Base64 {
+	if m.algorithm == SHA1Hash && m.encoding == Base64 {
 		return hashDirBase64(sha1.New(), path)
 	}
-	if maker.algorithm == SHA256Hash && maker.encoding == Base64 {
+	if m.algorithm == SHA256Hash && m.encoding == Base64 {
 		return hashDirBase64(sha256.New(), path)
 	}
-	if maker.algorithm == SHA512Hash && maker.encoding == Base64 {
+	if m.algorithm == SHA512Hash && m.encoding == Base64 {
 		return hashDirBase64(sha512.New(), path)
 	}
 	return "", ErrUnsupportedAlgorithm
