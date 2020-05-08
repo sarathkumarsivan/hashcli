@@ -13,6 +13,7 @@ func parseCommandLine() Options {
 	encoding := flags.String("encoding", "hex", "--encoding <your text here> default: hex")
 	text := flags.String("text", "", "--text <your text here>")
 	file := flags.String("file", "", "--file <your text here>")
+
 	var options = Options{}
 	flags.Parse(os.Args[1:])
 
