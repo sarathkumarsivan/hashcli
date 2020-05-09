@@ -22,10 +22,10 @@ type Algorithm string
 
 const (
 	MD5Hash    Algorithm = "md5"
-	FNV32                = "fnv32"
-	FNV32a               = "fnv32a"
-	FNV64                = "fnv64"
-	FNV64a               = "fnv64a"
+	FNV32Hash            = "fnv32"
+	FNV32aHash           = "fnv32a"
+	FNV64Hash            = "fnv64"
+	FNV64aHash           = "fnv64a"
 	SHA1Hash             = "sha1"
 	SHA256Hash           = "sha256"
 	SHA512Hash           = "sha512"
