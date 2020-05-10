@@ -10,21 +10,21 @@ import (
 func TestSHA384Hash(t *testing.T) {
 	hash, err := SHA384Hex("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA384Hash)
-	assert.Equal(t, "f7fbba6e0636f890e56fbbf3283e524c6fa3204ae298382d624741d0dc6638326e282c41be5e4254d8820772c5518a2c5a8c0c7f7eda19594a7eb539453e1ed7", hash)
+	assert.Equal(t, "98c11ffdfdd540676b1a137cb1a22b2a70350c9a44171d6b1180c6be5cbb2ee3f79d532c8a1dd9ef2e8e08e752a3babb", hash)
 
 	hash, err = SHA384Base64StdEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
-	assert.Equal(t, "9/u6bgY2+JDlb7vzKD5STG+jIErimDgtYkdB0NxmODJuKCxBvl5CVNiCB3LFUYosWowMf37aGVlKfrU5RT4e1w==", hash)
+	assert.Equal(t, "mMEf/f3VQGdrGhN8saIrKnA1DJpEFx1rEYDGvly7LuP3nVMsih3Z7y6OCOdSo7q7", hash)
 
 	hash, err = SHA384Base64RawStdEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
-	assert.Equal(t, "9/u6bgY2+JDlb7vzKD5STG+jIErimDgtYkdB0NxmODJuKCxBvl5CVNiCB3LFUYosWowMf37aGVlKfrU5RT4e1w", hash)
+	assert.Equal(t, "mMEf/f3VQGdrGhN8saIrKnA1DJpEFx1rEYDGvly7LuP3nVMsih3Z7y6OCOdSo7q7", hash)
 
 	hash, err = SHA384Base64RawURLEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
-	assert.Equal(t, "9_u6bgY2-JDlb7vzKD5STG-jIErimDgtYkdB0NxmODJuKCxBvl5CVNiCB3LFUYosWowMf37aGVlKfrU5RT4e1w", hash)
+	assert.Equal(t, "mMEf_f3VQGdrGhN8saIrKnA1DJpEFx1rEYDGvly7LuP3nVMsih3Z7y6OCOdSo7q7", hash)
 
 	hash, err = SHA384Base64URLEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
-	assert.Equal(t, "9_u6bgY2-JDlb7vzKD5STG-jIErimDgtYkdB0NxmODJuKCxBvl5CVNiCB3LFUYosWowMf37aGVlKfrU5RT4e1w==", hash)
+	assert.Equal(t, "mMEf_f3VQGdrGhN8saIrKnA1DJpEFx1rEYDGvly7LuP3nVMsih3Z7y6OCOdSo7q7", hash)
 }
