@@ -22,3 +22,8 @@ func SHA1Base64StdEnc(text string) (string, error) {
 	hash, err := SHA1(text)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
+
+func SHA1Base64URLEnc(text string) (string, error) {
+	hash, err := SHA1(text)
+	return base64.URLEncoding.EncodeToString(hash), err
+}
