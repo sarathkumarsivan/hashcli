@@ -27,9 +27,10 @@ const (
 	FNV64Hash            = "fnv64"
 	FNV64aHash           = "fnv64a"
 	SHA1Hash             = "sha1"
-	SHA224Hash           = "sha224"
 	SHA256Hash           = "sha256"
+	SHA224Hash           = "sha224"
 	SHA512Hash           = "sha512"
+	SHA384Hash           = "sha384"
 )
 
 // An Encoding is a radix 64 encoding/decoding scheme, defined by a
