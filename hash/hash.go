@@ -40,8 +40,6 @@ type Encoding string
 const (
 	Hex    Encoding = "hex"
 	Base64          = "base64"
-	Buffer          = "buffer"
-	Binary          = "binary"
 )
 
 type ExtHash interface {
