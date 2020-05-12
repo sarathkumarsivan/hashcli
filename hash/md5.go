@@ -61,3 +61,8 @@ func Md5FileBase64StdEnc(path string) (string, error) {
 	hash, err := Md5File(path)
 	return hex.EncodeToString(hash), err
 }
+
+func Md5FileBase64URLEnc(path string) (string, error) {
+	hash, err := Md5File(path)
+	return base64.URLEncoding.EncodeToString(hash), err
+}
