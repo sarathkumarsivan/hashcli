@@ -51,3 +51,13 @@ func Md5File(path string) ([]byte, error) {
 	}
 	return hash.Sum(nil), nil
 }
+
+func Md5FileHex(path string) (string, error) {
+	hash, err := Md5File(path)
+	return hex.EncodeToString(hash), err
+}
+
+func Md5FileBase64StdEnc(path string) (string, error) {
+	hash, err := Md5File(path)
+	return hex.EncodeToString(hash), err
+}
