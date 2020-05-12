@@ -12,3 +12,9 @@ This is a collection of hashing utility functions writen in Go.
 ```bash
 go get -u github.com/sarathkumarsivan/hashutils
 ```
+
+## Usage
+```go
+// MD5 Hash with hexadecimal encoding
+hash, _ := MD5Hex("foo")
+```
