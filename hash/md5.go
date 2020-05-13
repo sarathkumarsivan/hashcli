@@ -59,7 +59,7 @@ func MD5FileHex(path string) (string, error) {
 
 func MD5FileBase64StdEnc(path string) (string, error) {
 	hash, err := MD5File(path)
-	return hex.EncodeToString(hash), err
+	return base64.StdEncoding.EncodeToString(hash), err
 }
 
 func MD5FileBase64URLEnc(path string) (string, error) {
