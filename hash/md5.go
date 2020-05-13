@@ -39,7 +39,7 @@ func MD5Base64RawStdEnc(text string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
-func Md5File(path string) ([]byte, error) {
+func MD5File(path string) ([]byte, error) {
 	hash := md5.New()
 	file, err := os.Open(path)
 	if err != nil {
@@ -52,27 +52,27 @@ func Md5File(path string) ([]byte, error) {
 	return hash.Sum(nil), nil
 }
 
-func Md5FileHex(path string) (string, error) {
-	hash, err := Md5File(path)
+func MD5FileHex(path string) (string, error) {
+	hash, err := MD5File(path)
 	return hex.EncodeToString(hash), err
 }
 
-func Md5FileBase64StdEnc(path string) (string, error) {
-	hash, err := Md5File(path)
+func MD5FileBase64StdEnc(path string) (string, error) {
+	hash, err := MD5File(path)
 	return hex.EncodeToString(hash), err
 }
 
-func Md5FileBase64URLEnc(path string) (string, error) {
-	hash, err := Md5File(path)
+func MD5FileBase64URLEnc(path string) (string, error) {
+	hash, err := MD5File(path)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
-func Md5FileBase64RawURLEnc(path string) (string, error) {
-	hash, err := Md5File(path)
+func MD5FileBase64RawURLEnc(path string) (string, error) {
+	hash, err := MD5File(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
-func Md5FileBase64RawStdEnc(path string) (string, error) {
-	hash, err := Md5File(path)
+func MD5FileBase64RawStdEnc(path string) (string, error) {
+	hash, err := MD5File(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
