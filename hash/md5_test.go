@@ -35,7 +35,13 @@ func TestMD5HashFile(t *testing.T) {
 	foo, err := ioutil.TempFile("", "foo.*")
 	require.NoError(t, err, "Error creating temporary file")
 	defer func() { _ = os.Remove(foo.Name()) }()
+
 	hash, err := MD5FileHex(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.Equal(t, "d41d8cd98f00b204e9800998ecf8427e", hash)
+
+	hash, err = MD5FileBase64StdEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
+	assert.Equal(t, "1B2M2Y8AsgTpgAmY7PhCfg==", hash)
+
 }
