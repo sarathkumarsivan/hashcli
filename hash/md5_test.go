@@ -51,4 +51,8 @@ func TestMD5HashFile(t *testing.T) {
 	hash, err = MD5FileBase64RawURLEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.Equal(t, "1B2M2Y8AsgTpgAmY7PhCfg==", hash)
+
+	hash, err = MD5FileBase64RawStdEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
+	assert.Equal(t, "1B2M2Y8AsgTpgAmY7PhCfg==", hash)
 }
