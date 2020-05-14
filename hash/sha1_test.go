@@ -35,4 +35,9 @@ func TestSHA1HashFile(t *testing.T) {
 	foo, err := ioutil.TempFile("", "foo.*")
 	require.NoError(t, err, "Error creating temporary file")
 	defer func() { _ = os.Remove(foo.Name()) }()
+
+	hash, err := SHA1FileHex(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
+	assert.Equal(t, "da39a3ee5e6b4b0d3255bfef95601890afd80709", hash)
+
 }
