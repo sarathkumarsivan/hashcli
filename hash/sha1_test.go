@@ -1,6 +1,8 @@
 package hash
 
 import (
+	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -27,4 +29,10 @@ func TestSHA1Hash(t *testing.T) {
 	hash, err = SHA1Base64URLEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
 	assert.Equal(t, "C-7Hteo_D9vJXQ3UfzxbwnXaijM=", hash)
+}
+
+func TestSHA1HashFile(t *testing.T) {
+	foo, err := ioutil.TempFile("", "foo.*")
+	require.NoError(t, err, "Error creating temporary file")
+	defer func() { _ = os.Remove(foo.Name()) }()
 }
