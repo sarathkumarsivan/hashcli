@@ -47,4 +47,12 @@ func TestSHA1HashFile(t *testing.T) {
 	hash, err = SHA1FileBase64URLEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
 	assert.Equal(t, "2jmj7l5rSw0yVb_vlWAYkK_YBwk=", hash)
+
+	hash, err = SHA1FileBase64RawURLEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	assert.Equal(t, "2jmj7l5rSw0yVb_vlWAYkK_YBwk", hash)
+
+	hash, err = SHA1FileBase64RawStdEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	assert.Equal(t, "2jmj7l5rSw0yVb/vlWAYkK/YBwk", hash)
 }
