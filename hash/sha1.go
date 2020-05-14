@@ -56,3 +56,23 @@ func SHA1FileHex(path string) (string, error) {
 	hash, err := SHA1File(path)
 	return hex.EncodeToString(hash), err
 }
+
+func SHA1FileBase64StdEnc(path string) (string, error) {
+	hash, err := MD5File(path)
+	return base64.StdEncoding.EncodeToString(hash), err
+}
+
+func SHA1FileBase64URLEnc(path string) (string, error) {
+	hash, err := MD5File(path)
+	return base64.URLEncoding.EncodeToString(hash), err
+}
+
+func SHA1FileBase64RawURLEnc(path string) (string, error) {
+	hash, err := MD5File(path)
+	return base64.RawURLEncoding.EncodeToString(hash), err
+}
+
+func SHA1FileBase64RawStdEnc(path string) (string, error) {
+	hash, err := MD5File(path)
+	return base64.RawStdEncoding.EncodeToString(hash), err
+}
