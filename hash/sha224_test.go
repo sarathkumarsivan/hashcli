@@ -1,6 +1,8 @@
 package hash
 
 import (
+	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -27,4 +29,30 @@ func TestSHA224Hash(t *testing.T) {
 	hash, err = SHA224Base64URLEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.Equal(t, "CAj2TmDViXn8tnbJbsk4Jw3qQkRa7vzTpOb42w==", hash)
+}
+
+func TestSHA224HashFile(t *testing.T) {
+	foo, err := ioutil.TempFile("", "foo.*")
+	require.NoError(t, err, "Error creating temporary file")
+	defer func() { _ = os.Remove(foo.Name()) }()
+
+	hash, err := SHA224FileHex(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
+	assert.Equal(t, "d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f", hash)
+
+	hash, err = SHA224FileBase64StdEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
+	assert.Equal(t, "0UoCjCo6K8lHYQK7KII0xBWisB+CjqYqxbPkLw==", hash)
+
+	hash, err = SHA224FileBase64URLEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
+	assert.Equal(t, "0UoCjCo6K8lHYQK7KII0xBWisB-CjqYqxbPkLw==", hash)
+
+	hash, err = SHA224FileBase64RawURLEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
+	assert.Equal(t, "0UoCjCo6K8lHYQK7KII0xBWisB-CjqYqxbPkLw", hash)
+
+	hash, err = SHA224FileBase64RawStdEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
+	assert.Equal(t, "0UoCjCo6K8lHYQK7KII0xBWisB+CjqYqxbPkLw", hash)
 }
