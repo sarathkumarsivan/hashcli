@@ -56,3 +56,8 @@ func SHA224FileHex(path string) (string, error) {
 	hash, err := SHA224File(path)
 	return hex.EncodeToString(hash), err
 }
+
+func SHA224FileBase64StdEnc(path string) (string, error) {
+	hash, err := SHA224File(path)
+	return base64.StdEncoding.EncodeToString(hash), err
+}
