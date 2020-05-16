@@ -19,14 +19,29 @@ go get -u github.com/sarathkumarsivan/hashutils
 hash, _ := MD5Hex("foo")
 
 // MD5 Hash with standard base64 encoding.
-hash, _ := MD5FileBase64StdEnc("foo")
+hash, _ := MD5Base64StdEnc("foo")
 
 // MD5 Hash with alternate base64 encoding.
-hash, _ := MD5FileBase64URLEnc("foo")
+hash, _ := MD5Base64URLEnc("foo")
 
 // MD5 Hash with standard raw, unpadded base64 encoding.
-hash, _ := MD5FileBase64RawURLEnc("foo")
+hash, _ := MD5Base64RawURLEnc("foo")
 
 // MD5 Hash with unpadded alternate base64 encoding.
-hash, _ := MD5FileBase64RawStdEnc("foo")
+hash, _ := MD5Base64RawStdEnc("foo")
+
+// SHA1 Hash with hexadecimal encoding.
+hash, _ := SHA1Hex("foo")
+
+// SHA1 Hash with standard base64 encoding.
+hash, _ := SHA1Base64StdEnc("foo")
+
+// SHA1 Hash with alternate base64 encoding.
+hash, _ := SHA1Base64URLEnc("foo")
+
+// SHA1 Hash with standard raw, unpadded base64 encoding.
+hash, _ := SHA1Base64RawURLEnc("foo")
+
+// SHA1 Hash with unpadded alternate base64 encoding.
+hash, _ := SHA1Base64RawStdEnc("foo")
 ```
