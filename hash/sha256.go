@@ -51,3 +51,8 @@ func SHA256File(path string) ([]byte, error) {
 	}
 	return hash.Sum(nil), nil
 }
+
+func SHA256FileHex(path string) (string, error) {
+	hash, err := SHA256File(path)
+	return hex.EncodeToString(hash), err
+}
