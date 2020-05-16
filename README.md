@@ -15,6 +15,18 @@ go get -u github.com/sarathkumarsivan/hashutils
 
 ## Usage
 ```go
-// MD5 Hash with hexadecimal encoding
+// MD5 Hash with hexadecimal encoding.
 hash, _ := MD5Hex("foo")
+
+// MD5 Hash with standard base64 encoding.
+hash, _ := MD5FileBase64StdEnc("foo")
+
+// MD5 Hash with alternate base64 encoding.
+hash, _ := MD5FileBase64URLEnc("foo")
+
+// MD5 Hash with standard raw, unpadded base64 encoding.
+hash, _ := MD5FileBase64RawURLEnc("foo")
+
+// MD5 Hash with unpadded alternate base64 encoding.
+hash, _ := MD5FileBase64RawStdEnc("foo")
 ```
