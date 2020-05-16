@@ -66,3 +66,8 @@ func SHA256FileBase64URLEnc(path string) (string, error) {
 	hash, err := SHA256File(path)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
+
+func SHA256FileBase64RawURLEnc(path string) (string, error) {
+	hash, err := SHA256File(path)
+	return base64.RawURLEncoding.EncodeToString(hash), err
+}
