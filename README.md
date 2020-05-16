@@ -14,7 +14,7 @@ go get -u github.com/sarathkumarsivan/hashutils
 ```
 
 ## Usage
-```go
+```scala
 // MD5 Hash with hexadecimal encoding.
 hash, _ := MD5Hex("foo")
 
