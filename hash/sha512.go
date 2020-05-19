@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"io"
+	"os"
 )
 
 func SHA512(text string) ([]byte, error) {
@@ -36,4 +37,17 @@ func SHA512Base64RawURLEnc(text string) (string, error) {
 func SHA512Base64RawStdEnc(text string) (string, error) {
 	hash, err := SHA512(text)
 	return base64.RawStdEncoding.EncodeToString(hash), err
+}
+
+func SHA512File(path string) ([]byte, error) {
+	hash := sha512.New()
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = file.Close() }()
+	if _, err := io.Copy(hash, file); err != nil {
+		return nil, err
+	}
+	return hash.Sum(nil), nil
 }
