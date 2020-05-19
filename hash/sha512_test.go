@@ -1,6 +1,8 @@
 package hash
 
 import (
+	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -27,4 +29,10 @@ func TestSHA512Hash(t *testing.T) {
 	hash, err = SHA512Base64URLEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
 	assert.Equal(t, "9_u6bgY2-JDlb7vzKD5STG-jIErimDgtYkdB0NxmODJuKCxBvl5CVNiCB3LFUYosWowMf37aGVlKfrU5RT4e1w==", hash)
+}
+
+func TestSHA512HashFile(t *testing.T) {
+	foo, err := ioutil.TempFile("", "foo.*")
+	require.NoError(t, err, "Error creating temporary file")
+	defer func() { _ = os.Remove(foo.Name()) }()
 }
