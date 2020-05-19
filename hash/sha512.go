@@ -71,3 +71,8 @@ func SHA512FileBase64RawURLEnc(path string) (string, error) {
 	hash, err := SHA512File(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
+
+func SHA512FileBase64RawStdEnc(path string) (string, error) {
+	hash, err := SHA512File(path)
+	return base64.RawStdEncoding.EncodeToString(hash), err
+}
