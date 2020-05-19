@@ -4,14 +4,11 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/hex"
-	"io"
-	"os"
 )
 
 func SHA224(text string) ([]byte, error) {
 	hash := sha256.New224()
-	_, err := io.WriteString(hash, text)
-	return hash.Sum(nil), err
+	return hashText(hash, text)
 }
 
 func SHA224Hex(text string) (string, error) {
@@ -41,15 +38,7 @@ func SHA224Base64RawStdEnc(text string) (string, error) {
 
 func SHA224File(path string) ([]byte, error) {
 	hash := sha256.New224()
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer func() { _ = file.Close() }()
-	if _, err := io.Copy(hash, file); err != nil {
-		return nil, err
-	}
-	return hash.Sum(nil), nil
+	return hashFile(hash, path)
 }
 
 func SHA224FileHex(path string) (string, error) {

@@ -4,14 +4,11 @@ import (
 	"crypto/md5"
 	"encoding/base64"
 	"encoding/hex"
-	"io"
-	"os"
 )
 
 func MD5(text string) ([]byte, error) {
 	hash := md5.New()
-	_, err := io.WriteString(hash, text)
-	return hash.Sum(nil), err
+	return hashText(hash, text)
 }
 
 func MD5Hex(text string) (string, error) {
@@ -41,15 +38,7 @@ func MD5Base64RawStdEnc(text string) (string, error) {
 
 func MD5File(path string) ([]byte, error) {
 	hash := md5.New()
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer func() { _ = file.Close() }()
-	if _, err := io.Copy(hash, file); err != nil {
-		return nil, err
-	}
-	return hash.Sum(nil), nil
+	return hashFile(hash, path)
 }
 
 func MD5FileHex(path string) (string, error) {
