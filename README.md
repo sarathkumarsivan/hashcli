@@ -31,6 +31,21 @@ hash, _ := MD5Base64RawURLEnc("foo")
 
 // MD5 Hash with unpadded alternate base64 encoding.
 hash, _ := MD5Base64RawStdEnc("foo")
+
+// MD5 Hash of file with hexadecimal encoding.
+hash, _ := MD5FileHex("foo.txt")
+
+// MD5 Hash of file with standard base64 encoding.
+hash, _ := MD5FileBase64StdEnc("foo.txt")
+
+// MD5 Hash of file with alternate base64 encoding.
+hash, _ := MD5FileBase64URLEnc("foo.txt")
+
+// MD5 Hash of file with standard raw, unpadded base64 encoding.
+hash, _ := MD5FileBase64RawURLEnc("foo.txt")
+
+// MD5 Hash of file with unpadded alternate base64 encoding.
+hash, _ := MD5FileBase64RawStdEnc("foo.txt")
 ```
 
 ### SHA1 Hash
