@@ -64,6 +64,21 @@ hash, _ := SHA1Base64RawURLEnc("foo")
 
 // SHA1 Hash with unpadded alternate base64 encoding.
 hash, _ := SHA1Base64RawStdEnc("foo")
+
+// SHA1 Hash of file with hexadecimal encoding.
+hash, _ := SHA1FileHex("foo.txt")
+
+// SHA1 Hash of file with standard base64 encoding.
+hash, _ := SHA1FileBase64StdEnc("foo.txt")
+
+// SHA1 Hash of file with alternate base64 encoding.
+hash, _ := SHA1FileBase64URLEnc("foo.txt")
+
+// SHA1 Hash of file with standard raw, unpadded base64 encoding.
+hash, _ := SHA1FileBase64RawURLEnc("foo.txt")
+
+// SHA1 Hash of file with unpadded alternate base64 encoding.
+hash, _ := SHA1FileBase64RawStdEnc("foo.txt")
 ```
 
 ### SHA224 Hash
