@@ -70,3 +70,8 @@ func MD5Dir(path string) ([]byte, error) {
 	hash := md5.New()
 	return hashDir(hash, path)
 }
+
+func MD5DirHex(path string) (string, error) {
+	hash, err := MD5Dir(path)
+	return hex.EncodeToString(hash), err
+}
