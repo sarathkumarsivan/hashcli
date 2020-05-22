@@ -65,3 +65,8 @@ func MD5FileBase64RawStdEnc(path string) (string, error) {
 	hash, err := MD5File(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
+
+func MD5Dir(path string) ([]byte, error) {
+	hash := md5.New()
+	return hashDir(hash, path)
+}
