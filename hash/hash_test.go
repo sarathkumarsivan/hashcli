@@ -158,3 +158,21 @@ func TestHashFiles(t *testing.T) {
 	assert.Equal(t, "9/u6bgY2+JDlb7vzKD5STG+jIErimDgtYkdB0NxmODJuKCxBvl5CVNiCB3LFUYosWowMf37aGVlKfrU5RT4e1w==", hash[foo.Name()])
 	assert.Equal(t, "2CxOtSYcuciqmFXt1n0b0QSC9BUphY2SUJTRc/pmKqkf85vFsYhhUnNIQCHfsW/YKEz2hMzw/Hlb46ovwebBgQ==", hash[bar.Name()])
 }
+
+func TestHashDir(t *testing.T) {
+	dir, err := ioutil.TempDir("", "qux")
+	require.NoError(t, err, "Error creating temporary directory")
+	defer os.Remove(dir)
+
+	foo, err := ioutil.TempFile(dir, "foo.*")
+	require.NoError(t, err, "Error creating temporary file")
+	_, err = foo.WriteString("foo")
+	require.NoError(t, err, "Error writing to temporary file")
+	defer os.Remove(foo.Name())
+
+	bar, err := ioutil.TempFile(dir, "bar.*")
+	require.NoError(t, err, "Error creating temporary file")
+	_, err = bar.WriteString("bar")
+	require.NoError(t, err, "Error writing to temporary file")
+	defer os.Remove(bar.Name())
+}
