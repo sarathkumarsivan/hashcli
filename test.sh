@@ -5,7 +5,7 @@ set -e
 REPORT_COVERAGE="coverage.txt"
 REPORT_PROFILE="profile.out"
 
-touch $REPORT_COVERAGE
+echo "" > $REPORT_COVERAGE
 
 for dir in $(go list ./... | grep -v vendor); do
     go test -race -coverprofile=$REPORT_PROFILE -covermode=atomic "$dir"
