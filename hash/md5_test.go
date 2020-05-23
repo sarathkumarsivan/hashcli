@@ -56,3 +56,25 @@ func TestMD5HashFile(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.Equal(t, "1B2M2Y8AsgTpgAmY7PhCfg", hash)
 }
+
+func TestHashDir(t *testing.T) {
+	dir, err := ioutil.TempDir("", "qux")
+	require.NoError(t, err, "Error creating temporary directory")
+	defer os.Remove(dir)
+
+	foo, err := ioutil.TempFile(dir, "foo.*")
+	require.NoError(t, err, "Error creating temporary file")
+	_, err = foo.WriteString("foo")
+	require.NoError(t, err, "Error writing to temporary file")
+	defer os.Remove(foo.Name())
+
+	bar, err := ioutil.TempFile(dir, "bar.*")
+	require.NoError(t, err, "Error creating temporary file")
+	_, err = bar.WriteString("bar")
+	require.NoError(t, err, "Error writing to temporary file")
+	defer os.Remove(bar.Name())
+
+	hash, err := MD5DirHex(dir)
+	require.NoError(t, err, "Error hashing dir to using %s", MD5Hash)
+	assert.Equal(t, "8d3a105e29f120164c7012dd2c0923ed", hash)
+}
