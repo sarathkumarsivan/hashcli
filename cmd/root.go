@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -14,6 +15,33 @@ type Options struct {
 	text      string
 	file      string
 	valid     bool
+	pretty    bool
+}
+
+type response struct {
+	Text      string `json:"text,omitempty"`
+	File      string `json:"file,omitempty"`
+	Algorithm string `json:"algorithm,omitempty"`
+	Encoding  string `json:"encoding,omitempty"`
+	Hash      string `json:"hash,omitempty"`
+}
+
+func printAsJSON(response response) {
+	bytes, err := json.Marshal(response)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(bytes))
+}
+
+func printAsPrettyJSON(response response) {
+	bytes, err := json.MarshalIndent(response, "", "  ")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(bytes))
 }
 
 func Exit(message string, flags *flag.FlagSet) {
@@ -27,6 +55,13 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
+	response := response{
+		Text:      options.text,
+		File:      options.file,
+		Algorithm: string(options.algorithm),
+		Encoding:  string(options.encoding),
+	}
+
 	if options.text != "" {
 		maker := hash.New().Algorithm(options.algorithm).Encoding(options.encoding).Build()
 		hash, err := maker.HashText(options.text)
@@ -34,7 +69,7 @@ func Execute() {
 			fmt.Errorf("error hasing text: %s using algorithm %s, error: %s", options.text, options.algorithm, err)
 			os.Exit(1)
 		}
-		fmt.Printf("%s (%s): %s\n", options.algorithm, options.text, hash)
+		response.Hash = hash
 	}
 	if options.file != "" {
 		maker := hash.New().Algorithm(options.algorithm).Encoding(options.encoding).Build()
@@ -43,6 +78,12 @@ func Execute() {
 			fmt.Errorf("error hasing file: %s using algorithm %s, error: %s", options.text, options.algorithm, err)
 			os.Exit(1)
 		}
-		fmt.Printf("%s (%s): %s\n", options.algorithm, options.file, hash)
+		response.Hash = hash
+	}
+
+	if options.pretty {
+		printAsPrettyJSON(response)
+	} else {
+		printAsJSON(response)
 	}
 }

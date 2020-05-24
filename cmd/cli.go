@@ -11,6 +11,7 @@ const (
 	FlagDescEncoding  = "Encoding to be used to encode the checksum."
 	FlagDescText      = "Text to be hashed with the specified algorithm and encoding."
 	FlagDescFile      = "File to be hashed with the specified algorithm and encoding."
+	FlagDescPretty    = "Specify pretty flag if you want formatted JSON."
 
 	ErrMsgNotEnoughOptions = "hashutils: not enough options to perform hashing"
 )
@@ -21,6 +22,7 @@ func ParseCommandLine(args []string, errorHandling flag.ErrorHandling) (options 
 	encoding := flags.String("e", "hex", FlagDescEncoding)
 	text := flags.String("t", "", FlagDescText)
 	file := flags.String("f", "", FlagDescFile)
+	pretty := flags.Bool("p", false, FlagDescPretty)
 
 	if err = flags.Parse(args[1:]); err != nil {
 		return
@@ -37,6 +39,7 @@ func ParseCommandLine(args []string, errorHandling flag.ErrorHandling) (options 
 			options.file = *file
 			options.valid = true
 		}
+		options.pretty = *pretty
 	}
 	if !options.valid {
 		Exit(ErrMsgNotEnoughOptions, flags)
