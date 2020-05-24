@@ -5,14 +5,24 @@ import (
 	"os"
 
 	"github.com/sarathkumarsivan/hashutils/hash"
+	"github.com/sarathkumarsivan/hashutils/util"
 )
 
-func parseCommandLine() Options {
+const (
+	FlagDescAlgorithm = "Algorithm to be used to hash your text/file/directory."
+	FlagDescEncoding  = "Encoding to be used to encode the checksum."
+	FlagDescText      = "Text to be hashed with the specified algorithm and encoding."
+	FlagDescFile      = "File to be hashed with the specified algorithm and encoding."
+
+	ErrMsgNotEnoughOptions = "hashutils: not enough options to perform hashing"
+)
+
+func parseOptions() Options {
 	flags := flag.NewFlagSet("hash", flag.ExitOnError)
-	algorithm := flags.String("algorithm", "sha1", "--algorithm <your text here> default: sha1")
-	encoding := flags.String("encoding", "hex", "--encoding <your text here> default: hex")
-	text := flags.String("text", "", "--text <your text here>")
-	file := flags.String("file", "", "--file <your text here>")
+	algorithm := flags.String("a", "sha1", FlagDescAlgorithm)
+	encoding := flags.String("e", "hex", FlagDescEncoding)
+	text := flags.String("t", "", FlagDescText)
+	file := flags.String("f", "", FlagDescFile)
 
 	var options = Options{}
 	flags.Parse(os.Args[1:])
@@ -20,17 +30,17 @@ func parseCommandLine() Options {
 	if flags.Parsed() {
 		options.algorithm = hash.Algorithm(*algorithm)
 		options.encoding = hash.Encoding(*encoding)
-		if *text != "" {
+		if util.IsNotEmpty(*text) {
 			options.text = *text
 			options.valid = true
 		}
-		if *file != "" {
+		if util.IsNotEmpty(*file) {
 			options.file = *file
 			options.valid = true
 		}
 	}
 	if !options.valid {
-		Exit("hashutils: not enough options to perform hashing", flags)
+		Exit(ErrMsgNotEnoughOptions, flags)
 	}
 	return options
 }
