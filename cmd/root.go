@@ -23,7 +23,10 @@ func Exit(message string, flags *flag.FlagSet) {
 }
 
 func Execute() {
-	options := parseOptions()
+	options, err := ParseCommandLine(os.Args, flag.ExitOnError)
+	if err != nil {
+		os.Exit(1)
+	}
 	if options.text != "" {
 		maker := hash.New().Algorithm(options.algorithm).Encoding(options.encoding).Build()
 		hash, err := maker.HashText(options.text)

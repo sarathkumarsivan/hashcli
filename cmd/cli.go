@@ -2,8 +2,6 @@ package cmd
 
 import (
 	"flag"
-	"os"
-
 	"github.com/sarathkumarsivan/hashutils/hash"
 	"github.com/sarathkumarsivan/hashutils/util"
 )
@@ -17,15 +15,16 @@ const (
 	ErrMsgNotEnoughOptions = "hashutils: not enough options to perform hashing"
 )
 
-func parseOptions() Options {
-	flags := flag.NewFlagSet("hash", flag.ExitOnError)
+func ParseCommandLine(args []string, errorHandling flag.ErrorHandling) (options Options, err error) {
+	flags := flag.NewFlagSet(args[0], errorHandling)
 	algorithm := flags.String("a", "sha1", FlagDescAlgorithm)
 	encoding := flags.String("e", "hex", FlagDescEncoding)
 	text := flags.String("t", "", FlagDescText)
 	file := flags.String("f", "", FlagDescFile)
 
-	var options = Options{}
-	flags.Parse(os.Args[1:])
+	if err = flags.Parse(args[1:]); err != nil {
+		return
+	}
 
 	if flags.Parsed() {
 		options.algorithm = hash.Algorithm(*algorithm)
@@ -42,5 +41,5 @@ func parseOptions() Options {
 	if !options.valid {
 		Exit(ErrMsgNotEnoughOptions, flags)
 	}
-	return options
+	return
 }
