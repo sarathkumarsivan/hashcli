@@ -17,6 +17,13 @@ func TestParseCommandLine(t *testing.T) {
 	assert.Equal(t, hash.Encoding("hex"), options.encoding)
 	assert.Equal(t, "foo", options.text)
 
+	args = []string{"hash", "-a", "md5", "-t", "foo", "-e", "hex"}
+	options, err = ParseCommandLine(args, flag.ContinueOnError)
+	require.NoError(t, err, "Error parsing commandline options")
+	assert.Equal(t, hash.Algorithm("md5"), options.algorithm)
+	assert.Equal(t, hash.Encoding("hex"), options.encoding)
+	assert.Equal(t, "foo", options.text)
+
 	args = []string{"hash", "-a", "sha1", "-t", "foo", "-e", "hex"}
 	options, err = ParseCommandLine(args, flag.ContinueOnError)
 	require.NoError(t, err, "Error parsing commandline options")
@@ -50,6 +57,13 @@ func TestParseCommandLine(t *testing.T) {
 	require.NoError(t, err, "Error parsing commandline options")
 	assert.Equal(t, hash.Algorithm("sha512"), options.algorithm)
 	assert.Equal(t, hash.Encoding("hex"), options.encoding)
+	assert.Equal(t, "foo", options.text)
+
+	args = []string{"hash", "-a", "md5", "-t", "foo", "-e", "base64"}
+	options, err = ParseCommandLine(args, flag.ContinueOnError)
+	require.NoError(t, err, "Error parsing commandline options")
+	assert.Equal(t, hash.Algorithm("md5"), options.algorithm)
+	assert.Equal(t, hash.Encoding("base64"), options.encoding)
 	assert.Equal(t, "foo", options.text)
 
 	args = []string{"hash", "-a", "sha1", "-t", "foo", "-e", "base64"}
