@@ -57,7 +57,7 @@ func TestMD5HashFile(t *testing.T) {
 	assert.Equal(t, "1B2M2Y8AsgTpgAmY7PhCfg", hash)
 }
 
-func TestHashDir(t *testing.T) {
+func TestMD5HashDir(t *testing.T) {
 	dir, err := ioutil.TempDir("", "qux")
 	require.NoError(t, err, "Error creating temporary directory")
 	defer os.Remove(dir)
