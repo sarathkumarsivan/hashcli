@@ -221,15 +221,15 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			}
 			pathHashes[path] = hash
 		}
-		if m.algorithm == SHA256Hash && m.encoding == Base64 {
-			hash, err := SHA256FileBase64StdEnc(path)
+		if m.algorithm == SHA224Hash && m.encoding == Base64 {
+			hash, err := SHA224FileBase64StdEnc(path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hash
 		}
-		if m.algorithm == SHA224Hash && m.encoding == Base64 {
-			hash, err := SHA224FileBase64StdEnc(path)
+		if m.algorithm == SHA256Hash && m.encoding == Base64 {
+			hash, err := SHA256FileBase64StdEnc(path)
 			if err != nil {
 				return pathHashes, err
 			}
