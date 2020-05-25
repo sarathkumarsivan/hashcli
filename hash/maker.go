@@ -257,8 +257,8 @@ func (m *hashMaker) HashDir(path string) (string, error) {
 	if m.algorithm == MD5Hash && m.encoding == Hex {
 		return MD5DirHex(path)
 	}
-	if m.algorithm == MD5Hash && m.encoding == Base64 {
-		return MD5DirBase64StdEnc(path)
+	if m.algorithm == SHA1Hash && m.encoding == Hex {
+		return SHA1DirHex(path)
 	}
 	return "", ErrUnsupportedAlgorithm
 }
