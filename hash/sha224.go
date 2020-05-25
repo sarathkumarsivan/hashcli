@@ -70,3 +70,8 @@ func SHA224Dir(path string) ([]byte, error) {
 	hash := sha256.New224()
 	return hashDir(hash, path)
 }
+
+func SHA224DirHex(path string) (string, error) {
+	hash, err := SHA224Dir(path)
+	return hex.EncodeToString(hash), err
+}
