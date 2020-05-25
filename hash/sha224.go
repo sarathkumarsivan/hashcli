@@ -65,3 +65,8 @@ func SHA224FileBase64RawStdEnc(path string) (string, error) {
 	hash, err := SHA224File(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
+
+func SHA224Dir(path string) ([]byte, error) {
+	hash := sha256.New224()
+	return hashDir(hash, path)
+}
