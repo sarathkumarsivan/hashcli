@@ -85,3 +85,8 @@ func SHA224DirBase64URLEnc(path string) (string, error) {
 	hash, err := SHA224Dir(path)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
+
+func SHA224DirBase64RawURLEnc(path string) (string, error) {
+	hash, err := SHA224Dir(path)
+	return base64.RawURLEncoding.EncodeToString(hash), err
+}
