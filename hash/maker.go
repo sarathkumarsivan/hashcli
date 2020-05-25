@@ -253,6 +253,13 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 	return pathHashes, nil
 }
 
+func (m *hashMaker) HashDir(path string) (string, error) {
+	if m.algorithm == MD5Hash && m.encoding == Hex {
+		return MD5DirHex(path)
+	}
+	return "", ErrUnsupportedAlgorithm
+}
+
 func (m *hashMaker) HashPath(path string) (string, error) {
 	return "", ErrUnsupportedAlgorithm
 }
