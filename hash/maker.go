@@ -178,15 +178,15 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 			}
 			pathHashes[path] = hash
 		}
-		if m.algorithm == SHA256Hash && m.encoding == Hex {
-			hash, err := SHA256FileHex(path)
+		if m.algorithm == SHA224Hash && m.encoding == Hex {
+			hash, err := SHA224FileHex(path)
 			if err != nil {
 				return pathHashes, err
 			}
 			pathHashes[path] = hash
 		}
-		if m.algorithm == SHA224Hash && m.encoding == Hex {
-			hash, err := SHA224FileHex(path)
+		if m.algorithm == SHA256Hash && m.encoding == Hex {
+			hash, err := SHA256FileHex(path)
 			if err != nil {
 				return pathHashes, err
 			}
