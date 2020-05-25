@@ -77,4 +77,9 @@ func TestSHA224HashDir(t *testing.T) {
 	hash, err := SHA224DirHex(dir)
 	require.NoError(t, err, "Error hashing dir to using %s", SHA224Hash)
 	assert.NotEmpty(t, hash)
+
+	hash, err = SHA224DirBase64StdEnc(dir)
+	require.NoError(t, err, "Error hashing dir to using %s", SHA224Hash)
+	assert.NotEmpty(t, hash)
+
 }
