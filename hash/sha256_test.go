@@ -55,5 +55,10 @@ func TestSHA256HashFile(t *testing.T) {
 	hash, err = SHA256FileBase64RawStdEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA256Hash)
 	assert.Equal(t, "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU", hash)
+}
 
+func TestSHA256HashDir(t *testing.T) {
+	dir, err := ioutil.TempDir("", "qux")
+	require.NoError(t, err, "Error creating temporary directory")
+	defer os.Remove(dir)
 }
