@@ -67,4 +67,14 @@ func TestSHA384HashDir(t *testing.T) {
 	_, err = foo.WriteString("foo")
 	require.NoError(t, err, "Error writing to temporary file")
 	defer os.Remove(foo.Name())
+
+	bar, err := ioutil.TempFile(dir, "bar.*")
+	require.NoError(t, err, "Error creating temporary file")
+	_, err = bar.WriteString("bar")
+	require.NoError(t, err, "Error writing to temporary file")
+	defer os.Remove(bar.Name())
+
+	hash, err := SHA384DirHex(dir)
+	require.NoError(t, err, "Error hashing dir to using %s", SHA384Hash)
+	assert.NotEmpty(t, hash)
 }
