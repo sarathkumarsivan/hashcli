@@ -56,3 +56,26 @@ func TestSHA512HashFile(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA512Hash)
 	assert.Equal(t, "z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg", hash)
 }
+
+func TestSHA512HashDir(t *testing.T) {
+	dir, err := ioutil.TempDir("", "qux")
+	require.NoError(t, err, "Error creating temporary directory")
+	defer os.Remove(dir)
+
+	foo, err := ioutil.TempFile(dir, "foo.*")
+	require.NoError(t, err, "Error creating temporary file")
+	_, err = foo.WriteString("foo")
+	require.NoError(t, err, "Error writing to temporary file")
+	defer os.Remove(foo.Name())
+
+	bar, err := ioutil.TempFile(dir, "bar.*")
+	require.NoError(t, err, "Error creating temporary file")
+	_, err = bar.WriteString("bar")
+	require.NoError(t, err, "Error writing to temporary file")
+	defer os.Remove(bar.Name())
+
+	hash, err := SHA512DirHex(dir)
+	require.NoError(t, err, "Error hashing dir to using %s", SHA512Hash)
+	assert.NotEmpty(t, hash)
+
+}
