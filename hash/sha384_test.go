@@ -81,4 +81,8 @@ func TestSHA384HashDir(t *testing.T) {
 	hash, err = SHA384DirBase64StdEnc(dir)
 	require.NoError(t, err, "Error hashing dir to using %s", SHA384Hash)
 	assert.NotEmpty(t, hash)
+
+	hash, err = SHA384DirBase64URLEnc(dir)
+	require.NoError(t, err, "Error hashing dir to using %s", SHA384Hash)
+	assert.NotEmpty(t, hash)
 }
