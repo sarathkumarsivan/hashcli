@@ -90,3 +90,8 @@ func SHA384DirBase64RawURLEnc(path string) (string, error) {
 	hash, err := SHA384Dir(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
+
+func SHA384DirBase64RawStdEnc(path string) (string, error) {
+	hash, err := SHA384Dir(path)
+	return base64.RawStdEncoding.EncodeToString(hash), err
+}
