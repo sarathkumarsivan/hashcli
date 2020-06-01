@@ -224,7 +224,7 @@ Now, you can run hash commands:
 ```scala
 hash -t foo
 ```
-It should display the SHA1 hash of your "foo" as JSON. SHA1 is used as the default algorithm and results will be
+It should display the SHA1 hash of the text "foo" as JSON. SHA1 is used as the default algorithm and results will be
  encoded in base64 format.
 ```scala
 {"text":"foo","algorithm":"sha1","encoding":"hex","hash":"0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33"}
