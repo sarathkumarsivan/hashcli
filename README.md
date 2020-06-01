@@ -220,6 +220,10 @@ You can make the hash of a text, file/directory by running the command line tool
 # hashutils Path Settings
 alias hash="$GOPATH/bin/hashutils $@"
 ```
+Get the package from GitHub repository and run go install.
+```bash
+go get -u github.com/sarathkumarsivan/hashutils
+```
 Now, you can run hash commands:
 ```scala
 hash -t foo
@@ -228,4 +232,8 @@ It should display the SHA1 hash of the text "foo" as JSON. SHA1 is used as the d
  encoded in base64 format.
 ```scala
 {"text":"foo","algorithm":"sha1","encoding":"hex","hash":"0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33"}
+```
+Try specifying the algorithm and encoding like this:
+```scala
+hash -t foo -a md5 -e base64
 ```
