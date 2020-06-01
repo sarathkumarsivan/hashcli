@@ -212,3 +212,9 @@ hash, _ := SHA512FileBase64RawURLEnc("foo.txt")
 // SHA512 Hash of file with unpadded alternate base64 encoding.
 hash, _ := SHA512FileBase64RawStdEnc("foo.txt")
 ```
+
+### Using Commandline
+```scala
+hash -t foo
+{"text":"foo","algorithm":"sha1","encoding":"hex","hash":"0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33"}
+```
