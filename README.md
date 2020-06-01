@@ -220,9 +220,9 @@ You can make the hash of a text, file/directory by running the command line tool
 # hashutils Path Settings
 alias hash="$GOPATH/bin/hashutils $@"
 ```
-Get the package from GitHub repository and run go install.
+Install the package from GitHub.
 ```bash
-go get -v -u github.com/sarathkumarsivan/hashutils
+go install github.com/sarathkumarsivan/hashutils
 ```
 Now, you can run hash commands:
 ```scala
