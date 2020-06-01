@@ -214,8 +214,17 @@ hash, _ := SHA512FileBase64RawStdEnc("foo.txt")
 ```
 
 ### Using Commandline Interface
-You can make the hash of a text, file/directory by running the command line tool.
+You can make the hash of a text, file/directory by running the command line tool. Set the alias in your ~/.profile
+ file as shown below:
+```scala
+# hashutils Path Settings
+alias hash="$GOPATH/bin/hashutils $@"
+```
+Now, you can run hash commands:
 ```scala
 hash -t foo
+```
+It should display the SHA1 hash of your "foo" as JSON.
+```scala
 {"text":"foo","algorithm":"sha1","encoding":"hex","hash":"0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33"}
 ```
