@@ -214,15 +214,16 @@ hash, _ := SHA512FileBase64RawStdEnc("foo.txt")
 ```
 
 ### Install from source and run through commandline
-You can make the hash of a text, file/directory by running the command line tool. Set the alias in your ~/.profile
- file as shown below:
+You can make the hash of a text, file/directory by running the command line tool. 
+Install the package from GitHub.
+```scala
+go install github.com/sarathkumarsivan/hashutils
+```
+Set the alias in your ~/.profile file and reload the profile as shown below:
 ```scala
 # hashutils Path Settings
 alias hash="$GOPATH/bin/hashutils $@"
-```
-Install the package from GitHub.
-```bash
-go install github.com/sarathkumarsivan/hashutils
+source ~/.profile
 ```
 Now, you can run hash commands:
 ```scala
@@ -236,4 +237,8 @@ It should display the SHA1 hash of the text "foo" as JSON. SHA1 is used as the d
 Try specifying the algorithm and encoding like this:
 ```scala
 hash -t foo -a md5 -e base64
+```
+You should get the MD5 hash of the text "foo" encoded as "base64"
+```scala
+{"text":"foo","algorithm":"md5","encoding":"base64","hash":"rL0Y20zC+Fzt72VPzMSk2A=="}
 ```
