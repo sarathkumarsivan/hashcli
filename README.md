@@ -213,7 +213,7 @@ hash, _ := SHA512FileBase64RawURLEnc("foo.txt")
 hash, _ := SHA512FileBase64RawStdEnc("foo.txt")
 ```
 
-### Using Commandline Interface
+### Install from source and run through commandline
 You can make the hash of a text, file/directory by running the command line tool. Set the alias in your ~/.profile
  file as shown below:
 ```scala
@@ -222,7 +222,7 @@ alias hash="$GOPATH/bin/hashutils $@"
 ```
 Get the package from GitHub repository and run go install.
 ```bash
-go get -u github.com/sarathkumarsivan/hashutils
+go get -v -u github.com/sarathkumarsivan/hashutils
 ```
 Now, you can run hash commands:
 ```scala
