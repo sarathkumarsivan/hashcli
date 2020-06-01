@@ -213,7 +213,8 @@ hash, _ := SHA512FileBase64RawURLEnc("foo.txt")
 hash, _ := SHA512FileBase64RawStdEnc("foo.txt")
 ```
 
-### Using Commandline
+### Using Commandline Interface
+You can make the hash of a text, file/directory by running the command line tool.
 ```scala
 hash -t foo
 {"text":"foo","algorithm":"sha1","encoding":"hex","hash":"0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33"}
