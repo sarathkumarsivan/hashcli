@@ -105,3 +105,8 @@ func MD5PathHex(path string) (string, error) {
 	hash, err := MD5Path(path)
 	return hex.EncodeToString(hash), err
 }
+
+func MD5PathBase64StdEnc(path string) (string, error) {
+	hash, err := MD5Path(path)
+	return hex.EncodeToString(hash), err
+}
