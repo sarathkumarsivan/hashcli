@@ -94,3 +94,22 @@ func TestMD5HashDir(t *testing.T) {
 	require.NoError(t, err, "Error hashing dir to using %s", MD5Hash)
 	assert.NotEmpty(t, hash)
 }
+
+func TestMD5HashPath(t *testing.T) {
+	foo, err := ioutil.TempFile("", "foo.*")
+	require.NoError(t, err, "Error creating temporary file")
+	defer func() { _ = os.Remove(foo.Name()) }()
+
+	hash, err := MD5PathHex(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
+	assert.NotEmpty(t, hash)
+
+	hash, err = MD5PathBase64StdEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
+	assert.NotEmpty(t, hash)
+
+	hash, err = MD5PathBase64URLEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
+	assert.NotEmpty(t, hash)
+
+}
