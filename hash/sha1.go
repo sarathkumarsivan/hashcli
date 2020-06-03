@@ -120,3 +120,8 @@ func SHA1PathBase64RawURLEnc(path string) (string, error) {
 	hash, err := SHA1Path(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
+
+func SHA1PathBase64RawStdEnc(path string) (string, error) {
+	hash, err := SHA1Path(path)
+	return base64.RawStdEncoding.EncodeToString(hash), err
+}
