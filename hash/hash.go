@@ -34,9 +34,9 @@ func hashPath(hash hash.Hash, path string) ([]byte, error) {
 	}
 	switch mode := info.Mode(); {
 	case mode.IsDir():
-		return hashFile(hash, path)
-	case mode.IsRegular():
 		return hashDir(hash, path)
+	case mode.IsRegular():
+		return hashFile(hash, path)
 	}
 	return nil, nil // TODO: Handle Error
 }
