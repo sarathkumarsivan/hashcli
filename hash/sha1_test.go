@@ -96,9 +96,15 @@ func TestSHA1HashDir(t *testing.T) {
 }
 
 func TestSHA1HashPath(t *testing.T) {
-	foo, err := ioutil.TempFile("", "foo.*")
+	dir, err := ioutil.TempDir("", "qux")
+	require.NoError(t, err, "Error creating temporary directory")
+	defer os.Remove(dir)
+
+	foo, err := ioutil.TempFile(dir, "foo.*")
 	require.NoError(t, err, "Error creating temporary file")
-	defer func() { _ = os.Remove(foo.Name()) }()
+	_, err = foo.WriteString("foo")
+	require.NoError(t, err, "Error writing to temporary file")
+	defer os.Remove(foo.Name())
 
 	hash, err := SHA1PathHex(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
