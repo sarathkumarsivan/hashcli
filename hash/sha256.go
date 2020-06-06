@@ -95,3 +95,8 @@ func SHA256DirBase64RawStdEnc(path string) (string, error) {
 	hash, err := SHA256Dir(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
+
+func SHA256Path(path string) ([]byte, error) {
+	hash := sha256.New()
+	return hashPath(hash, path)
+}
