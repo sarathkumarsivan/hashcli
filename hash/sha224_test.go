@@ -107,7 +107,7 @@ func TestSHA22HashPath(t *testing.T) {
 	defer os.Remove(foo.Name())
 
 	hash, err := SHA224PathHex(dir)
-	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
+	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.NotEmpty(t, hash)
 
 }
