@@ -100,3 +100,8 @@ func SHA384Path(path string) ([]byte, error) {
 	hash := sha512.New384()
 	return hashPath(hash, path)
 }
+
+func SHA384PathHex(path string) (string, error) {
+	hash, err := SHA384Path(path)
+	return hex.EncodeToString(hash), err
+}
