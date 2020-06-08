@@ -105,4 +105,9 @@ func TestSHA384HashPath(t *testing.T) {
 	_, err = foo.WriteString("foo")
 	require.NoError(t, err, "Error writing to temporary file")
 	defer os.Remove(foo.Name())
+
+	hash, err := SHA384PathHex(dir)
+	require.NoError(t, err, "Error hashing text to using %s", SHA384Hash)
+	assert.NotEmpty(t, hash)
+
 }
