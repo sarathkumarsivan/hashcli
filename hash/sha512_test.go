@@ -94,3 +94,9 @@ func TestSHA512HashDir(t *testing.T) {
 	require.NoError(t, err, "Error hashing dir to using %s", SHA512Hash)
 	assert.NotEmpty(t, hash)
 }
+
+func TestSHA512HashPath(t *testing.T) {
+	dir, err := ioutil.TempDir("", "qux")
+	require.NoError(t, err, "Error creating temporary directory")
+	defer os.Remove(dir)
+}
