@@ -110,3 +110,8 @@ func SHA512PathBase64StdEnc(path string) (string, error) {
 	hash, err := SHA512Path(path)
 	return hex.EncodeToString(hash), err
 }
+
+func SHA512PathBase64URLEnc(path string) (string, error) {
+	hash, err := SHA512Path(path)
+	return base64.URLEncoding.EncodeToString(hash), err
+}
