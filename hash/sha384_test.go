@@ -125,4 +125,8 @@ func TestSHA384HashPath(t *testing.T) {
 	hash, err = SHA384PathBase64RawStdEnc(dir)
 	require.NoError(t, err, "Error hashing text to using %s", SHA384Hash)
 	assert.NotEmpty(t, hash)
+
+	hash, err = SHA384PathBase64RawStdEnc(foo.Name())
+	require.NoError(t, err, "Error hashing text to using %s", SHA384Hash)
+	assert.NotEmpty(t, hash)
 }
