@@ -130,6 +130,10 @@ func TestSHA22HashPath(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.NotEmpty(t, hash)
 
+	hash, err = SHA224PathBase64RawURLEnc(dir)
+	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
+	assert.NotEmpty(t, hash)
+
 	hash, err = SHA224PathBase64RawURLEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", SHA224Hash)
 	assert.NotEmpty(t, hash)
