@@ -106,7 +106,11 @@ func TestMD5HashPath(t *testing.T) {
 	require.NoError(t, err, "Error writing to temporary file")
 	defer os.Remove(foo.Name())
 
-	hash, err := MD5PathHex(foo.Name())
+	hash, err := MD5PathHex(dir)
+	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
+	assert.NotEmpty(t, hash)
+
+	hash, err = MD5PathHex(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.NotEmpty(t, hash)
 
