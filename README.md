@@ -227,6 +227,8 @@ hash, _ := SHA512PathBase64StdEnc("/home/foo.txt")
 // SHA512 Hash of directory path with alternate base64 encoding.
 hash, _ := SHA512PathBase64URLEnc("/home/foo")
 
+// SHA512 Hash of file path with alternate base64 encoding.
+hash, _ := SHA512PathBase64URLEnc("/home/foo.txt")
 ```
 
 ### Install from source and run through commandline
