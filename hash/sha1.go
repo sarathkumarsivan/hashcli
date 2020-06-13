@@ -6,33 +6,33 @@ import (
 	"encoding/hex"
 )
 
-func SHA1(text string) ([]byte, error) {
+func Sha1(text string) ([]byte, error) {
 	hash := sha1.New()
 	return hashText(hash, text)
 }
 
 func SHA1Hex(text string) (string, error) {
-	hash, err := SHA1(text)
+	hash, err := Sha1(text)
 	return hex.EncodeToString(hash), err
 }
 
 func SHA1Base64StdEnc(text string) (string, error) {
-	hash, err := SHA1(text)
+	hash, err := Sha1(text)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
 func SHA1Base64URLEnc(text string) (string, error) {
-	hash, err := SHA1(text)
+	hash, err := Sha1(text)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
 func SHA1Base64RawURLEnc(text string) (string, error) {
-	hash, err := SHA1(text)
+	hash, err := Sha1(text)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
 func SHA1Base64RawStdEnc(text string) (string, error) {
-	hash, err := SHA1(text)
+	hash, err := Sha1(text)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
