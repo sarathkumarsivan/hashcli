@@ -26,7 +26,7 @@ func TestSHA1Hash(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
 	assert.Equal(t, "C-7Hteo_D9vJXQ3UfzxbwnXaijM", hash)
 
-	hash, err = SHA1Base64URLEnc("foo")
+	hash, err = Sha1Base64URLEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", SHA1Hash)
 	assert.Equal(t, "C-7Hteo_D9vJXQ3UfzxbwnXaijM=", hash)
 }
