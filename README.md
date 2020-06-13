@@ -211,6 +211,10 @@ hash, _ := SHA512FileBase64RawURLEnc("foo.txt")
 
 // SHA512 Hash of file with unpadded alternate base64 encoding.
 hash, _ := SHA512FileBase64RawStdEnc("foo.txt")
+
+// SHA512 Hash of directory path with hexadecimal encoding
+hash, _ := SHA512PathHex("/home/foo")
+
 ```
 
 ### Install from source and run through commandline
