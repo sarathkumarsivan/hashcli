@@ -122,11 +122,11 @@ func TestMD5HashPath(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = MD5PathBase64URLEnc(dir)
+	hash, err = Md5PathBase64URLEnc(dir)
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = MD5PathBase64URLEnc(foo.Name())
+	hash, err = Md5PathBase64URLEnc(foo.Name())
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.NotEmpty(t, hash)
 

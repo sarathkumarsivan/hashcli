@@ -111,7 +111,7 @@ func Md5PathBase64StdEnc(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
-func MD5PathBase64URLEnc(path string) (string, error) {
+func Md5PathBase64URLEnc(path string) (string, error) {
 	hash, err := Md5Path(path)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
