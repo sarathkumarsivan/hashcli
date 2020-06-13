@@ -215,6 +215,9 @@ hash, _ := SHA512FileBase64RawStdEnc("foo.txt")
 // SHA512 Hash of directory path with hexadecimal encoding
 hash, _ := SHA512PathHex("/home/foo")
 
+// SHA512 Hash of file path with hexadecimal encoding
+hash, _ := SHA512PathHex("/home/foo.txt")
+
 ```
 
 ### Install from source and run through commandline
