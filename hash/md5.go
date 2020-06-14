@@ -76,7 +76,7 @@ func Md5DirHex(path string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
-func MD5DirBase64StdEnc(path string) (string, error) {
+func Md5DirBase64StdEnc(path string) (string, error) {
 	hash, err := Md5Dir(path)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
