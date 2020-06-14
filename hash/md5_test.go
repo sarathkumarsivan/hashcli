@@ -90,7 +90,7 @@ func TestMD5HashDir(t *testing.T) {
 	require.NoError(t, err, "Error hashing dir to using %s", MD5Hash)
 	assert.NotEmpty(t, hash)
 
-	hash, err = MD5DirBase64RawStdEnc(dir)
+	hash, err = Md5DirBase64RawStdEnc(dir)
 	require.NoError(t, err, "Error hashing dir to using %s", MD5Hash)
 	assert.NotEmpty(t, hash)
 }

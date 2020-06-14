@@ -91,7 +91,7 @@ func Md5DirBase64RawURLEnc(path string) (string, error) {
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
-func MD5DirBase64RawStdEnc(path string) (string, error) {
+func Md5DirBase64RawStdEnc(path string) (string, error) {
 	hash, err := Md5Dir(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
