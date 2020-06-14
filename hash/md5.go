@@ -66,33 +66,33 @@ func Md5FileBase64RawStdEnc(path string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
-func MD5Dir(path string) ([]byte, error) {
+func Md5Dir(path string) ([]byte, error) {
 	hash := md5.New()
 	return hashDir(hash, path)
 }
 
 func MD5DirHex(path string) (string, error) {
-	hash, err := MD5Dir(path)
+	hash, err := Md5Dir(path)
 	return hex.EncodeToString(hash), err
 }
 
 func MD5DirBase64StdEnc(path string) (string, error) {
-	hash, err := MD5Dir(path)
+	hash, err := Md5Dir(path)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
 
 func MD5DirBase64URLEnc(path string) (string, error) {
-	hash, err := MD5Dir(path)
+	hash, err := Md5Dir(path)
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
 func MD5DirBase64RawURLEnc(path string) (string, error) {
-	hash, err := MD5Dir(path)
+	hash, err := Md5Dir(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
 
 func MD5DirBase64RawStdEnc(path string) (string, error) {
-	hash, err := MD5Dir(path)
+	hash, err := Md5Dir(path)
 	return base64.RawStdEncoding.EncodeToString(hash), err
 }
 
