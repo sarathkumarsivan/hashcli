@@ -255,7 +255,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 
 func (m *hashMaker) HashDir(path string) (string, error) {
 	if m.algorithm == MD5Hash && m.encoding == Hex {
-		return MD5DirHex(path)
+		return Md5DirHex(path)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Hex {
 		return SHA1DirHex(path)
