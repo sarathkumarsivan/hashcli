@@ -101,7 +101,7 @@ func Md5Path(path string) ([]byte, error) {
 	return hashPath(hash, path)
 }
 
-func MD5PathHex(path string) (string, error) {
+func Md5PathHex(path string) (string, error) {
 	hash, err := Md5Path(path)
 	return hex.EncodeToString(hash), err
 }
