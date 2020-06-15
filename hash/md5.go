@@ -26,7 +26,7 @@ func Md5Base64URLEnc(text string) (string, error) {
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
-func MD5Base64RawURLEnc(text string) (string, error) {
+func Md5Base64RawURLEnc(text string) (string, error) {
 	hash, err := Md5(text)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
