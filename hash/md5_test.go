@@ -18,7 +18,7 @@ func TestMD5Hash(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.Equal(t, "rL0Y20zC+Fzt72VPzMSk2A==", hash)
 
-	hash, err = MD5Base64RawStdEnc("foo")
+	hash, err = Md5Base64RawStdEnc("foo")
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.Equal(t, "rL0Y20zC+Fzt72VPzMSk2A", hash)
 
