@@ -121,7 +121,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 
 func (m *hashMaker) HashFile(path string) (string, error) {
 	if m.algorithm == MD5Hash && m.encoding == Hex {
-		return MD5FileHex(path)
+		return Md5FileHex(path)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Hex {
 		return SHA1FileHex(path)
@@ -165,7 +165,7 @@ func (m *hashMaker) HashFiles(paths ...string) (map[string]string, error) {
 	pathHashes := make(map[string]string, len(paths))
 	for _, path := range paths {
 		if m.algorithm == MD5Hash && m.encoding == Hex {
-			hash, err := MD5FileHex(path)
+			hash, err := Md5FileHex(path)
 			if err != nil {
 				return pathHashes, err
 			}

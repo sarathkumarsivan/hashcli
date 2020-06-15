@@ -41,7 +41,7 @@ func Md5File(path string) ([]byte, error) {
 	return hashFile(hash, path)
 }
 
-func MD5FileHex(path string) (string, error) {
+func Md5FileHex(path string) (string, error) {
 	hash, err := Md5File(path)
 	return hex.EncodeToString(hash), err
 }
