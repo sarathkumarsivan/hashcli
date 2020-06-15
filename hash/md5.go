@@ -56,7 +56,7 @@ func Md5FileBase64URLEnc(path string) (string, error) {
 	return base64.URLEncoding.EncodeToString(hash), err
 }
 
-func MD5FileBase64RawURLEnc(path string) (string, error) {
+func Md5FileBase64RawURLEnc(path string) (string, error) {
 	hash, err := Md5File(path)
 	return base64.RawURLEncoding.EncodeToString(hash), err
 }
