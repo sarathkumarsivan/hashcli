@@ -10,7 +10,7 @@ func Fnv32(text string) (uint32, error) {
 	return fnv32(hash, text)
 }
 
-func FNV32a(text string) (uint32, error) {
+func Fnv32a(text string) (uint32, error) {
 	hash := fnv.New32a()
 	return fnv32(hash, text)
 }
