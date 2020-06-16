@@ -79,7 +79,7 @@ type hashMaker struct {
 
 func (m *hashMaker) HashText(text string) (string, error) {
 	if m.algorithm == MD5Hash && m.encoding == Hex {
-		return MD5Hex(text)
+		return Md5Hex(text)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Hex {
 		return SHA1Hex(text)

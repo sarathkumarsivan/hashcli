@@ -10,7 +10,7 @@ import (
 )
 
 func TestMD5Hash(t *testing.T) {
-	hash, err := MD5Hex("foo")
+	hash, err := Md5Hex("foo")
 	require.NoError(t, err, "Error hashing text to using %s", MD5Hash)
 	assert.Equal(t, "acbd18db4cc2f85cedef654fccc4a4d8", hash)
 

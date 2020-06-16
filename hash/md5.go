@@ -11,7 +11,7 @@ func Md5(text string) ([]byte, error) {
 	return hashText(hash, text)
 }
 
-func MD5Hex(text string) (string, error) {
+func Md5Hex(text string) (string, error) {
 	hash, err := Md5(text)
 	return hex.EncodeToString(hash), err
 }
