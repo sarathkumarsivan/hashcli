@@ -20,7 +20,7 @@ func TestFNVHash(t *testing.T) {
 	require.NoError(t, err, "Error hashing text to using %s", FNV64Hash)
 	assert.Equal(t, uint64(0xd8cbc7186ba13533), fnv64)
 
-	fnv64, err = FNV64a("foo")
+	fnv64, err = Fnv64a("foo")
 	require.NoError(t, err, "Error hashing text to using %s", FNV64aHash)
 	assert.Equal(t, uint64(0xdcb27518fed9d577), fnv64)
 }
