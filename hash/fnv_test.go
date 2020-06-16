@@ -8,7 +8,7 @@ import (
 )
 
 func TestFNVHash(t *testing.T) {
-	fnv32, err := FNV32("foo")
+	fnv32, err := Fnv32("foo")
 	require.NoError(t, err, "Error hashing text to using %s", FNV32Hash)
 	assert.Equal(t, uint32(0x408f5e13), fnv32)
 

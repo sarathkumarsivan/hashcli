@@ -5,7 +5,7 @@ import (
 	"hash/fnv"
 )
 
-func FNV32(text string) (uint32, error) {
+func Fnv32(text string) (uint32, error) {
 	hash := fnv.New32()
 	return fnv32(hash, text)
 }
