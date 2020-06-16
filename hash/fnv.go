@@ -15,7 +15,7 @@ func Fnv32a(text string) (uint32, error) {
 	return fnv32(hash, text)
 }
 
-func FNV64(text string) (uint64, error) {
+func Fnv64(text string) (uint64, error) {
 	hash := fnv.New64()
 	return fnv64(hash, text)
 }
