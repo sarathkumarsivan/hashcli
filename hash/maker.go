@@ -98,7 +98,7 @@ func (m *hashMaker) HashText(text string) (string, error) {
 	}
 
 	if m.algorithm == MD5Hash && m.encoding == Base64 {
-		return MD5Base64StdEnc(text)
+		return Md5Base64StdEnc(text)
 	}
 	if m.algorithm == SHA1Hash && m.encoding == Base64 {
 		return SHA1Base64StdEnc(text)

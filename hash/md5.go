@@ -16,7 +16,7 @@ func Md5Hex(text string) (string, error) {
 	return hex.EncodeToString(hash), err
 }
 
-func MD5Base64StdEnc(text string) (string, error) {
+func Md5Base64StdEnc(text string) (string, error) {
 	hash, err := Md5(text)
 	return base64.StdEncoding.EncodeToString(hash), err
 }
