@@ -192,7 +192,7 @@ func Hmac384Base64RawStdEnc(message string, secret string) string {
 	return base64.RawStdEncoding.EncodeToString(bytes)
 }
 
-func HMAC384Base64URLEnc(message string, secret string) string {
+func Hmac384Base64URLEnc(message string, secret string) string {
 	bytes := Hmac384(message, secret)
 	return base64.URLEncoding.EncodeToString(bytes)
 }
