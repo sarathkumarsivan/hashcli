@@ -145,7 +145,7 @@ func Hmac512(message string, secret string) []byte {
 	return hash.Sum(nil)
 }
 
-func HMAC512Hex(message string, secret string) string {
+func Hmac512Hex(message string, secret string) string {
 	bytes := Hmac512(message, secret)
 	return hex.EncodeToString(bytes)
 }
