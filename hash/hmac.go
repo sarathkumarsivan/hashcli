@@ -118,7 +118,7 @@ func Hmac224Hex(message string, secret string) string {
 	return hex.EncodeToString(bytes)
 }
 
-func HMAC224Base64StdEnc(message string, secret string) string {
+func Hmac224Base64StdEnc(message string, secret string) string {
 	bytes := Hmac224(message, secret)
 	return base64.StdEncoding.EncodeToString(bytes)
 }
