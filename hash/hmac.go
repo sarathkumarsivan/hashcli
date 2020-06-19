@@ -91,7 +91,7 @@ func Hmac256Base64StdEnc(message string, secret string) string {
 	return base64.StdEncoding.EncodeToString(bytes)
 }
 
-func HMAC256Base64RawStdEnc(message string, secret string) string {
+func Hmac256Base64RawStdEnc(message string, secret string) string {
 	bytes := Hmac256(message, secret)
 	return base64.RawStdEncoding.EncodeToString(bytes)
 }
