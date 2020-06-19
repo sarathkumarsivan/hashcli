@@ -81,7 +81,7 @@ func Hmac256(message string, secret string) []byte {
 	return hash.Sum(nil)
 }
 
-func HMAC256Hex(message string, secret string) string {
+func Hmac256Hex(message string, secret string) string {
 	bytes := Hmac256(message, secret)
 	return hex.EncodeToString(bytes)
 }
