@@ -37,6 +37,11 @@ func HmacMd5Base64URLEnc(message string, secret string) string {
 	return base64.URLEncoding.EncodeToString(bytes)
 }
 
+func HmacMd5Base64RawURLEnc(message string, secret string) string {
+	bytes := HmacMd5(message, secret)
+	return base64.RawURLEncoding.EncodeToString(bytes)
+}
+
 func HMAC1(message string, secret string) []byte {
 	key := []byte(secret)
 	hash := hmac.New(sha1.New, key)
