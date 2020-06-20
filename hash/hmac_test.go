@@ -7,7 +7,9 @@ import (
 )
 
 func TestHMAC(t *testing.T) {
-	assert.Equal(t, "85d155c55ed286a300bd1cf124de08d87e914f3a", HMAC1Hex("foo", "bar"))
+	assert.Equal(t, "31b6db9e5eb4addb42f1a6ca07367adc", HmacMd5Hex("foo", "bar"))
+
+	assert.Equal(t, "85d155c55ed286a300bd1cf124de08d87e914f3a", Hmac1Hex("foo", "bar"))
 	assert.Equal(t, "hdFVxV7ShqMAvRzxJN4I2H6RTzo=", HMAC1Base64StdEnc("foo", "bar"))
 	assert.Equal(t, "hdFVxV7ShqMAvRzxJN4I2H6RTzo", HMAC1Base64RawStdEnc("foo", "bar"))
 	assert.Equal(t, "hdFVxV7ShqMAvRzxJN4I2H6RTzo=", HMAC1Base64URLEnc("foo", "bar"))
