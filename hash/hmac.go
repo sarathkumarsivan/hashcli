@@ -2,12 +2,20 @@ package hash
 
 import (
 	"crypto/hmac"
+	"crypto/md5"
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
 	"encoding/base64"
 	"encoding/hex"
 )
+
+func HMACMD5(message string, secret string) []byte {
+	key := []byte(secret)
+	hash := hmac.New(md5.New, key)
+	hash.Write([]byte(message))
+	return hash.Sum(nil)
+}
 
 func HMAC1(message string, secret string) []byte {
 	key := []byte(secret)
