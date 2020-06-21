@@ -10,15 +10,15 @@ import (
 	"encoding/hex"
 )
 
-func HMACMD5(message string, secret string) []byte {
+func HmacMd5(message string, secret string) []byte {
 	key := []byte(secret)
 	hash := hmac.New(md5.New, key)
 	hash.Write([]byte(message))
 	return hash.Sum(nil)
 }
 
-func HMACMD5Hex(message string, secret string) string {
-	bytes := HMACMD5(message, secret)
+func HmacMd5Hex(message string, secret string) string {
+	bytes := HmacMd5(message, secret)
 	return hex.EncodeToString(bytes)
 }
 
