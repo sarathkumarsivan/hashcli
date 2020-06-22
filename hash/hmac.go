@@ -16,6 +16,11 @@ func HMAC1(message string, secret string) []byte {
 	return hash.Sum(nil)
 }
 
+func HMAC1Hex(message string, secret string) string {
+	bytes := HMAC1(message, secret)
+	return hex.EncodeToString(bytes)
+}
+
 func HMAC256(message string, secret string) []byte {
 	key := []byte(secret)
 	hash := hmac.New(sha256.New, key)
