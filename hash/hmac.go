@@ -31,6 +31,11 @@ func HMAC1Base64RawStdEnc(message string, secret string) string {
 	return base64.RawStdEncoding.EncodeToString(bytes)
 }
 
+func HMAC1Base64URLEnc(message string, secret string) string {
+	bytes := HMAC1(message, secret)
+	return base64.URLEncoding.EncodeToString(bytes)
+}
+
 func HMAC256(message string, secret string) []byte {
 	key := []byte(secret)
 	hash := hmac.New(sha256.New, key)
