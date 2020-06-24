@@ -110,3 +110,8 @@ func HMAC384(message string, secret string) []byte {
 	hash.Write([]byte(message))
 	return hash.Sum(nil)
 }
+
+func HMAC384Hex(message string, secret string) string {
+	bytes := HMAC384(message, secret)
+	return hex.EncodeToString(bytes)
+}
