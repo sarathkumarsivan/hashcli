@@ -103,3 +103,10 @@ func HMAC512Base64RawURLEnc(message string, secret string) string {
 	bytes := HMAC512(message, secret)
 	return base64.RawURLEncoding.EncodeToString(bytes)
 }
+
+func HMAC384(message string, secret string) []byte {
+	key := []byte(secret)
+	hash := hmac.New(sha512.New384, key)
+	hash.Write([]byte(message))
+	return hash.Sum(nil)
+}
