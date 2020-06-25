@@ -3,6 +3,7 @@ package hash
 import (
 	"crypto/hmac"
 	"crypto/sha256"
+	"crypto/sha512"
 	"encoding/base64"
 	"encoding/hex"
 )
@@ -69,4 +70,11 @@ func HMAC224Base64URLEnc(message string, secret string) string {
 func HMAC224Base64RawURLEnc(message string, secret string) string {
 	bytes := HMAC224(message, secret)
 	return base64.RawURLEncoding.EncodeToString(bytes)
+}
+
+func HMAC512(message string, secret string) []byte {
+	key := []byte(secret)
+	hash := hmac.New(sha512.New, key)
+	hash.Write([]byte(message))
+	return hash.Sum(nil)
 }
