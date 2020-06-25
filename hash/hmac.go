@@ -78,3 +78,8 @@ func HMAC512(message string, secret string) []byte {
 	hash.Write([]byte(message))
 	return hash.Sum(nil)
 }
+
+func HMAC512Hex(message string, secret string) string {
+	bytes := HMAC512(message, secret)
+	return hex.EncodeToString(bytes)
+}
