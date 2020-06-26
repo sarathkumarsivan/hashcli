@@ -50,3 +50,8 @@ func HMAC224Hex(message string, secret string) string {
 	bytes := HMAC224(message, secret)
 	return hex.EncodeToString(bytes)
 }
+
+func HMAC224Base64StdEnc(message string, secret string) string {
+	bytes := HMAC224(message, secret)
+	return base64.StdEncoding.EncodeToString(bytes)
+}
