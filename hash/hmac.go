@@ -38,3 +38,10 @@ func HMAC256Base64RawStdEnc(message string, secret string) string {
 	bytes := HMAC256(message, secret)
 	return base64.RawStdEncoding.EncodeToString(bytes)
 }
+
+func HMAC224(message string, secret string) []byte {
+	key := []byte(secret)
+	hash := hmac.New(sha256.New224, key)
+	hash.Write([]byte(message))
+	return hash.Sum(nil)
+}
