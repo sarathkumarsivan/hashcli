@@ -33,3 +33,8 @@ func HMAC256Base64RawURLEnc(message string, secret string) string {
 	bytes := HMAC256(message, secret)
 	return base64.RawURLEncoding.EncodeToString(bytes)
 }
+
+func HMAC256Base64RawStdEnc(message string, secret string) string {
+	bytes := HMAC256(message, secret)
+	return base64.RawStdEncoding.EncodeToString(bytes)
+}
