@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 )
 
+// Sha1 returns SHA-1 checksum of a text as bytes.
 func Sha1(text string) ([]byte, error) {
 	hash := sha1.New()
 	return hashText(hash, text)
