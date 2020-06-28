@@ -16,6 +16,8 @@ func Crc32(text string) ([]byte, error) {
 	return hash.Sum(nil)[:], nil
 }
 
+// Crc32HashHex returns the CRC32 checksum of a text in
+// hexadecimal encoding format.
 func Crc32HashHex(text string) (string, error) {
 	hash, err := Crc32(text)
 	return hex.EncodeToString(hash), err
