@@ -1,11 +1,14 @@
 package hash
 
 import (
+	"errors"
 	"hash"
 	"io"
 	"os"
 	"path/filepath"
 )
+
+var ErrNeitherFileNorDir = errors.New("hashutils: path doesn't look like a file or directory")
 
 func hashText(hash hash.Hash, text string) ([]byte, error) {
 	_, err := hash.Write([]byte(text))
@@ -38,7 +41,7 @@ func hashPath(hash hash.Hash, path string) ([]byte, error) {
 	case mode.IsRegular():
 		return hashFile(hash, path)
 	}
-	return nil, nil // TODO: Handle Error
+	return nil, ErrNeitherFileNorDir
 }
 
 func hashDir(hash hash.Hash, path string) ([]byte, error) {
