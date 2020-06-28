@@ -21,6 +21,7 @@ const (
 	Sha224Hash           = "sha224"
 	Sha512Hash           = "sha512"
 	Sha384Hash           = "sha384"
+	Crc32Hash            = "crc32"
 )
 
 // An Encoding is a radix 64 encoding/decoding scheme, defined by a
