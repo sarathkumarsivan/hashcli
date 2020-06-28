@@ -12,9 +12,9 @@ const (
 	FlagDescText      = "Text to be hashed with the specified algorithm and encoding."
 	FlagDescFile      = "File to be hashed with the specified algorithm and encoding."
 	FlagDescPretty    = "Specify pretty flag if you want formatted JSON."
-
-	ErrMsgNotEnoughOptions = "hashutils: not enough options to perform hashing"
 )
+
+const ErrMsgNotEnoughOptions = "hashutils: not enough options to perform hashing"
 
 func ParseCommandLine(args []string, errorHandling flag.ErrorHandling) (options Options, err error) {
 	flags := flag.NewFlagSet(args[0], errorHandling)
